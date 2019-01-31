@@ -4,10 +4,18 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, udmDIZIMAN, Data.DB, Vcl.Buttons,
+  Vcl.ExtCtrls, System.Actions, Vcl.ActnList, System.ImageList,
+  Vcl.ImgList, Vcl.Grids, Vcl.DBGrids;
 
 type
-  TForm3 = class(TForm)
+  TfrmDIZIMISTAS = class(TForm)
+    DBGrid1: TDBGrid;
+    imagedizimista: TImageList;
+    actacoes: TActionList;
+    dstabela: TDataSource;
+    Panel1: TPanel;
+    SpeedButton1: TSpeedButton;
   private
     { Private declarations }
   public
@@ -15,7 +23,7 @@ type
   end;
 
 var
-  Form3: TForm3;
+  frmDIZIMISTAS: TfrmDIZIMISTAS;
 
 implementation
 

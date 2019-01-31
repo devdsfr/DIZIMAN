@@ -2,21 +2,23 @@ program DIZIMAN;
 
 uses
   Vcl.Forms,
-  ufrmPRINCIPAL in 'ufrmPRINCIPAL.pas' {Form1},
-  ufrmOFERTA in 'View\ufrmOFERTA.pas' {Form4},
-  ufrmDIZIMO in 'View\ufrmDIZIMO.pas' {Form2},
-  ufrmDIZIMISTAS in 'View\ufrmDIZIMISTAS.pas' {Form3},
-  udmDIZIMAN in 'Model\udmDIZIMAN.pas' {DataModuleDIZIMAN: TDataModule};
+  ufrmPRINCIPAL in 'ufrmPRINCIPAL.pas' {frmPrincipal},
+  ufrmOFERTA in 'View\ufrmOFERTA.pas' {frmOFERTA},
+  ufrmDIZIMO in 'View\ufrmDIZIMO.pas' {frmDIZIMO},
+  ufrmDIZIMISTAS in 'View\ufrmDIZIMISTAS.pas' {frmDIZIMISTAS},
+  udmDIZIMAN in 'Model\udmDIZIMAN.pas' {DataModuleDIZIMAN: TDataModule},
+  udmRELATORIOS in 'Model\udmRELATORIOS.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TForm4, Form4);
-  Application.CreateForm(TForm2, Form2);
-  Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmOFERTA, frmOFERTA);
+  Application.CreateForm(TfrmDIZIMO, frmDIZIMO);
+  Application.CreateForm(TfrmDIZIMISTAS, frmDIZIMISTAS);
   Application.CreateForm(TDataModuleDIZIMAN, DataModuleDIZIMAN);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

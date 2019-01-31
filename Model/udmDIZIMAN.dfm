@@ -105,6 +105,7 @@ object DataModuleDIZIMAN: TDataModuleDIZIMAN
     end
   end
   object sdsDizministas: TSQLDataSet
+    Active = True
     CommandText = 'SELECT * FROM DIZIMISTAS'
     MaxBlobSize = -1
     Params = <>
@@ -119,23 +120,29 @@ object DataModuleDIZIMAN: TDataModuleDIZIMAN
     Left = 264
     Top = 177
     object cdsDizimistasID: TIntegerField
+      DisplayLabel = 'Idendidade (RG)'
       FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsDizimistasNOME: TStringField
+      DisplayLabel = 'Nome do Dizimista'
       FieldName = 'NOME'
       Required = True
       Size = 50
     end
     object cdsDizimistasENDERECO: TStringField
+      DisplayLabel = 'Endere'#231'o'
       FieldName = 'ENDERECO'
       Size = 200
     end
     object cdsDizimistasTELEFONE: TIntegerField
+      DisplayLabel = 'Telefone'
       FieldName = 'TELEFONE'
       Required = True
     end
     object cdsDizimistasNASCIMENTO: TDateField
+      DisplayLabel = 'Data de Nascimento'
       FieldName = 'NASCIMENTO'
     end
   end

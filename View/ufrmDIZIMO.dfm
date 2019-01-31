@@ -1,7 +1,7 @@
-object Form2: TForm2
+object frmDIZIMO: TfrmDIZIMO
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'frmDIZIMO'
   ClientHeight = 242
   ClientWidth = 527
   Color = clBtnFace

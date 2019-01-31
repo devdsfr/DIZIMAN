@@ -1,7 +1,7 @@
-object Form4: TForm4
+object frmOFERTA: TfrmOFERTA
   Left = 0
   Top = 0
-  Caption = 'Form4'
+  Caption = 'frmOFERTA'
   ClientHeight = 242
   ClientWidth = 527
   Color = clBtnFace
