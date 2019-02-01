@@ -14,17 +14,119 @@ object frmDIZIMISTAS: TfrmDIZIMISTAS
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
+  object Label3: TLabel
+    Left = 32
+    Top = 24
+    Width = 31
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label4: TLabel
+    Left = 28
+    Top = 144
+    Width = 31
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label5: TLabel
+    Left = 36
+    Top = 147
+    Width = 31
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Label6: TLabel
+    Left = 36
+    Top = 192
+    Width = 31
+    Height = 13
+    Caption = 'Label2'
+  end
   object PageControl1: TPageControl
     Left = 0
-    Top = 8
-    Width = 874
-    Height = 497
+    Top = 0
+    Width = 869
+    Height = 439
     ActivePage = pcPESQUISAR
+    Align = alClient
     TabOrder = 0
+    ExplicitTop = 8
+    ExplicitWidth = 874
+    ExplicitHeight = 497
     object pcCADASTRO: TTabSheet
       Caption = 'Cadastro'
       ExplicitWidth = 281
       ExplicitHeight = 165
+      object Label2: TLabel
+        Left = 3
+        Top = 14
+        Width = 97
+        Height = 13
+        Caption = 'Registro Geral (RG):'
+      end
+      object Label7: TLabel
+        Left = 32
+        Top = 41
+        Width = 31
+        Height = 13
+        Caption = 'Nome:'
+      end
+      object Label8: TLabel
+        Left = 4
+        Top = 122
+        Width = 100
+        Height = 21
+        Caption = 'Data de Nascimento:'
+      end
+      object Label9: TLabel
+        Left = 24
+        Top = 68
+        Width = 49
+        Height = 13
+        Caption = 'Endere'#231'o:'
+      end
+      object Label10: TLabel
+        Left = 24
+        Top = 95
+        Width = 46
+        Height = 19
+        Caption = 'Telefone:'
+      end
+      object Edit1: TEdit
+        Left = 110
+        Top = 11
+        Width = 68
+        Height = 21
+        TabOrder = 0
+      end
+      object Edit2: TEdit
+        Left = 110
+        Top = 38
+        Width = 264
+        Height = 22
+        TabOrder = 1
+      end
+      object Edit3: TEdit
+        Left = 110
+        Top = 65
+        Width = 408
+        Height = 22
+        TabOrder = 2
+      end
+      object Edit4: TEdit
+        Left = 110
+        Top = 92
+        Width = 112
+        Height = 22
+        TabOrder = 3
+      end
+      object Edit5: TEdit
+        Left = 110
+        Top = 119
+        Width = 112
+        Height = 22
+        TabOrder = 4
+      end
     end
     object pcPESQUISAR: TTabSheet
       Caption = 'Pesquisar'
@@ -33,6 +135,13 @@ object frmDIZIMISTAS: TfrmDIZIMISTAS
       ExplicitTop = 28
       ExplicitWidth = 281
       ExplicitHeight = 165
+      object Label1: TLabel
+        Left = 16
+        Top = 48
+        Width = 31
+        Height = 13
+        Caption = 'Label1'
+      end
       object DBGrid1: TDBGrid
         Left = -4
         Top = 133
@@ -75,83 +184,97 @@ object frmDIZIMISTAS: TfrmDIZIMISTAS
             Visible = True
           end>
       end
-      object Panel1: TPanel
-        Left = 0
-        Top = 412
-        Width = 866
-        Height = 57
-        Align = alBottom
+      object edFILTRAR: TEdit
+        Left = 45
+        Top = 21
+        Width = 121
+        Height = 21
         TabOrder = 1
-        ExplicitWidth = 868
-        object SpeedButton1: TSpeedButton
-          Left = 0
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acINSERIR
-        end
-        object SpeedButton2: TSpeedButton
-          Left = 72
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acEDITAR
-        end
-        object SpeedButton3: TSpeedButton
-          Left = 144
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acEXCLUIR
-        end
-        object SpeedButton4: TSpeedButton
-          Left = 216
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acSALVAR
-        end
-        object SpeedButton5: TSpeedButton
-          Left = 361
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acPESQUISAR
-        end
-        object SpeedButton6: TSpeedButton
-          Left = 287
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acFECHAR
-        end
-        object SpeedButton7: TSpeedButton
-          Left = 432
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acIMPRIMIR
-        end
-        object SpeedButton8: TSpeedButton
-          Left = 504
-          Top = 8
-          Width = 57
-          Height = 38
-          Action = acFECHAR
-        end
-        object SpeedButton9: TSpeedButton
-          Left = 576
-          Top = 8
-          Width = 57
-          Height = 38
-        end
-        object SpeedButton10: TSpeedButton
-          Left = 648
-          Top = 8
-          Width = 57
-          Height = 38
-        end
       end
+      object btnFILTRAR: TButton
+        Left = 172
+        Top = 19
+        Width = 75
+        Height = 25
+        Caption = 'Filtrar'
+        TabOrder = 2
+        OnClick = btnFILTRARClick
+      end
+      object cbxFILTRAR: TCheckBox
+        Left = 144
+        Top = 88
+        Width = 97
+        Height = 17
+        Caption = 'cbxFILTRAR'
+        TabOrder = 3
+        OnClick = cbxFILTRARClick
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 439
+    Width = 869
+    Height = 57
+    Align = alBottom
+    TabOrder = 1
+    ExplicitTop = 412
+    ExplicitWidth = 866
+    object SpeedButton1: TSpeedButton
+      Left = 0
+      Top = 8
+      Width = 66
+      Height = 38
+      Action = acINSERIR
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 72
+      Top = 8
+      Width = 66
+      Height = 38
+      Action = acEDITAR
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 144
+      Top = 8
+      Width = 66
+      Height = 38
+      Action = acEXCLUIR
+    end
+    object SpeedButton4: TSpeedButton
+      Left = 216
+      Top = 6
+      Width = 65
+      Height = 38
+      Action = acSALVAR
+    end
+    object SpeedButton5: TSpeedButton
+      Left = 361
+      Top = 8
+      Width = 74
+      Height = 38
+      Action = acPESQUISAR
+    end
+    object SpeedButton6: TSpeedButton
+      Left = 287
+      Top = 8
+      Width = 68
+      Height = 38
+      Action = acCANCELAR
+    end
+    object SpeedButton7: TSpeedButton
+      Left = 441
+      Top = 8
+      Width = 64
+      Height = 38
+      Action = acIMPRIMIR
+    end
+    object SpeedButton8: TSpeedButton
+      Left = 511
+      Top = 8
+      Width = 66
+      Height = 38
+      Action = acFECHAR
     end
   end
   object imagedizimista: TImageList
@@ -827,8 +950,9 @@ object frmDIZIMISTAS: TfrmDIZIMISTAS
   end
   object actacoes: TActionList
     Images = imagedizimista
-    Left = 584
-    Top = 48
+    OnExecute = actacoesExecute
+    Left = 392
+    Top = 256
     object acINSERIR: TAction
       Caption = 'Inserir'
       ImageIndex = 0
@@ -863,7 +987,7 @@ object frmDIZIMISTAS: TfrmDIZIMISTAS
     end
   end
   object dstabela: TDataSource
-    DataSet = DataModuleDIZIMAN.cdsDizimistas
+    DataSet = dmDIZIMAN.cdsDizimistas
     Left = 584
   end
 end

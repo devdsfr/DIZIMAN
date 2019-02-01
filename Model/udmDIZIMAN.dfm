@@ -1,4 +1,4 @@
-object DataModuleDIZIMAN: TDataModuleDIZIMAN
+object dmDIZIMAN: TdmDIZIMAN
   OldCreateOrder = False
   Height = 325
   Width = 448
@@ -114,6 +114,7 @@ object DataModuleDIZIMAN: TDataModuleDIZIMAN
     Top = 176
   end
   object cdsDizimistas: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimistas'

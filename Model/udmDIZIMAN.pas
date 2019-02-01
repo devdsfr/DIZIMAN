@@ -7,7 +7,7 @@ uses
   Data.SqlExpr, Datasnap.DBClient, Datasnap.Provider;
 
 type
-  TDataModuleDIZIMAN = class(TDataModule)
+  TdmDIZIMAN = class(TDataModule)
     dspDizimo: TDataSetProvider;
     SQLConnection: TSQLConnection;
     cdsDizimo: TClientDataSet;
@@ -48,7 +48,7 @@ type
   end;
 
 var
-  DataModuleDIZIMAN: TDataModuleDIZIMAN;
+  dmDIZIMAN: TdmDIZIMAN;
 
 implementation
 
