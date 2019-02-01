@@ -27,6 +27,11 @@ type
     sdsOfertaDATA_OFERTA: TDateField;
     sdsOfertaNOME_OFERTADO: TStringField;
     sdsOfertaDIZIMISTA: TIntegerField;
+    cdsOfertaID_OFERTA: TIntegerField;
+    cdsOfertaVALOR: TFMTBCDField;
+    cdsOfertaDATA_OFERTA: TDateField;
+    cdsOfertaNOME_OFERTADO: TStringField;
+    cdsOfertaDIZIMISTA: TIntegerField;
     cdsDizimoID_DIZIMO: TIntegerField;
     cdsDizimoDT_PAGAMENTO: TDateField;
     cdsDizimoVALOR: TFMTBCDField;
@@ -34,13 +39,8 @@ type
     cdsDizimistasID: TIntegerField;
     cdsDizimistasNOME: TStringField;
     cdsDizimistasENDERECO: TStringField;
-    cdsDizimistasTELEFONE: TIntegerField;
-    cdsDizimistasNASCIMENTO: TDateField;
-    cdsOfertaID_OFERTA: TIntegerField;
-    cdsOfertaVALOR: TFMTBCDField;
-    cdsOfertaDATA_OFERTA: TDateField;
-    cdsOfertaNOME_OFERTADO: TStringField;
-    cdsOfertaDIZIMISTA: TIntegerField;
+    cdsDizimistasNASCIMENTO: TStringField;
+    cdsDizimistasTELEFONE: TStringField;
   private
     { Private declarations }
   public

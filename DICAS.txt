@@ -1,0 +1,49 @@
+procedure TfrmDIZIMISTAS.btnFILTRARClick(Sender: TObject);
+begin
+
+ if edFILTRAR.Text = '' then
+
+ begin
+   Application.MessageBox('Informe um valor a ser pesquisado', 'Atenção', MB_OK+MB_ICONWARNING);
+   edFILTRAR.SetFocus;
+   Abort;
+ end;
+
+ if dmDIZIMAN.cdsDIZIMISTAS.Locate('Nome',edFILTRAR.Text,[loCaseInsensitive,loPartialKey]) then
+   begin
+     ShowMessage('Registro encontrado ' + #13 +
+                 'RG : ' + dmDIZIMAN.cdsDIZIMISTASID.AsString + #13 +
+                 'Nome do Dizimista  : ' + dmDIZIMAN.cdsDIZIMISTASNome.AsString);
+   end
+   else
+   begin
+     ShowMessage('Registro não encontrado!!!!');
+     edFILTRAR.Clear;
+     edFILTRAR.SetFocus;
+   end;
+end;
+
+
+procedure TfrmDIZIMISTAS.cbxFILTRARClick(Sender: TObject);
+begin
+   if TCheckBox(Sender).Checked then
+//Usando Cast onde sei que o Objeto Sender é um TCheckBox,
+//para verificar se o mesmo esta marcado
+   begin
+     with dmDIZIMAN.cdsDIZIMISTAS do
+     begin
+       Close;
+       Filtered := False;
+       Filter := 'UPPER(Nome) Like ' +UpperCase(QuotedStr('%' + edFILTRAR.Text + '%'));
+ //Funciona como uma Clausula Where do SQL
+       Filtered := True;
+      Open;
+     end;
+   end
+   else
+   begin
+     dmDIZIMAN.cdsDIZIMISTAS.Filtered := False;
+     edFILTRAR.Clear;
+     edFILTRAR.SetFocus;
+   end;
+end;

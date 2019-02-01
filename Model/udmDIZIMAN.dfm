@@ -53,27 +53,30 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 32
   end
   object cdsDizimo: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimo'
     Left = 264
     Top = 113
     object cdsDizimoID_DIZIMO: TIntegerField
+      DisplayLabel = 'ID'
       FieldName = 'ID_DIZIMO'
       Required = True
     end
     object cdsDizimoDT_PAGAMENTO: TDateField
+      DisplayLabel = 'Data do Pagamento'
       FieldName = 'DT_PAGAMENTO'
       Required = True
     end
     object cdsDizimoVALOR: TFMTBCDField
+      DisplayLabel = 'Valor'
       FieldName = 'VALOR'
       Required = True
       Precision = 18
       Size = 2
     end
     object cdsDizimoDIZIMISTA: TIntegerField
+      DisplayLabel = 'Dizimista'
       FieldName = 'DIZIMISTA'
       Required = True
     end
@@ -105,7 +108,6 @@ object dmDIZIMAN: TdmDIZIMAN
     end
   end
   object sdsDizministas: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM DIZIMISTAS'
     MaxBlobSize = -1
     Params = <>
@@ -114,41 +116,36 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 176
   end
   object cdsDizimistas: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimistas'
     Left = 264
     Top = 177
     object cdsDizimistasID: TIntegerField
-      DisplayLabel = 'Idendidade (RG)'
       FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsDizimistasNOME: TStringField
-      DisplayLabel = 'Nome do Dizimista'
       FieldName = 'NOME'
       Required = True
       Size = 50
     end
     object cdsDizimistasENDERECO: TStringField
-      DisplayLabel = 'Endere'#231'o'
       FieldName = 'ENDERECO'
       Size = 200
     end
-    object cdsDizimistasTELEFONE: TIntegerField
-      DisplayLabel = 'Telefone'
-      FieldName = 'TELEFONE'
-      Required = True
-    end
-    object cdsDizimistasNASCIMENTO: TDateField
-      DisplayLabel = 'Data de Nascimento'
+    object cdsDizimistasNASCIMENTO: TStringField
       FieldName = 'NASCIMENTO'
+      Size = 10
+    end
+    object cdsDizimistasTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 11
     end
   end
   object dspDizimistas: TDataSetProvider
     DataSet = sdsDizministas
+    Constraints = False
     Left = 198
     Top = 177
   end
@@ -183,6 +180,7 @@ object dmDIZIMAN: TdmDIZIMAN
     end
   end
   object cdsOferta: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspOferta'

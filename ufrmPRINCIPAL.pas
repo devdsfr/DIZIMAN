@@ -6,23 +6,25 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.ComCtrls, System.Actions, Vcl.ActnList, dxGDIPlusClasses,
-  Vcl.StdCtrls, ufrmDIZIMISTAS, ufrmDIZIMO, ufrmOFERTA;
+  Vcl.StdCtrls, ufrmBASICO, ufrmDIZIMO, ufrmOFERTA, ufrmDIZIMISTAS;
 
 type
   TfrmPrincipal = class(TForm)
     Timer1: TTimer;
     BalloonHint1: TBalloonHint;
     StatusBar1: TStatusBar;
-    btdizimistas: TImage;
     btajudas: TImage;
     btdizimo: TImage;
     btoferta: TImage;
     btrelarotios: TImage;
+    Button1: TButton;
+    btDIZIMISTAS: TImage;
     procedure Timer1Timer(Sender: TObject);
-    procedure btdizimistasClick(Sender: TObject);
     procedure btdizimoClick(Sender: TObject);
     procedure btofertaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button1Click(Sender: TObject);
+    procedure btDIZIMISTASClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,15 +38,15 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPrincipal.btdizimistasClick(Sender: TObject);
+procedure TfrmPrincipal.btDIZIMISTASClick(Sender: TObject);
 begin
-    frmDIZIMISTAS := TfrmDIZIMISTAS.Create(nil);
-    try
-     frmDIZIMISTAS.ShowModal;
-    finally
-     frmDIZIMISTAS.Free;
+ frmDIZIMISTAS := TfrmDIZIMISTAS.Create(nil);
+  try
+   frmDIZIMISTAS.ShowModal;
+  finally
+   frmDIZIMISTAS.Free;
 
-    end;
+  end;
 end;
 
 procedure TfrmPrincipal.btdizimoClick(Sender: TObject);
@@ -67,6 +69,17 @@ begin
     frmOFERTA.Free;
 
    end;
+end;
+
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+begin
+   frmBASICO := TfrmBASICO.Create(nil);
+    try
+     frmBASICO.ShowModal;
+    finally
+     frmBASICO.Free;
+
+    end;
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject;

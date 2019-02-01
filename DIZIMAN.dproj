@@ -89,16 +89,8 @@
             <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="View\ufrmOFERTA.pas">
-            <Form>frmOFERTA</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="View\ufrmDIZIMO.pas">
-            <Form>frmDIZIMO</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="View\ufrmDIZIMISTAS.pas">
-            <Form>frmDIZIMISTAS</Form>
+        <DCCReference Include="View\ufrmBASICO.pas">
+            <Form>frmBASICO</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Model\udmDIZIMAN.pas">
@@ -110,6 +102,19 @@
             <Form>DataModule1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Class\uFUNCOES.pas"/>
+        <DCCReference Include="View\ufrmDIZIMISTAS.pas">
+            <Form>frmDIZIMISTAS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\ufrmOFERTA.pas">
+            <Form>frmOFERTA</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="View\ufrmDIZIMO.pas">
+            <Form>frmDIZIMO</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
