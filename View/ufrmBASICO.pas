@@ -38,8 +38,6 @@ type
     acSALVAR: TAction;
     edFILTRAR: TEdit;
     btnFILTRAR: TButton;
-    edRG: TEdit;
-    Label2: TLabel;
     Label3: TLabel;
     edNOMEDIZIMISTAS: TEdit;
     Label4: TLabel;
@@ -131,11 +129,11 @@ iModo :=0;
   if PageControl1.ActivePage = pcPESQUISAR then
      pcCADASTRO.TabVisible := true;
      pcPESQUISAR.TabVisible := false;
-     PageControl1.ActivePage := pcPESQUISAR;
+     PageControl1.ActivePage := pcCADASTRO;
   if not TClientDataSet(dsTabela.DataSet).Active then
 
-  TClientDataSet(dsTabela.DataSet).Open;
-  TClientDataSet(dsTabela.DataSet).Insert;
+   TClientDataSet(dsTabela.DataSet).Open;
+   TClientDataSet(dsTabela.DataSet).Insert;
 end;
 
 procedure TfrmBASICO.acINSERIRUpdate(Sender: TObject);

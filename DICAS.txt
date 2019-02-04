@@ -24,6 +24,7 @@ begin
 end;
 
 
+
 procedure TfrmDIZIMISTAS.cbxFILTRARClick(Sender: TObject);
 begin
    if TCheckBox(Sender).Checked then

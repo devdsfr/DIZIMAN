@@ -47,7 +47,7 @@ object frmBASICO: TfrmBASICO
     Top = 0
     Width = 869
     Height = 439
-    ActivePage = pcPESQUISAR
+    ActivePage = pcCADASTRO
     Align = alClient
     TabOrder = 0
     ExplicitTop = 8
@@ -57,13 +57,6 @@ object frmBASICO: TfrmBASICO
       Caption = 'Cadastro'
       ExplicitWidth = 281
       ExplicitHeight = 165
-      object Label2: TLabel
-        Left = 3
-        Top = 14
-        Width = 97
-        Height = 13
-        Caption = 'Registro Geral (RG):'
-      end
       object Label7: TLabel
         Left = 32
         Top = 41
@@ -85,33 +78,26 @@ object frmBASICO: TfrmBASICO
         Height = 19
         Caption = 'Telefone:'
       end
-      object edRG: TEdit
-        Left = 110
-        Top = 11
-        Width = 68
-        Height = 21
-        TabOrder = 0
-      end
       object edNOMEDIZIMISTAS: TEdit
         Left = 110
         Top = 38
         Width = 264
         Height = 22
-        TabOrder = 1
+        TabOrder = 0
       end
       object edENDERECO: TEdit
         Left = 110
         Top = 65
         Width = 408
         Height = 22
-        TabOrder = 2
+        TabOrder = 1
       end
       object edTELEFONE: TEdit
         Left = 110
         Top = 92
         Width = 112
         Height = 22
-        TabOrder = 3
+        TabOrder = 2
       end
     end
     object pcPESQUISAR: TTabSheet
@@ -160,6 +146,7 @@ object frmBASICO: TfrmBASICO
           item
             Expanded = False
             FieldName = 'NASCIMENTO'
+            Width = 64
             Visible = True
           end>
       end

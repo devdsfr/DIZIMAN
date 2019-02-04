@@ -4,7 +4,6 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ActivePage = pcCADASTRO
     ExplicitTop = 0
     ExplicitWidth = 869
     ExplicitHeight = 439
@@ -15,7 +14,7 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
         Height = 13
         ExplicitHeight = 13
       end
-      object Label1: TLabel [4]
+      object Label1: TLabel [3]
         Left = 10
         Top = 122
         Width = 91
@@ -39,7 +38,7 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
         Top = 119
         Width = 112
         Height = 21
-        TabOrder = 4
+        TabOrder = 3
       end
     end
     inherited pcPESQUISAR: TTabSheet
