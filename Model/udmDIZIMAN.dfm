@@ -60,26 +60,30 @@ object dmDIZIMAN: TdmDIZIMAN
     Left = 264
     Top = 113
     object cdsDizimoID_DIZIMO: TIntegerField
-      DisplayLabel = 'ID'
       FieldName = 'ID_DIZIMO'
       Required = True
     end
     object cdsDizimoDT_PAGAMENTO: TDateField
-      DisplayLabel = 'Data do Pagamento'
       FieldName = 'DT_PAGAMENTO'
       Required = True
     end
-    object cdsDizimoVALOR: TFMTBCDField
-      DisplayLabel = 'Valor'
+    object cdsDizimoVALOR: TStringField
       FieldName = 'VALOR'
       Required = True
-      Precision = 18
-      Size = 2
+      Size = 18
     end
-    object cdsDizimoDIZIMISTA: TIntegerField
-      DisplayLabel = 'Dizimista'
-      FieldName = 'DIZIMISTA'
+    object cdsDizimoNOME_DIZIMISTA: TStringField
+      FieldName = 'NOME_DIZIMISTA'
       Required = True
+      Size = 50
+    end
+    object cdsDizimoNASCIMENTO: TStringField
+      FieldName = 'NASCIMENTO'
+      Size = 8
+    end
+    object cdsDizimoTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 11
     end
   end
   object sdsDizimo: TSQLDataSet
@@ -98,15 +102,23 @@ object dmDIZIMAN: TdmDIZIMAN
       FieldName = 'DT_PAGAMENTO'
       Required = True
     end
-    object sdsDizimoVALOR: TFMTBCDField
+    object sdsDizimoVALOR: TStringField
       FieldName = 'VALOR'
       Required = True
-      Precision = 18
-      Size = 2
+      Size = 18
     end
-    object sdsDizimoDIZIMISTA: TIntegerField
-      FieldName = 'DIZIMISTA'
+    object sdsDizimoNOME_DIZIMISTA: TStringField
+      FieldName = 'NOME_DIZIMISTA'
       Required = True
+      Size = 50
+    end
+    object sdsDizimoNASCIMENTO: TStringField
+      FieldName = 'NASCIMENTO'
+      Size = 8
+    end
+    object sdsDizimoTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 11
     end
   end
   object sdsDizministas: TSQLDataSet
@@ -116,6 +128,28 @@ object dmDIZIMAN: TdmDIZIMAN
     SQLConnection = SQLConnection
     Left = 128
     Top = 176
+    object sdsDizministasID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+    end
+    object sdsDizministasNOME: TStringField
+      FieldName = 'NOME'
+      Required = True
+      Size = 50
+    end
+    object sdsDizministasENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Size = 200
+    end
+    object sdsDizministasNASCIMENTO: TStringField
+      FieldName = 'NASCIMENTO'
+      Required = True
+      Size = 10
+    end
+    object sdsDizministasTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 11
+    end
   end
   object cdsDizimistas: TClientDataSet
     Active = True
@@ -126,7 +160,6 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 177
     object cdsDizimistasID: TIntegerField
       FieldName = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsDizimistasNOME: TStringField
@@ -140,6 +173,7 @@ object dmDIZIMAN: TdmDIZIMAN
     end
     object cdsDizimistasNASCIMENTO: TStringField
       FieldName = 'NASCIMENTO'
+      Required = True
       Size = 10
     end
     object cdsDizimistasTELEFONE: TStringField
@@ -153,7 +187,6 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 177
   end
   object sdsOferta: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM OFERTA'
     MaxBlobSize = -1
     Params = <>
@@ -164,22 +197,27 @@ object dmDIZIMAN: TdmDIZIMAN
       FieldName = 'ID_OFERTA'
       Required = True
     end
-    object sdsOfertaVALOR: TFMTBCDField
+    object sdsOfertaVALOR: TStringField
       FieldName = 'VALOR'
       Required = True
-      Precision = 18
-      Size = 2
+      Size = 22
     end
     object sdsOfertaDATA_OFERTA: TDateField
       FieldName = 'DATA_OFERTA'
       Required = True
     end
-    object sdsOfertaNOME_OFERTADO: TStringField
-      FieldName = 'NOME_OFERTADO'
+    object sdsOfertaNOME_OFERTISTA: TStringField
+      FieldName = 'NOME_OFERTISTA'
+      Required = True
       Size = 50
     end
-    object sdsOfertaDIZIMISTA: TIntegerField
-      FieldName = 'DIZIMISTA'
+    object sdsOfertaNASCIMENTO: TStringField
+      FieldName = 'NASCIMENTO'
+      Size = 13
+    end
+    object sdsOfertaTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 11
     end
   end
   object cdsOferta: TClientDataSet
@@ -193,22 +231,27 @@ object dmDIZIMAN: TdmDIZIMAN
       FieldName = 'ID_OFERTA'
       Required = True
     end
-    object cdsOfertaVALOR: TFMTBCDField
+    object cdsOfertaVALOR: TStringField
       FieldName = 'VALOR'
       Required = True
-      Precision = 18
-      Size = 2
+      Size = 22
     end
     object cdsOfertaDATA_OFERTA: TDateField
       FieldName = 'DATA_OFERTA'
       Required = True
     end
-    object cdsOfertaNOME_OFERTADO: TStringField
-      FieldName = 'NOME_OFERTADO'
+    object cdsOfertaNOME_OFERTISTA: TStringField
+      FieldName = 'NOME_OFERTISTA'
+      Required = True
       Size = 50
     end
-    object cdsOfertaDIZIMISTA: TIntegerField
-      FieldName = 'DIZIMISTA'
+    object cdsOfertaNASCIMENTO: TStringField
+      FieldName = 'NASCIMENTO'
+      Size = 13
+    end
+    object cdsOfertaTELEFONE: TStringField
+      FieldName = 'TELEFONE'
+      Size = 11
     end
   end
   object dspOferta: TDataSetProvider

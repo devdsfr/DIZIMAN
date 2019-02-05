@@ -6,18 +6,19 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmBASICO, Data.DB,
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
+  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
+  Vcl.Mask;
 
 type
   TfrmDIZIMISTAS = class(TfrmBASICO)
-    edNASCIMENTO: TEdit;
     Label1: TLabel;
     edENDERECO: TEdit;
-    edTELEFONE: TEdit;
     edNOMEDIZIMISTAS: TEdit;
     Label2: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    edTELEFONE: TMaskEdit;
+    edNASCIMENTO: TMaskEdit;
     procedure acEDITARExecute(Sender: TObject);
     procedure acPESQUISARExecute(Sender: TObject);
     procedure acSALVARExecute(Sender: TObject);
@@ -59,26 +60,26 @@ procedure TfrmDIZIMISTAS.acSALVARExecute(Sender: TObject);
 begin
 if Trim(edNOMEDIZIMISTAS.Text) = '' then
       begin
-       Application.MessageBox('Preencha o campo Numero do documento! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+       Application.MessageBox('Preencha o campo Nome do Membro da Igreja! ', 'Atenção' , MB_OK+MB_ICONWARNING );
        edNOMEDIZIMISTAS.SetFocus;
        Abort
       end;
 
       if Trim(edENDERECO.Text) = '' then
       begin
-       Application.MessageBox('Preencha o campo descrição! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+       Application.MessageBox('Preencha o campo Endereço! ', 'Atenção' , MB_OK+MB_ICONWARNING );
        edENDERECO.SetFocus;
        Abort
       end;
       if Trim(edTELEFONE.Text) = '' then
       begin
-       Application.MessageBox('Preencha o campo descrição! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+       Application.MessageBox('Preencha o campo Telefone! ', 'Atenção' , MB_OK+MB_ICONWARNING );
        edTELEFONE.SetFocus;
        Abort
       end;
       if Trim(edNASCIMENTO.Text) = '' then
       begin
-       Application.MessageBox('Preencha o campo descrição! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+       Application.MessageBox('Preencha o campo Data de Nascimento! ', 'Atenção' , MB_OK+MB_ICONWARNING );
        edNASCIMENTO.SetFocus;
        Abort
       end;

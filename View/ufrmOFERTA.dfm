@@ -4,6 +4,76 @@ inherited frmOFERTA: TfrmOFERTA
   TextHeight = 13
   inherited PageControl1: TPageControl
     ActivePage = pcCADASTRO
+    inherited pcCADASTRO: TTabSheet
+      object Label1: TLabel
+        Left = 40
+        Top = 66
+        Width = 92
+        Height = 13
+        Caption = 'Nome do Ofertista:'
+      end
+      object Label7: TLabel
+        Left = 27
+        Top = 93
+        Width = 100
+        Height = 13
+        Caption = 'Data de Nascimento:'
+      end
+      object Label8: TLabel
+        Left = 49
+        Top = 120
+        Width = 46
+        Height = 13
+        Caption = 'Telefone:'
+      end
+      object Label9: TLabel
+        Left = 47
+        Top = 147
+        Width = 78
+        Height = 13
+        Caption = 'Valor da Oferta:'
+      end
+      object edNASCIMENTO: TMaskEdit
+        Left = 140
+        Top = 90
+        Width = 66
+        Height = 21
+        EditMask = '!99/99/0000;1;_'
+        MaxLength = 10
+        TabOrder = 0
+        Text = '  /  /    '
+        OnKeyPress = edNASCIMENTOKeyPress
+      end
+      object edVALOR: TMaskEdit
+        Left = 140
+        Top = 144
+        Width = 66
+        Height = 21
+        EditMask = '0.000\,99;1;_'
+        MaxLength = 8
+        TabOrder = 1
+        Text = ' .   ,  '
+        OnKeyPress = edVALORKeyPress
+      end
+      object edTELEFONE: TMaskEdit
+        Left = 140
+        Top = 117
+        Width = 85
+        Height = 21
+        EditMask = '!\(99\)00000-0000;1;_'
+        MaxLength = 14
+        TabOrder = 2
+        Text = '(  )     -    '
+        OnKeyPress = edTELEFONEKeyPress
+      end
+      object edNOMEOFERTISTA: TEdit
+        Left = 140
+        Top = 63
+        Width = 269
+        Height = 21
+        TabOrder = 3
+      end
+    end
     inherited pcPESQUISAR: TTabSheet
       inherited DBGrid1: TDBGrid
         Columns = <

@@ -6,51 +6,65 @@ inherited frmDIZIMO: TfrmDIZIMO
     ActivePage = pcCADASTRO
     inherited pcCADASTRO: TTabSheet
       object Label1: TLabel
-        Left = 31
-        Top = 91
+        Left = 45
+        Top = 105
+        Width = 46
+        Height = 13
+        Caption = 'Telefone:'
+      end
+      object Label2: TLabel
+        Left = 28
+        Top = 51
+        Width = 90
+        Height = 13
+        Caption = 'Nome do Dizimista:'
+      end
+      object Label7: TLabel
+        Left = 17
+        Top = 78
+        Width = 100
+        Height = 13
+        Caption = 'Data de Nascimento:'
+      end
+      object Label8: TLabel
+        Left = 33
+        Top = 132
         Width = 76
         Height = 13
         Caption = 'Valor do D'#237'zimo:'
       end
-      object Label2: TLabel
-        Left = 31
-        Top = 51
-        Width = 86
-        Height = 13
-        Caption = 'Nome do Dizimista'
-      end
-      object edVALOR: TEdit
+      object edNOMEDIZIMISTA: TEdit
         Left = 123
-        Top = 88
-        Width = 121
+        Top = 48
+        Width = 326
         Height = 21
         TabOrder = 0
       end
-      object TEdit
+      object edVALOR: TEdit
         Left = 123
-        Top = 48
-        Width = 121
+        Top = 129
+        Width = 46
         Height = 21
         TabOrder = 1
-        Text = 'Edit1'
+        OnKeyPress = edVALORKeyPress
       end
     end
     inherited pcPESQUISAR: TTabSheet
       inherited DBGrid1: TDBGrid
         Left = 0
         Top = 105
-        Width = 305
+        Width = 721
         Height = 303
+        DrawingStyle = gdsGradient
         Columns = <
           item
             Expanded = False
             FieldName = 'ID_DIZIMO'
-            Width = 40
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DIZIMISTA'
+            FieldName = 'DT_PAGAMENTO'
             Visible = True
           end
           item
@@ -60,11 +74,43 @@ inherited frmDIZIMO: TfrmDIZIMO
           end
           item
             Expanded = False
-            FieldName = 'DT_PAGAMENTO'
+            FieldName = 'NOME_DIZIMISTA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NASCIMENTO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'TELEFONE'
             Visible = True
           end>
       end
     end
+  end
+  object edTELEFONE: TMaskEdit [6]
+    Left = 127
+    Top = 126
+    Width = 83
+    Height = 21
+    EditMask = '!\(99\)0000-0000;1;_'
+    MaxLength = 13
+    TabOrder = 2
+    Text = '(  )    -    '
+    OnKeyPress = edTELEFONEKeyPress
+  end
+  object edNASCIMENTO: TMaskEdit [7]
+    Left = 127
+    Top = 99
+    Width = 66
+    Height = 21
+    EditMask = '!99/99/0000;1;_'
+    MaxLength = 10
+    TabOrder = 3
+    Text = '  /  /    '
+    OnKeyPress = edNASCIMENTOKeyPress
   end
   inherited imagedizimista: TImageList
     Bitmap = {
@@ -734,6 +780,10 @@ inherited frmDIZIMO: TfrmDIZIMO
       800100008000E007F81F8001C380C183F81F8001FF80C3C3F81FC003FF80E7E7
       F81FE007FF81FFFFFC3FF81FFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  inherited actacoes: TActionList
+    Left = 584
+    Top = 176
   end
   inherited dstabela: TDataSource
     DataSet = dmDIZIMAN.cdsDizimo

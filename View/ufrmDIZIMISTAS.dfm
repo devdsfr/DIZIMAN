@@ -3,7 +3,10 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
+    ActivePage = pcCADASTRO
     inherited pcCADASTRO: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 28
       object Label1: TLabel
         Left = 10
         Top = 122
@@ -32,34 +35,45 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
         Height = 13
         Caption = 'Nome:'
       end
-      object edNASCIMENTO: TEdit
-        Left = 107
-        Top = 117
-        Width = 112
-        Height = 21
-        TabOrder = 0
-      end
       object edENDERECO: TEdit
         Left = 107
         Top = 63
-        Width = 112
+        Width = 244
         Height = 21
-        TabOrder = 1
-      end
-      object edTELEFONE: TEdit
-        Left = 107
-        Top = 90
-        Width = 112
-        Height = 21
-        TabOrder = 2
-        OnKeyPress = edTELEFONEKeyPress
+        TabOrder = 0
       end
       object edNOMEDIZIMISTAS: TEdit
         Left = 107
         Top = 36
-        Width = 112
+        Width = 244
         Height = 21
+        TabOrder = 1
+      end
+      object edTELEFONE: TMaskEdit
+        Left = 107
+        Top = 90
+        Width = 78
+        Height = 21
+        EditMask = '!\(99\)0000-0000;1;_'
+        MaxLength = 13
+        TabOrder = 2
+        Text = '(  )    -    '
+      end
+      object edNASCIMENTO: TMaskEdit
+        Left = 105
+        Top = 117
+        Width = 80
+        Height = 21
+        EditMask = '!99/99/0000;1;_'
+        MaxLength = 10
         TabOrder = 3
+        Text = '  /  /    '
+      end
+    end
+    inherited pcPESQUISAR: TTabSheet
+      inherited DBGrid1: TDBGrid
+        DrawingStyle = gdsGradient
+        ReadOnly = True
       end
     end
   end
