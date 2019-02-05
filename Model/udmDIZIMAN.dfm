@@ -53,6 +53,7 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 32
   end
   object cdsDizimo: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimo'
@@ -82,6 +83,7 @@ object dmDIZIMAN: TdmDIZIMAN
     end
   end
   object sdsDizimo: TSQLDataSet
+    Active = True
     CommandText = 'SELECT * FROM DIZIMO'
     MaxBlobSize = -1
     Params = <>
@@ -116,6 +118,7 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 176
   end
   object cdsDizimistas: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimistas'
@@ -123,6 +126,7 @@ object dmDIZIMAN: TdmDIZIMAN
     Top = 177
     object cdsDizimistasID: TIntegerField
       FieldName = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsDizimistasNOME: TStringField
@@ -145,7 +149,6 @@ object dmDIZIMAN: TdmDIZIMAN
   end
   object dspDizimistas: TDataSetProvider
     DataSet = sdsDizministas
-    Constraints = False
     Left = 198
     Top = 177
   end

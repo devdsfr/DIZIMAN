@@ -8,6 +8,7 @@ uses
 function GetId(Campo, Tabela : String) : Integer;
 function GetLoginCadastrado(Login :String) : Boolean;
 function StringParaFloat(s : string) : Extended;
+
 implementation
 
 uses udmDIZIMAN;
@@ -84,6 +85,9 @@ begin
      end;
    Result := StrToFloat(t);
 end;
+
+
+
 
 
 end.

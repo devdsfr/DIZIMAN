@@ -1,74 +1,63 @@
-inherited frmDIZIMO: TfrmDIZIMO
-  Caption = 'frmDIZIMO'
+object frmPESQUISARDIZIMISTAS: TfrmPESQUISARDIZIMISTAS
+  Left = 0
+  Top = 0
+  Caption = 'Pesquisar Dizimistas'
+  ClientHeight = 503
+  ClientWidth = 498
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  inherited PageControl1: TPageControl
-    ActivePage = pcCADASTRO
-    inherited pcCADASTRO: TTabSheet
-      object Label1: TLabel
-        Left = 31
-        Top = 91
-        Width = 76
-        Height = 13
-        Caption = 'Valor do D'#237'zimo:'
-      end
-      object Label2: TLabel
-        Left = 31
-        Top = 51
-        Width = 86
-        Height = 13
-        Caption = 'Nome do Dizimista'
-      end
-      object edVALOR: TEdit
-        Left = 123
-        Top = 88
-        Width = 121
-        Height = 21
-        TabOrder = 0
-      end
-      object TEdit
-        Left = 123
-        Top = 48
-        Width = 121
-        Height = 21
-        TabOrder = 1
-        Text = 'Edit1'
-      end
-    end
-    inherited pcPESQUISAR: TTabSheet
-      inherited DBGrid1: TDBGrid
-        Left = 0
-        Top = 105
-        Width = 305
-        Height = 303
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'ID_DIZIMO'
-            Width = 40
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'DIZIMISTA'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'VALOR'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'DT_PAGAMENTO'
-            Visible = True
-          end>
-      end
-    end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 120
+    Width = 505
+    Height = 385
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
-  inherited imagedizimista: TImageList
+  object cbxFILTRAR: TCheckBox
+    Left = 3
+    Top = 24
+    Width = 121
+    Height = 17
+    Caption = 'Marque para FILTRAR'
+    TabOrder = 1
+  end
+  object edFILTRAR: TEdit
+    Left = 3
+    Top = 47
+    Width = 121
+    Height = 21
+    TabOrder = 2
+  end
+  object btnFILTRAR: TButton
+    Left = 3
+    Top = 74
+    Width = 75
+    Height = 25
+    Caption = 'Filtrar'
+    TabOrder = 3
+  end
+  object dstabela: TDataSource
+    DataSet = dmDIZIMAN.cdsDizimistas
+    Left = 328
+    Top = 8
+  end
+  object imagedizimista: TImageList
+    Left = 384
+    Top = 8
     Bitmap = {
-      494C010113001800240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E
@@ -735,9 +724,41 @@ inherited frmDIZIMO: TfrmDIZIMO
       F81FE007FF81FFFFFC3FF81FFFFFFFFF00000000000000000000000000000000
       000000000000}
   end
-  inherited dstabela: TDataSource
-    DataSet = dmDIZIMAN.cdsDizimo
-    Left = 536
-    Top = 64
+  object actacoes: TActionList
+    Images = imagedizimista
+    Left = 424
+    Top = 8
+    object acINSERIR: TAction
+      Caption = 'Inserir'
+      ImageIndex = 0
+    end
+    object acEDITAR: TAction
+      Caption = 'Editar'
+      ImageIndex = 2
+    end
+    object acEXCLUIR: TAction
+      Caption = 'Excluir'
+      ImageIndex = 9
+    end
+    object acSALVAR: TAction
+      Caption = 'Salvar'
+      ImageIndex = 12
+    end
+    object acCANCELAR: TAction
+      Caption = 'Cancelar'
+      ImageIndex = 3
+    end
+    object acPESQUISAR: TAction
+      Caption = 'Pesquisar'
+      ImageIndex = 13
+    end
+    object acIMPRIMIR: TAction
+      Caption = 'Imprimir'
+      ImageIndex = 8
+    end
+    object acFECHAR: TAction
+      Caption = 'Fechar'
+      ImageIndex = 1
+    end
   end
 end

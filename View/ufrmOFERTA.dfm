@@ -3,34 +3,8 @@ inherited frmOFERTA: TfrmOFERTA
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ExplicitTop = 0
-    ExplicitWidth = 869
-    ExplicitHeight = 439
-    inherited pcCADASTRO: TTabSheet
-      ExplicitWidth = 861
-      ExplicitHeight = 411
-      inherited Label10: TLabel
-        Height = 13
-        ExplicitHeight = 13
-      end
-      inherited edNOMEDIZIMISTAS: TEdit
-        Height = 21
-        ExplicitHeight = 21
-      end
-      inherited edENDERECO: TEdit
-        Height = 21
-        ExplicitHeight = 21
-      end
-      inherited edTELEFONE: TEdit
-        Height = 21
-        ExplicitHeight = 21
-      end
-    end
+    ActivePage = pcCADASTRO
     inherited pcPESQUISAR: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 861
-      ExplicitHeight = 411
       inherited DBGrid1: TDBGrid
         Columns = <
           item
@@ -61,13 +35,9 @@ inherited frmOFERTA: TfrmOFERTA
       end
     end
   end
-  inherited Panel1: TPanel
-    ExplicitTop = 439
-    ExplicitWidth = 869
-  end
   inherited imagedizimista: TImageList
     Bitmap = {
-      494C010113001800200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E

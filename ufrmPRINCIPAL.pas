@@ -19,6 +19,8 @@ type
     btrelarotios: TImage;
     Button1: TButton;
     btDIZIMISTAS: TImage;
+    Image1: TImage;
+    Image2: TImage;
     procedure Timer1Timer(Sender: TObject);
     procedure btdizimoClick(Sender: TObject);
     procedure btofertaClick(Sender: TObject);

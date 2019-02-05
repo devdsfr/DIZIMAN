@@ -39,15 +39,9 @@ type
     edFILTRAR: TEdit;
     btnFILTRAR: TButton;
     Label3: TLabel;
-    edNOMEDIZIMISTAS: TEdit;
     Label4: TLabel;
-    edENDERECO: TEdit;
     Label5: TLabel;
-    edTELEFONE: TEdit;
     Label6: TLabel;
-    Label7: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
     cbxFILTRAR: TCheckBox;
     procedure btnFILTRARClick(Sender: TObject);
     procedure cbxFILTRARClick(Sender: TObject);

@@ -9,7 +9,9 @@ uses
   uFUNCOES in 'Class\uFUNCOES.pas',
   ufrmDIZIMISTAS in 'View\ufrmDIZIMISTAS.pas' {frmDIZIMISTAS},
   ufrmOFERTA in 'View\ufrmOFERTA.pas' {frmOFERTA},
-  ufrmDIZIMO in 'View\ufrmDIZIMO.pas' {frmDIZIMO};
+  ufrmDIZIMO in 'View\ufrmDIZIMO.pas' {frmDIZIMO},
+  ufrmPESQUISARDIZIMISTAS in 'View\ufrmPESQUISARDIZIMISTAS.pas' {frmPESQUISARDIZIMISTAS},
+  ufrmPESQUISARDIZIMO in 'View\ufrmPESQUISARDIZIMO.pas' {frmPESQUISARDIZIMO};
 
 {$R *.res}
 
@@ -21,5 +23,7 @@ begin
   Application.CreateForm(TfrmDIZIMISTAS, frmDIZIMISTAS);
   Application.CreateForm(TfrmOFERTA, frmOFERTA);
   Application.CreateForm(TfrmDIZIMO, frmDIZIMO);
+  Application.CreateForm(TfrmPESQUISARDIZIMISTAS, frmPESQUISARDIZIMISTAS);
+  Application.CreateForm(TfrmPESQUISARDIZIMO, frmPESQUISARDIZIMO);
   Application.Run;
 end.

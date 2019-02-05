@@ -1,60 +1,71 @@
 inherited frmDIZIMISTAS: TfrmDIZIMISTAS
   Caption = 'Cadastro de Dizimista'
-  ExplicitTop = -17
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
-    ExplicitTop = 0
-    ExplicitWidth = 869
-    ExplicitHeight = 439
     inherited pcCADASTRO: TTabSheet
-      ExplicitWidth = 861
-      ExplicitHeight = 411
-      inherited Label10: TLabel
-        Height = 13
-        ExplicitHeight = 13
-      end
-      object Label1: TLabel [3]
+      object Label1: TLabel
         Left = 10
         Top = 122
-        Width = 91
+        Width = 95
         Height = 13
-        Caption = 'Data de Nacimento'
+        Caption = 'Data de Nacimento:'
       end
-      inherited edNOMEDIZIMISTAS: TEdit
-        Height = 21
-        ExplicitHeight = 21
+      object Label2: TLabel
+        Left = 17
+        Top = 93
+        Width = 46
+        Height = 13
+        Caption = 'Telefone:'
       end
-      inherited edENDERECO: TEdit
-        Height = 21
-        ExplicitHeight = 21
+      object Label7: TLabel
+        Left = 17
+        Top = 66
+        Width = 49
+        Height = 13
+        Caption = 'Endere'#231'o:'
       end
-      inherited edTELEFONE: TEdit
-        Height = 21
-        ExplicitHeight = 21
+      object Label8: TLabel
+        Left = 17
+        Top = 39
+        Width = 31
+        Height = 13
+        Caption = 'Nome:'
       end
       object edNASCIMENTO: TEdit
-        Left = 110
-        Top = 119
+        Left = 107
+        Top = 117
+        Width = 112
+        Height = 21
+        TabOrder = 0
+      end
+      object edENDERECO: TEdit
+        Left = 107
+        Top = 63
+        Width = 112
+        Height = 21
+        TabOrder = 1
+      end
+      object edTELEFONE: TEdit
+        Left = 107
+        Top = 90
+        Width = 112
+        Height = 21
+        TabOrder = 2
+        OnKeyPress = edTELEFONEKeyPress
+      end
+      object edNOMEDIZIMISTAS: TEdit
+        Left = 107
+        Top = 36
         Width = 112
         Height = 21
         TabOrder = 3
       end
     end
-    inherited pcPESQUISAR: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 861
-      ExplicitHeight = 411
-    end
-  end
-  inherited Panel1: TPanel
-    ExplicitTop = 439
-    ExplicitWidth = 869
   end
   inherited imagedizimista: TImageList
     Bitmap = {
-      494C0101130018001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E
@@ -720,5 +731,13 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
       800100008000E007F81F8001C380C183F81F8001FF80C3C3F81FC003FF80E7E7
       F81FE007FF81FFFFFC3FF81FFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  inherited actacoes: TActionList
+    Left = 456
+    Top = 104
+  end
+  inherited dstabela: TDataSource
+    Left = 520
+    Top = 48
   end
 end

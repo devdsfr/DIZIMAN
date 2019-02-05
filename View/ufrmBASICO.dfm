@@ -47,66 +47,15 @@ object frmBASICO: TfrmBASICO
     Top = 0
     Width = 869
     Height = 439
-    ActivePage = pcCADASTRO
+    ActivePage = pcPESQUISAR
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 8
-    ExplicitWidth = 874
-    ExplicitHeight = 497
     object pcCADASTRO: TTabSheet
       Caption = 'Cadastro'
-      ExplicitWidth = 281
-      ExplicitHeight = 165
-      object Label7: TLabel
-        Left = 32
-        Top = 41
-        Width = 31
-        Height = 13
-        Caption = 'Nome:'
-      end
-      object Label9: TLabel
-        Left = 24
-        Top = 68
-        Width = 49
-        Height = 13
-        Caption = 'Endere'#231'o:'
-      end
-      object Label10: TLabel
-        Left = 24
-        Top = 95
-        Width = 46
-        Height = 19
-        Caption = 'Telefone:'
-      end
-      object edNOMEDIZIMISTAS: TEdit
-        Left = 110
-        Top = 38
-        Width = 264
-        Height = 22
-        TabOrder = 0
-      end
-      object edENDERECO: TEdit
-        Left = 110
-        Top = 65
-        Width = 408
-        Height = 22
-        TabOrder = 1
-      end
-      object edTELEFONE: TEdit
-        Left = 110
-        Top = 92
-        Width = 112
-        Height = 22
-        TabOrder = 2
-      end
     end
     object pcPESQUISAR: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 28
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object DBGrid1: TDBGrid
         Left = -4
         Top = 133
@@ -146,7 +95,6 @@ object frmBASICO: TfrmBASICO
           item
             Expanded = False
             FieldName = 'NASCIMENTO'
-            Width = 64
             Visible = True
           end>
       end
@@ -184,8 +132,6 @@ object frmBASICO: TfrmBASICO
     Height = 57
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 412
-    ExplicitWidth = 866
     object SpeedButton1: TSpeedButton
       Left = 0
       Top = 8
@@ -247,7 +193,7 @@ object frmBASICO: TfrmBASICO
     Left = 584
     Top = 96
     Bitmap = {
-      494C010113001800140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101130018001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E

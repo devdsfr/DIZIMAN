@@ -12,9 +12,16 @@ type
   TfrmDIZIMISTAS = class(TfrmBASICO)
     edNASCIMENTO: TEdit;
     Label1: TLabel;
+    edENDERECO: TEdit;
+    edTELEFONE: TEdit;
+    edNOMEDIZIMISTAS: TEdit;
+    Label2: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure acEDITARExecute(Sender: TObject);
     procedure acPESQUISARExecute(Sender: TObject);
     procedure acSALVARExecute(Sender: TObject);
+    procedure edTELEFONEKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -86,6 +93,14 @@ if Trim(edNOMEDIZIMISTAS.Text) = '' then
       dmDIZIMAN.cdsDIZIMISTASNASCIMENTO.AsString := trim(edNASCIMENTO.Text);
   inherited;
 
+end;
+
+procedure TfrmDIZIMISTAS.edTELEFONEKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+
+  if ((key in ['0'..'9'] = false) and (word(key) <> vk_back)) then
+   key := #0;
 end;
 
 end.
