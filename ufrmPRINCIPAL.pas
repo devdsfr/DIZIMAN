@@ -27,6 +27,8 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure btDIZIMISTASClick(Sender: TObject);
+    procedure btajudasClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +41,19 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ufrmPESQUISARDIZIMISTAS, ufrmPESQUISARDIZIMO;
+
+procedure TfrmPrincipal.btajudasClick(Sender: TObject);
+begin
+   frmPESQUISARDIZIMISTAS := TfrmPESQUISARDIZIMISTAS.Create(nil);
+   try
+    frmPESQUISARDIZIMISTAS.ShowModal;
+   finally
+    frmPESQUISARDIZIMISTAS.Free;
+
+   end;
+end;
 
 procedure TfrmPrincipal.btDIZIMISTASClick(Sender: TObject);
 begin
@@ -92,6 +107,17 @@ begin
   Application.Terminate
   else
   Abort;
+end;
+
+procedure TfrmPrincipal.Image2Click(Sender: TObject);
+begin
+   frmPESQUISARDIZIMO := TfrmPESQUISARDIZIMO.Create(nil);
+   try
+    frmPESQUISARDIZIMO.ShowModal;
+   finally
+    frmPESQUISARDIZIMO.Free;
+
+   end;
 end;
 
 procedure TfrmPrincipal.Timer1Timer(Sender: TObject);

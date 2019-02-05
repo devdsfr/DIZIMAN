@@ -150,7 +150,7 @@ begin
         TClientDataSet(dsTabela.DataSet).ApplyUpdates(0);
 
       case iModo of
-        0 : Application.MessageBox('Registro inserido com sucesso','Informaçãao', MB_OK+MB_ICONINFORMATION);
+        0 : Application.MessageBox('Registro inserido com sucesso','Informação', MB_OK+MB_ICONINFORMATION);
         1 : Application.MessageBox('Registro atualizado com sucesso','Informação', MB_OK+MB_ICONINFORMATION);
 
       end;

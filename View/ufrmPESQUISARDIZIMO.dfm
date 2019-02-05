@@ -3,7 +3,7 @@ object frmPESQUISARDIZIMO: TfrmPESQUISARDIZIMO
   Top = 0
   Caption = 'Pesquisar D'#237'zimo'
   ClientHeight = 504
-  ClientWidth = 501
+  ClientWidth = 731
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,46 +16,90 @@ object frmPESQUISARDIZIMO: TfrmPESQUISARDIZIMO
   object DBGrid1: TDBGrid
     Left = 0
     Top = 120
-    Width = 505
-    Height = 385
+    Width = 731
+    Height = 384
+    Align = alBottom
+    DataSource = dstabela
+    DrawingStyle = gdsGradient
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID_DIZIMO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DT_PAGAMENTO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'VALOR'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME_DIZIMISTA'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NASCIMENTO'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELEFONE'
+        Visible = True
+      end>
   end
-  object cbxFILTRAR: TCheckBox
-    Left = 3
-    Top = 24
-    Width = 121
-    Height = 17
-    Caption = 'Marque para FILTRAR'
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 731
+    Height = 120
+    Align = alClient
     TabOrder = 1
-  end
-  object edFILTRAR: TEdit
-    Left = 3
-    Top = 47
-    Width = 121
-    Height = 21
-    TabOrder = 2
-  end
-  object btnFILTRAR: TButton
-    Left = 3
-    Top = 74
-    Width = 75
-    Height = 25
-    Caption = 'Filtrar'
-    TabOrder = 3
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object edFILTRAR: TEdit
+      Left = 3
+      Top = 47
+      Width = 121
+      Height = 21
+      TabOrder = 0
+    end
+    object cbxFILTRAR: TCheckBox
+      Left = 3
+      Top = 24
+      Width = 121
+      Height = 17
+      Caption = 'Marque para FILTRAR'
+      TabOrder = 1
+    end
+    object btnFILTRAR: TButton
+      Left = 3
+      Top = 74
+      Width = 75
+      Height = 25
+      Caption = 'Filtrar'
+      TabOrder = 2
+    end
   end
   object dstabela: TDataSource
-    DataSet = dmDIZIMAN.cdsDizimistas
-    Left = 232
+    DataSet = dmDIZIMAN.cdsDizimo
+    Left = 328
+    Top = 48
   end
   object actacoes: TActionList
     Images = imagedizimista
-    Left = 272
-    Top = 8
+    Left = 328
     object acINSERIR: TAction
       Caption = 'Inserir'
       ImageIndex = 0
@@ -90,10 +134,10 @@ object frmPESQUISARDIZIMO: TfrmPESQUISARDIZIMO
     end
   end
   object imagedizimista: TImageList
-    Left = 312
-    Top = 16
+    Left = 264
+    Top = 72
     Bitmap = {
-      494C0101130018002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E

@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.StdCtrls;
+  System.ImageList, Vcl.ImgList, System.Actions, Vcl.ActnList, Vcl.StdCtrls,
+  Vcl.ExtCtrls;
 
 type
   TfrmPESQUISARDIZIMO = class(TForm)
@@ -24,6 +25,7 @@ type
     cbxFILTRAR: TCheckBox;
     edFILTRAR: TEdit;
     btnFILTRAR: TButton;
+    Panel1: TPanel;
   private
     { Private declarations }
   public
@@ -36,5 +38,7 @@ var
 implementation
 
 {$R *.dfm}
+
+uses udmDIZIMAN;
 
 end.
