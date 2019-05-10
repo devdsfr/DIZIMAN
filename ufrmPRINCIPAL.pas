@@ -42,15 +42,15 @@ implementation
 
 {$R *.dfm}
 
-uses ufrmPESQUISARDIZIMISTAS, ufrmPESQUISARDIZIMO;
+uses ufrmPESQUISARDIZIMISTAS, ufrmPESQUISARDIZIMO;555
 
 procedure TfrmPrincipal.btajudasClick(Sender: TObject);
-begin
-   frmPESQUISARDIZIMISTAS := TfrmPESQUISARDIZIMISTAS.Create(nil);
+begin5555
+   frmPESQUISARDIZIMISTAS := TfrmPESQUISARDIZIMISTAS.Create(nil);5555
    try
     frmPESQUISARDIZIMISTAS.ShowModal;
    finally
-    frmPESQUISARDIZIMISTAS.Free;
+    frmPESQUISARDIZIMISTAS.Free;555
 
    end;
 end;
