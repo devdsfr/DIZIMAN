@@ -30,9 +30,9 @@ type
     procedure btajudasClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
   private
-    { Private declaratiosadasdadsns }
+    { Private declarations }
   public
-    { Public declaratidasdadadons }
+    { Public declarations }
   end;
 
 var
@@ -42,13 +42,13 @@ implementation
 
 {$R *.dfm}
 
-uses ufrmPESQUISARDIZIMISTAS, ufrmPESQUISARDIZIMO;5555
+uses ufrmPESQUISARDIZIMISTAS, ufrmPESQUISARDIZIMO;
 
-procedure TfrmPrincipal.btajudasClick(Sender: TObject);5555
+procedure TfrmPrincipal.btajudasClick(Sender: TObject);
 begin
-   frmPESQUISARDIZIMISTAS := TfrmPESQUISARDIZIMISTAS.Create(nil);55555
+   frmPESQUISARDIZIMISTAS := TfrmPESQUISARDIZIMISTAS.Create(nil);
    try
-    frmPESQUISARDIZIMISTAS.ShowModal;55
+    frmPESQUISARDIZIMISTAS.ShowModal;
    finally
     frmPESQUISARDIZIMISTAS.Free;
 
