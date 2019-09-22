@@ -52,10 +52,18 @@ object frmBASICO: TfrmBASICO
     TabOrder = 0
     object pcCADASTRO: TTabSheet
       Caption = 'Cadastro'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
     object pcPESQUISAR: TTabSheet
       Caption = 'Pesquisar'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGrid1: TDBGrid
         Left = -4
         Top = 133
@@ -193,7 +201,7 @@ object frmBASICO: TfrmBASICO
     Left = 584
     Top = 96
     Bitmap = {
-      494C0101130018001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E

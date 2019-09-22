@@ -9,7 +9,6 @@ uses
 type
   TdmDIZIMAN = class(TDataModule)
     dspDizimo: TDataSetProvider;
-    SQLConnection: TSQLConnection;
     cdsDizimo: TClientDataSet;
     sdsDizimo: TSQLDataSet;
     sdsDizministas: TSQLDataSet;
@@ -52,6 +51,7 @@ type
     cdsOfertaNOME_OFERTISTA: TStringField;
     cdsOfertaNASCIMENTO: TStringField;
     cdsOfertaTELEFONE: TStringField;
+    SQLConnection1: TSQLConnection;
   private
     { Private declarations }
   public

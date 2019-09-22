@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, udmDIZIMAN, Data.DB, Vcl.Buttons,
   Vcl.ExtCtrls, System.Actions, Vcl.ActnList, System.ImageList,
   Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.StdCtrls,
-  Datasnap.DBClient, cxGraphics, cxControls, cxLookAndFeels;
+  Datasnap.DBClient;
 
 
 type

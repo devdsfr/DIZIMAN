@@ -7,53 +7,7 @@ object dmDIZIMAN: TdmDIZIMAN
     Left = 198
     Top = 113
   end
-  object SQLConnection: TSQLConnection
-    DriverName = 'Firebird'
-    LoginPrompt = False
-    Params.Strings = (
-      'DriverUnit=Data.DBXFirebird'
-      
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver220.' +
-        'bpl'
-      
-        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
-        'nd.Data.DbxCommonDriver,Version=22.0.0.0,Culture=neutral,PublicK' +
-        'eyToken=91d62ebb5b0d1b1b'
-      
-        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
-        'birdDriver220.bpl'
-      
-        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
-        'actory,Borland.Data.DbxFirebirdDriver,Version=22.0.0.0,Culture=n' +
-        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
-      'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=dbxfb.dll'
-      'LibraryNameOsx=libsqlfb.dylib'
-      'VendorLib=fbclient.dll'
-      'VendorLibWin64=fbclient.dll'
-      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
-      'Database=C:\vendas\DIZIMAN\DBDIZIMAN.FDB'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'Role=RoleName'
-      'MaxBlobSize=-1'
-      'LocaleCode=0000'
-      'IsolationLevel=ReadCommitted'
-      'SQLDialect=3'
-      'CommitRetain=False'
-      'WaitOnLocks=True'
-      'TrimChar=False'
-      'BlobSize=-1'
-      'ErrorResourceFile='
-      'RoleName=RoleName'
-      'ServerCharSet='
-      'Trim Char=False')
-    Connected = True
-    Left = 200
-    Top = 32
-  end
   object cdsDizimo: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimo'
@@ -87,11 +41,9 @@ object dmDIZIMAN: TdmDIZIMAN
     end
   end
   object sdsDizimo: TSQLDataSet
-    Active = True
     CommandText = 'SELECT * FROM DIZIMO'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = SQLConnection
     Left = 128
     Top = 112
     object sdsDizimoID_DIZIMO: TIntegerField
@@ -125,7 +77,6 @@ object dmDIZIMAN: TdmDIZIMAN
     CommandText = 'SELECT * FROM DIZIMISTAS'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = SQLConnection
     Left = 128
     Top = 176
     object sdsDizministasID: TIntegerField
@@ -152,7 +103,6 @@ object dmDIZIMAN: TdmDIZIMAN
     end
   end
   object cdsDizimistas: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspDizimistas'
@@ -190,7 +140,6 @@ object dmDIZIMAN: TdmDIZIMAN
     CommandText = 'SELECT * FROM OFERTA'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = SQLConnection
     Left = 128
     Top = 248
     object sdsOfertaID_OFERTA: TIntegerField
@@ -221,7 +170,6 @@ object dmDIZIMAN: TdmDIZIMAN
     end
   end
   object cdsOferta: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspOferta'
@@ -258,5 +206,51 @@ object dmDIZIMAN: TdmDIZIMAN
     DataSet = sdsOferta
     Left = 198
     Top = 249
+  end
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'FBConnection'
+    DriverName = 'Firebird'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DBXFirebird'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver220.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=22.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
+        'birdDriver220.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
+        'actory,Borland.Data.DbxFirebirdDriver,Version=22.0.0.0,Culture=n' +
+        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxfb.dll'
+      'LibraryNameOsx=libsqlfb.dylib'
+      'VendorLib=fbclient.dll'
+      'VendorLibWin64=fbclient.dll'
+      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'TrimChar=False'
+      'DriverName=Firebird'
+      'Database=C:\Users\daniel\Desktop\DIZIMAN\DBDIZIMAN.FDB'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Left = 176
+    Top = 24
   end
 end

@@ -20,7 +20,7 @@ function GetId(Campo, Tabela : String) : Integer;
     with
     TSQLQuery.Create(nil) do
     try
-     SQLConnection := dmDIZIMAN.SQLConnection;
+     SQLConnection := dmDIZIMAN.SQLConnection1;
      Sql.Add('SELECT '+Campo+' FROM '+Tabela+' ORDER BY '+Campo+' DESC');
      open;
      Result := Fields[0].AsInteger + 1;
@@ -37,7 +37,7 @@ function GetId(Campo, Tabela : String) : Integer;
      TSQLQuery.Create(nil) do
 
      try
-      SQLConnection := dmDIZIMAN.SQLConnection;
+      SQLConnection := dmDIZIMAN.SQLConnection1;
       Sql.Add('SELECT ID FROM USUARIOS WHERE LOGIN = :LOGIN');
       Params[0].AsString := Login;
       Open;
