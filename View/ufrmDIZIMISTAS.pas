@@ -7,18 +7,13 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmBASICO, Data.DB,
   System.Actions, Vcl.ActnList, System.ImageList, Vcl.ImgList, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
-  Vcl.Mask;
+  Vcl.Mask, Data.FMTBcd, Datasnap.Provider, Datasnap.DBClient, Data.SqlExpr;
 
 type
   TfrmDIZIMISTAS = class(TfrmBASICO)
-    Label1: TLabel;
-    edENDERECO: TEdit;
-    edNOMEDIZIMISTAS: TEdit;
-    Label2: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    edTELEFONE: TMaskEdit;
-    edNASCIMENTO: TMaskEdit;
+    sdsDizimista: TSQLDataSet;
+    cdsDizimista: TClientDataSet;
+    dpDizimista: TDataSetProvider;
     procedure acEDITARExecute(Sender: TObject);
     procedure acPESQUISARExecute(Sender: TObject);
     procedure acSALVARExecute(Sender: TObject);
@@ -41,10 +36,10 @@ uses udmDIZIMAN, uFUNCOES;
 procedure TfrmDIZIMISTAS.acEDITARExecute(Sender: TObject);
 begin
   inherited;
-  edNOMEDIZIMISTAS.Text := dmDIZIMAN.cdsDIZIMISTASNOME.AsString ;
-  edENDERECO.Text := dmDIZIMAN.cdsDIZIMISTASENDERECO.AsString;
-  edTELEFONE.Text := dmDIZIMAN.cdsDIZIMISTASTELEFONE.AsString;
-  edNASCIMENTO.Text := dmDIZIMAN.cdsDIZIMISTASNASCIMENTO.AsSTRING;
+//  edNOMEDIZIMISTAS.Text := dmDIZIMAN.cdsDIZIMISTASNOME.AsString ;
+//  edENDERECO.Text := dmDIZIMAN.cdsDIZIMISTASENDERECO.AsString;
+//  edTELEFONE.Text := dmDIZIMAN.cdsDIZIMISTASTELEFONE.AsString;
+//  edNASCIMENTO.Text := dmDIZIMAN.cdsDIZIMISTASNASCIMENTO.AsSTRING;
 
 end;
 
@@ -58,40 +53,40 @@ end;
 
 procedure TfrmDIZIMISTAS.acSALVARExecute(Sender: TObject);
 begin
-if Trim(edNOMEDIZIMISTAS.Text) = '' then
-      begin
-       Application.MessageBox('Preencha o campo Nome do Membro da Igreja! ', 'Atenção' , MB_OK+MB_ICONWARNING );
-       edNOMEDIZIMISTAS.SetFocus;
-       Abort
-      end;
+//if Trim(edNOMEDIZIMISTAS.Text) = '' then
+//      begin
+//       Application.MessageBox('Preencha o campo Nome do Membro da Igreja! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+//       edNOMEDIZIMISTAS.SetFocus;
+//       Abort
+//      end;
+//
+//      if Trim(edENDERECO.Text) = '' then
+//      begin
+//       Application.MessageBox('Preencha o campo Endereço! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+//       edENDERECO.SetFocus;
+//       Abort
+//      end;
+//      if Trim(edTELEFONE.Text) = '' then
+//      begin
+//       Application.MessageBox('Preencha o campo Telefone! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+//       edTELEFONE.SetFocus;
+//       Abort
+//      end;
+//      if Trim(edNASCIMENTO.Text) = '' then
+//      begin
+//       Application.MessageBox('Preencha o campo Data de Nascimento! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+//       edNASCIMENTO.SetFocus;
+//       Abort
+//      end;
 
-      if Trim(edENDERECO.Text) = '' then
-      begin
-       Application.MessageBox('Preencha o campo Endereço! ', 'Atenção' , MB_OK+MB_ICONWARNING );
-       edENDERECO.SetFocus;
-       Abort
-      end;
-      if Trim(edTELEFONE.Text) = '' then
-      begin
-       Application.MessageBox('Preencha o campo Telefone! ', 'Atenção' , MB_OK+MB_ICONWARNING );
-       edTELEFONE.SetFocus;
-       Abort
-      end;
-      if Trim(edNASCIMENTO.Text) = '' then
-      begin
-       Application.MessageBox('Preencha o campo Data de Nascimento! ', 'Atenção' , MB_OK+MB_ICONWARNING );
-       edNASCIMENTO.SetFocus;
-       Abort
-      end;
 
-
-      if dsTabela.State in [dsInsert] then
-
-      dmDIZIMAN.cdsDIZIMISTASID.AsInteger := GetId('ID', 'DIZIMISTAS');
-      dmDIZIMAN.cdsDIZIMISTASNOME.AsString := trim(edNOMEDIZIMISTAS.Text);
-      dmDIZIMAN.cdsDIZIMISTASENDERECO.AsString := trim(edENDERECO.Text);
-      dmDIZIMAN.cdsDIZIMISTASTELEFONE.AsString := trim(edTELEFONE.Text);
-      dmDIZIMAN.cdsDIZIMISTASNASCIMENTO.AsString := trim(edNASCIMENTO.Text);
+//      if dsTabela.State in [dsInsert] then
+//
+//      dmDIZIMAN.cdsDIZIMISTASID.AsInteger := GetId('ID', 'DIZIMISTAS');
+//      dmDIZIMAN.cdsDIZIMISTASNOME.AsString := trim(edNOMEDIZIMISTAS.Text);
+//      dmDIZIMAN.cdsDIZIMISTASENDERECO.AsString := trim(edENDERECO.Text);
+//      dmDIZIMAN.cdsDIZIMISTASTELEFONE.AsString := trim(edTELEFONE.Text);
+//      dmDIZIMAN.cdsDIZIMISTASNASCIMENTO.AsString := trim(edNASCIMENTO.Text);
   inherited;
 
 end;

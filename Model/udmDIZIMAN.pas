@@ -51,7 +51,7 @@ type
     cdsOfertaNOME_OFERTISTA: TStringField;
     cdsOfertaNASCIMENTO: TStringField;
     cdsOfertaTELEFONE: TStringField;
-    SQLConnection1: TSQLConnection;
+    SQLConnecT: TSQLConnection;
   private
     { Private declarations }
   public

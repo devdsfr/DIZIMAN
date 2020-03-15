@@ -12,15 +12,12 @@ uses
 
 type
   TfrmBASICO = class(TForm)
-    DBGrid1: TDBGrid;
     imagedizimista: TImageList;
     actacoes: TActionList;
     dstabela: TDataSource;
     Panel1: TPanel;
     SpeedButton1: TSpeedButton;
     PageControl1: TPageControl;
-    pcCADASTRO: TTabSheet;
-    pcPESQUISAR: TTabSheet;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
@@ -36,13 +33,10 @@ type
     acPESQUISAR: TAction;
     acIMPRIMIR: TAction;
     acSALVAR: TAction;
-    edFILTRAR: TEdit;
-    btnFILTRAR: TButton;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    cbxFILTRAR: TCheckBox;
     procedure btnFILTRARClick(Sender: TObject);
     procedure cbxFILTRARClick(Sender: TObject);
     procedure acSALVARExecute(Sender: TObject);
@@ -86,11 +80,11 @@ procedure TfrmBASICO.acEDITARExecute(Sender: TObject);
 begin
      iModo := 1;
 
-     if PageControl1.ActivePage = pcPESQUISAR then
-        pcCADASTRO.TabVisible := true;
-        pcPESQUISAR.TabVisible := false;
-        PageControl1.ActivePage := pcCADASTRO;
-        TClientDataSet(dsTabela.DataSet).Edit;
+//     if PageControl1.ActivePage = pcPESQUISAR then
+//        pcCADASTRO.TabVisible := true;
+//        pcPESQUISAR.TabVisible := false;
+//        PageControl1.ActivePage := pcCADASTRO;
+//        TClientDataSet(dsTabela.DataSet).Edit;
 end;
 
 procedure TfrmBASICO.acEXCLUIRExecute(Sender: TObject);
@@ -120,14 +114,14 @@ procedure TfrmBASICO.acINSERIRExecute(Sender: TObject);
 begin
 iModo :=0;
 
-  if PageControl1.ActivePage = pcPESQUISAR then
-     pcCADASTRO.TabVisible := true;
-     pcPESQUISAR.TabVisible := false;
-     PageControl1.ActivePage := pcCADASTRO;
-  if not TClientDataSet(dsTabela.DataSet).Active then
-
-   TClientDataSet(dsTabela.DataSet).Open;
-   TClientDataSet(dsTabela.DataSet).Insert;
+//  if PageControl1.ActivePage = pcPESQUISAR then
+//     pcCADASTRO.TabVisible := true;
+//     pcPESQUISAR.TabVisible := false;
+//     PageControl1.ActivePage := pcCADASTRO;
+//  if not TClientDataSet(dsTabela.DataSet).Active then
+//
+//   TClientDataSet(dsTabela.DataSet).Open;
+//   TClientDataSet(dsTabela.DataSet).Insert;
 end;
 
 procedure TfrmBASICO.acINSERIRUpdate(Sender: TObject);
@@ -137,9 +131,9 @@ end;
 
 procedure TfrmBASICO.acPESQUISARExecute(Sender: TObject);
 begin
-      PageControl1.ActivePage := pcPESQUISAR;
-      edFILTRAR.Clear;
-      
+//      PageControl1.ActivePage := pcPESQUISAR;
+//      edFILTRAR.Clear;
+
 end;
 
 procedure TfrmBASICO.acSALVARExecute(Sender: TObject);
@@ -173,26 +167,26 @@ end;
 procedure TfrmBASICO.btnFILTRARClick(Sender: TObject);
 begin
 
- if edFILTRAR.Text = '' then
-
- begin
-   Application.MessageBox('Informe um valor a ser pesquisado', 'Atenção', MB_OK+MB_ICONWARNING);
-   edFILTRAR.SetFocus;
-   Abort;
- end;
-
- if dmDIZIMAN.cdsDIZIMISTAS.Locate('Nome',edFILTRAR.Text,[loCaseInsensitive,loPartialKey]) then
-   begin
-     ShowMessage('Registro encontrado ' + #13 +
-                 'RG : ' + dmDIZIMAN.cdsDIZIMISTASID.AsString + #13 +
-                 'Nome do Dizimista  : ' + dmDIZIMAN.cdsDIZIMISTASNome.AsString);
-   end
-   else
-   begin
-     ShowMessage('Registro não encontrado!!!!');
-     edFILTRAR.Clear;
-     edFILTRAR.SetFocus;
-   end;
+// if edFILTRAR.Text = '' then
+//
+// begin
+//   Application.MessageBox('Informe um valor a ser pesquisado', 'Atenção', MB_OK+MB_ICONWARNING);
+//   edFILTRAR.SetFocus;
+//   Abort;
+// end;
+//
+// if dmDIZIMAN.cdsDIZIMISTAS.Locate('Nome',edFILTRAR.Text,[loCaseInsensitive,loPartialKey]) then
+//   begin
+//     ShowMessage('Registro encontrado ' + #13 +
+//                 'RG : ' + dmDIZIMAN.cdsDIZIMISTASID.AsString + #13 +
+//                 'Nome do Dizimista  : ' + dmDIZIMAN.cdsDIZIMISTASNome.AsString);
+//   end
+//   else
+//   begin
+//     ShowMessage('Registro não encontrado!!!!');
+//     edFILTRAR.Clear;
+//     edFILTRAR.SetFocus;
+//   end;
 end;
 
 
@@ -201,23 +195,23 @@ begin
    if TCheckBox(Sender).Checked then
 //Usando Cast onde sei que o Objeto Sender é um TCheckBox,
 //para verificar se o mesmo esta marcado
-   begin
-     with dmDIZIMAN.cdsDIZIMISTAS do
-     begin
-       Close;
-       Filtered := False;
-       Filter := 'UPPER(Nome) Like ' +UpperCase(QuotedStr('%' + edFILTRAR.Text + '%'));
- //Funciona como uma Clausula Where do SQL
-       Filtered := True;
-      Open;
-     end;
-   end
-   else
-   begin
-     dmDIZIMAN.cdsDIZIMISTAS.Filtered := False;
-     edFILTRAR.Clear;
-     edFILTRAR.SetFocus;
-   end;
+//   begin
+//     with dmDIZIMAN.cdsDIZIMISTAS do
+//     begin
+//       Close;
+//       Filtered := False;
+//       Filter := 'UPPER(Nome) Like ' +UpperCase(QuotedStr('%' + edFILTRAR.Text + '%'));
+// //Funciona como uma Clausula Where do SQL
+//       Filtered := True;
+//      Open;
+//     end;
+//   end
+//   else
+//   begin
+//     dmDIZIMAN.cdsDIZIMISTAS.Filtered := False;
+//     edFILTRAR.Clear;
+//     edFILTRAR.SetFocus;
+//   end;
 end;
 
 procedure TfrmBASICO.LimparTudo;
@@ -225,17 +219,17 @@ var
 
  i: Integer;
 begin
-   for i := 0 to ComponentCount -1 do
-   begin
-    if Components[i] is TCustomEdit then
-     TCustomEdit(Components[i]).Clear;
-
-   end;
-   if PageControl1.ActivePage = pcCADASTRO then
-   begin
-    pcCADASTRO.TabVisible := false;
-    PageControl1.ActivePage := pcPESQUISAR;
-   end;
-   pcPESQUISAR.setFocus;
+//   for i := 0 to ComponentCount -1 do
+//   begin
+//    if Components[i] is TCustomEdit then
+//     TCustomEdit(Components[i]).Clear;
+//
+//   end;
+//   if PageControl1.ActivePage = pcCADASTRO then
+//   begin
+//    pcCADASTRO.TabVisible := false;
+//    PageControl1.ActivePage := pcPESQUISAR;
+//   end;
+//   pcPESQUISAR.setFocus;
 end;
 end.

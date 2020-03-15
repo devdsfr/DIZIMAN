@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.ComCtrls, System.Actions, Vcl.ActnList,
-  Vcl.StdCtrls, ufrmBASICO, ufrmDIZIMO, ufrmOFERTA, ufrmDIZIMISTAS;
+  Vcl.StdCtrls, ufrmBASICO, ufrmDIZIMO, ufrmOFERTA, ufrmDIZIMISTAS,
+  Vcl.Imaging.pngimage;
 
 type
   TfrmPrincipal = class(TForm)
@@ -21,6 +22,7 @@ type
     btDIZIMISTAS: TImage;
     Image1: TImage;
     Image2: TImage;
+    MainMenu1: TMainMenu;
     procedure Timer1Timer(Sender: TObject);
     procedure btdizimoClick(Sender: TObject);
     procedure btofertaClick(Sender: TObject);
@@ -58,10 +60,10 @@ end;
 procedure TfrmPrincipal.btDIZIMISTASClick(Sender: TObject);
 begin
  frmDIZIMISTAS := TfrmDIZIMISTAS.Create(nil);
-  try
-   frmDIZIMISTAS.ShowModal;
-  finally
-   frmDIZIMISTAS.Free;
+ try
+  frmDIZIMISTAS.ShowModal;
+ finally
+  frmDIZIMISTAS.Free;
 
   end;
 end;

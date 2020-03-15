@@ -47,91 +47,8 @@ object frmBASICO: TfrmBASICO
     Top = 0
     Width = 869
     Height = 439
-    ActivePage = pcPESQUISAR
     Align = alClient
     TabOrder = 0
-    object pcCADASTRO: TTabSheet
-      Caption = 'Cadastro'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-    end
-    object pcPESQUISAR: TTabSheet
-      Caption = 'Pesquisar'
-      ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      object DBGrid1: TDBGrid
-        Left = -4
-        Top = 133
-        Width = 873
-        Height = 273
-        DataSource = dstabela
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'ID'
-            Width = 84
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'NOME'
-            Width = 200
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'ENDERECO'
-            Width = 400
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'TELEFONE'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'NASCIMENTO'
-            Visible = True
-          end>
-      end
-      object edFILTRAR: TEdit
-        Left = 3
-        Top = 47
-        Width = 121
-        Height = 21
-        TabOrder = 1
-      end
-      object btnFILTRAR: TButton
-        Left = 3
-        Top = 74
-        Width = 75
-        Height = 25
-        Caption = 'Filtrar'
-        TabOrder = 2
-        OnClick = btnFILTRARClick
-      end
-      object cbxFILTRAR: TCheckBox
-        Left = 3
-        Top = 24
-        Width = 121
-        Height = 17
-        Caption = 'Marque para FILTRAR'
-        TabOrder = 3
-        OnClick = cbxFILTRARClick
-      end
-    end
   end
   object Panel1: TPanel
     Left = 0
@@ -201,7 +118,7 @@ object frmBASICO: TfrmBASICO
     Left = 584
     Top = 96
     Bitmap = {
-      494C010113001800200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E

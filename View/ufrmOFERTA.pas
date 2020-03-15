@@ -11,18 +11,12 @@ uses
 
 type
   TfrmOFERTA = class(TfrmBASICO)
-    edNASCIMENTO: TMaskEdit;
-    edVALOR: TMaskEdit;
-    edTELEFONE: TMaskEdit;
-    edNOMEOFERTISTA: TEdit;
-    Label1: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
+    DBGrid1: TDBGrid;
     procedure acSALVARExecute(Sender: TObject);
     procedure edNASCIMENTOKeyPress(Sender: TObject; var Key: Char);
     procedure edTELEFONEKeyPress(Sender: TObject; var Key: Char);
     procedure edVALORKeyPress(Sender: TObject; var Key: Char);
+    procedure acINSERIRExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,34 +30,47 @@ implementation
 
 {$R *.dfm}
 
-uses udmDIZIMAN, udmRELATORIOS, uFUNCOES;
+uses udmDIZIMAN, udmRELATORIOS, uFUNCOES, ufrmCADASTROOFERTA,
+  ufrmCADASTRODIZIMO;
+
+procedure TfrmOFERTA.acINSERIRExecute(Sender: TObject);
+begin
+  inherited;
+  frmCADASTRODIZIMO := TfrmCADASTRODIZIMO.Create(nil);
+  try
+   frmCADASTRODIZIMO.ShowModal;
+  finally
+   frmCADASTRODIZIMO.Free;
+
+  end;
+end;
 
 procedure TfrmOFERTA.acSALVARExecute(Sender: TObject);
 begin
 
-  if Trim(edNOMEOFERTISTA.Text) = '' then
-      begin
-       Application.MessageBox('Preencha o campo Nome do Ofertista! ', 'Atenção' , MB_OK+MB_ICONWARNING );
-       edNOMEOFERTISTA.SetFocus;
-       Abort
-      end;
-
-
-      if Trim(edVALOR.Text) = '' then
-      begin
-       Application.MessageBox('Preencha o campo Valor do Dízimo! ', 'Atenção' , MB_OK+MB_ICONWARNING );
-       edVALOR.SetFocus;
-       Abort
-      end;
-
-
-      if dsTabela.State in [dsInsert] then
-
-      dmDIZIMAN.cdsOfertaID_OFERTA.AsInteger := GetId('ID', 'OFERTA');
-      dmDIZIMAN.cdsOfertaNOME_OFERTISTA.AsString := trim(edNOMEOFERTISTA.Text);
-      dmDIZIMAN.cdsOfertaNASCIMENTO.AsString := trim(edNASCIMENTO.Text);
-      dmDIZIMAN.cdsOfertaTELEFONE.AsString := trim(edTELEFONE.Text);
-      dmDIZIMAN.cdsOfertaVALOR.AsString := trim(edVALOR.Text);
+//  if Trim(edNOMEOFERTISTA.Text) = '' then
+//      begin
+//       Application.MessageBox('Preencha o campo Nome do Ofertista! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+//       edNOMEOFERTISTA.SetFocus;
+//       Abort
+//      end;
+//
+//
+//      if Trim(edVALOR.Text) = '' then
+//      begin
+//       Application.MessageBox('Preencha o campo Valor do Dízimo! ', 'Atenção' , MB_OK+MB_ICONWARNING );
+//       edVALOR.SetFocus;
+//       Abort
+//      end;
+//
+//
+//      if dsTabela.State in [dsInsert] then
+//
+//      dmDIZIMAN.cdsOfertaID_OFERTA.AsInteger := GetId('ID', 'OFERTA');
+//      dmDIZIMAN.cdsOfertaNOME_OFERTISTA.AsString := trim(edNOMEOFERTISTA.Text);
+//      dmDIZIMAN.cdsOfertaNASCIMENTO.AsString := trim(edNASCIMENTO.Text);
+//      dmDIZIMAN.cdsOfertaTELEFONE.AsString := trim(edTELEFONE.Text);
+//      dmDIZIMAN.cdsOfertaVALOR.AsString := trim(edVALOR.Text);
   inherited;
 
 end;

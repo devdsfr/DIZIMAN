@@ -1,0 +1,41 @@
+object frmCADASTROMEMBRO: TfrmCADASTROMEMBRO
+  Left = 0
+  Top = 0
+  Caption = 'frmCADASTROMEMBRO'
+  ClientHeight = 326
+  ClientWidth = 439
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 439
+    Height = 285
+    Align = alClient
+    Caption = 'Panel1'
+    TabOrder = 0
+    ExplicitLeft = 136
+    ExplicitTop = 160
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 285
+    Width = 439
+    Height = 41
+    Align = alBottom
+    Caption = 'Panel2'
+    TabOrder = 1
+    ExplicitLeft = 8
+    ExplicitTop = 8
+    ExplicitWidth = 185
+  end
+end

@@ -207,7 +207,7 @@ object dmDIZIMAN: TdmDIZIMAN
     Left = 198
     Top = 249
   end
-  object SQLConnection1: TSQLConnection
+  object SQLConnecT: TSQLConnection
     ConnectionName = 'FBConnection'
     DriverName = 'Firebird'
     LoginPrompt = False
@@ -228,7 +228,7 @@ object dmDIZIMAN: TdmDIZIMAN
         'actory,Borland.Data.DbxFirebirdDriver,Version=22.0.0.0,Culture=n' +
         'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
       'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=dbxfb.dll'
+      'LibraryName=fbclient.dll'
       'LibraryNameOsx=libsqlfb.dylib'
       'VendorLib=fbclient.dll'
       'VendorLibWin64=fbclient.dll'
@@ -237,7 +237,9 @@ object dmDIZIMAN: TdmDIZIMAN
       'MaxBlobSize=-1'
       'TrimChar=False'
       'DriverName=Firebird'
-      'Database=C:\Users\daniel\Desktop\DIZIMAN\DBDIZIMAN.FDB'
+      
+        'Database=127.0.0.1:C:\Users\Daniel\Desktop\Project\DIZIMAN\DIZIM' +
+        'AN.FDB'
       'RoleName=RoleName'
       'User_Name=sysdba'
       'Password=masterkey'
@@ -250,7 +252,8 @@ object dmDIZIMAN: TdmDIZIMAN
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=False')
-    Left = 176
+    Connected = True
+    Left = 192
     Top = 24
   end
 end

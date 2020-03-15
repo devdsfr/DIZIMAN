@@ -1,85 +1,11 @@
 inherited frmDIZIMISTAS: TfrmDIZIMISTAS
   Caption = 'Cadastro de Dizimista'
+  ExplicitTop = -93
   PixelsPerInch = 96
   TextHeight = 13
-  inherited PageControl1: TPageControl
-    ActivePage = pcCADASTRO
-    inherited pcCADASTRO: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 28
-      object Label1: TLabel
-        Left = 10
-        Top = 122
-        Width = 95
-        Height = 13
-        Caption = 'Data de Nacimento:'
-      end
-      object Label2: TLabel
-        Left = 17
-        Top = 93
-        Width = 46
-        Height = 13
-        Caption = 'Telefone:'
-      end
-      object Label7: TLabel
-        Left = 17
-        Top = 66
-        Width = 49
-        Height = 13
-        Caption = 'Endere'#231'o:'
-      end
-      object Label8: TLabel
-        Left = 17
-        Top = 39
-        Width = 31
-        Height = 13
-        Caption = 'Nome:'
-      end
-      object edENDERECO: TEdit
-        Left = 107
-        Top = 63
-        Width = 244
-        Height = 21
-        TabOrder = 0
-      end
-      object edNOMEDIZIMISTAS: TEdit
-        Left = 107
-        Top = 36
-        Width = 244
-        Height = 21
-        TabOrder = 1
-      end
-      object edTELEFONE: TMaskEdit
-        Left = 107
-        Top = 90
-        Width = 78
-        Height = 21
-        EditMask = '!\(99\)0000-0000;1;_'
-        MaxLength = 13
-        TabOrder = 2
-        Text = '(  )    -    '
-      end
-      object edNASCIMENTO: TMaskEdit
-        Left = 105
-        Top = 117
-        Width = 80
-        Height = 21
-        EditMask = '!99/99/0000;1;_'
-        MaxLength = 10
-        TabOrder = 3
-        Text = '  /  /    '
-      end
-    end
-    inherited pcPESQUISAR: TTabSheet
-      inherited DBGrid1: TDBGrid
-        DrawingStyle = gdsGradient
-        ReadOnly = True
-      end
-    end
-  end
   inherited imagedizimista: TImageList
     Bitmap = {
-      494C010113001800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E
@@ -751,7 +677,23 @@ inherited frmDIZIMISTAS: TfrmDIZIMISTAS
     Top = 104
   end
   inherited dstabela: TDataSource
+    DataSet = nil
     Left = 520
+    Top = 48
+  end
+  object sdsDizimista: TSQLDataSet
+    Params = <>
+    Left = 272
+    Top = 104
+  end
+  object cdsDizimista: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 344
+    Top = 104
+  end
+  object dpDizimista: TDataSetProvider
+    Left = 296
     Top = 48
   end
 end

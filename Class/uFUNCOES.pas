@@ -16,40 +16,40 @@ uses udmDIZIMAN;
 
 
 function GetId(Campo, Tabela : String) : Integer;
+begin
+//    with
+//    TSQLQuery.Create(nil) do
+//    try
+////     SQLConnection := dmDIZIMAN.SQLConnection1;
+//     Sql.Add('SELECT '+Campo+' FROM '+Tabela+' ORDER BY '+Campo+' DESC');
+//     open;
+//     Result := Fields[0].AsInteger + 1;
+//    finally
+//     close;
+//     free;
+//    end;
+end;
+
+function GetLoginCadastrado(Login :String) : Boolean;
    begin
-    with
-    TSQLQuery.Create(nil) do
-    try
-     SQLConnection := dmDIZIMAN.SQLConnection1;
-     Sql.Add('SELECT '+Campo+' FROM '+Tabela+' ORDER BY '+Campo+' DESC');
-     open;
-     Result := Fields[0].AsInteger + 1;
-    finally
-     close;
-     free;
-    end;
-   end;
+//    result := false;
+//     with
+//     TSQLQuery.Create(nil) do
+//
+//     try
+////      SQLConnection := dmDIZIMAN.SQLConnection1;
+//      Sql.Add('SELECT ID FROM USUARIOS WHERE LOGIN = :LOGIN');
+//      Params[0].AsString := Login;
+//      Open;
+//
+//      if not IsEmpty then
+//      result := true;
+//     finally
+//     Close;
+//     Free;
+//     end;
 
-   function GetLoginCadastrado(Login :String) : Boolean;
-   begin
-    result := false;
-     with
-     TSQLQuery.Create(nil) do
-
-     try
-      SQLConnection := dmDIZIMAN.SQLConnection1;
-      Sql.Add('SELECT ID FROM USUARIOS WHERE LOGIN = :LOGIN');
-      Params[0].AsString := Login;
-      Open;
-
-      if not IsEmpty then
-      result := true;
-     finally
-     Close;
-     Free;
-     end;
-
-   end;
+end;
    function StringParaFloat(s : string) : Extended;
 { Filtra uma string qualquer, convertendo as suas partes
   numéricas para sua representação decimal, por exemplo:
@@ -85,9 +85,4 @@ begin
      end;
    Result := StrToFloat(t);
 end;
-
-
-
-
-
 end.

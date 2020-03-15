@@ -11,7 +11,10 @@ uses
   ufrmOFERTA in 'View\ufrmOFERTA.pas' {frmOFERTA},
   ufrmDIZIMO in 'View\ufrmDIZIMO.pas' {frmDIZIMO},
   ufrmPESQUISARDIZIMISTAS in 'View\ufrmPESQUISARDIZIMISTAS.pas' {frmPESQUISARDIZIMISTAS},
-  ufrmPESQUISARDIZIMO in 'View\ufrmPESQUISARDIZIMO.pas' {frmPESQUISARDIZIMO};
+  ufrmPESQUISARDIZIMO in 'View\ufrmPESQUISARDIZIMO.pas' {frmPESQUISARDIZIMO},
+  ufrmCADASTRODIZIMO in 'View\ufrmCADASTRODIZIMO.pas' {frmCADASTRODIZIMO},
+  ufrmCADASTROOFERTA in 'View\ufrmCADASTROOFERTA.pas' {frmCADASTROOFERTA},
+  ufrmCADASTROMEMBRO in 'View\ufrmCADASTROMEMBRO.pas' {frmCADASTROMEMBRO};
 
 {$R *.res}
 
@@ -19,11 +22,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TdmDIZIMAN, dmDIZIMAN);
-  Application.CreateForm(TfrmDIZIMISTAS, frmDIZIMISTAS);
-  Application.CreateForm(TfrmOFERTA, frmOFERTA);
-  Application.CreateForm(TfrmDIZIMO, frmDIZIMO);
-  Application.CreateForm(TfrmPESQUISARDIZIMISTAS, frmPESQUISARDIZIMISTAS);
-  Application.CreateForm(TfrmPESQUISARDIZIMO, frmPESQUISARDIZIMO);
+  Application.CreateForm(TfrmCADASTROMEMBRO, frmCADASTROMEMBRO);
   Application.Run;
 end.
