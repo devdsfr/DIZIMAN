@@ -4,7 +4,7 @@ object frmPrincipal: TfrmPrincipal
   Align = alCustom
   AutoSize = True
   Caption = 'DIZIMAN - Controle de D'#237'zimo'
-  ClientHeight = 529
+  ClientHeight = 350
   ClientWidth = 584
   Color = clScrollBar
   DragMode = dmAutomatic
@@ -20,15 +20,9 @@ object frmPrincipal: TfrmPrincipal
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
-  object btajudas: TImage
-    Left = 8
-    Top = 113
-    Width = 65
-    Height = 73
-  end
   object btdizimo: TImage
-    Left = 96
-    Top = 17
+    Left = 8
+    Top = 121
     Width = 65
     Height = 73
     Picture.Data = {
@@ -235,8 +229,8 @@ object frmPrincipal: TfrmPrincipal
     OnClick = btdizimoClick
   end
   object btoferta: TImage
-    Left = 184
-    Top = 17
+    Left = 8
+    Top = 225
     Width = 65
     Height = 73
     Picture.Data = {
@@ -472,12 +466,6 @@ object frmPrincipal: TfrmPrincipal
       FC2FDB447E44B1B911490000000049454E44AE426082}
     OnClick = btofertaClick
   end
-  object btrelarotios: TImage
-    Left = 272
-    Top = 17
-    Width = 57
-    Height = 73
-  end
   object btDIZIMISTAS: TImage
     Left = 8
     Top = 17
@@ -623,36 +611,16 @@ object frmPrincipal: TfrmPrincipal
       E02F0000000049454E44AE426082}
     OnClick = btdizimistasClick
   end
-  object Image1: TImage
-    Left = 352
-    Top = 17
-    Width = 73
-    Height = 73
-  end
-  object Image2: TImage
-    Left = 8
-    Top = 209
-    Width = 65
-    Height = 73
-  end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 510
+    Top = 331
     Width = 584
     Height = 19
     Panels = <
       item
         Width = 50
       end>
-  end
-  object Button1: TButton
-    Left = 184
-    Top = 368
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 1
-    OnClick = Button1Click
+    ExplicitTop = 510
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

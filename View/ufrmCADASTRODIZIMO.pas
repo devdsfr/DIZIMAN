@@ -14,15 +14,17 @@ type
     btnFechar: TButton;
     edtNome: TEdit;
     mksDataOferta: TMaskEdit;
-    edtCPF: TMaskEdit;
-    gpCPF: TGroupBox;
     gpNome: TGroupBox;
     GroupBox3: TGroupBox;
     GroupBox1: TGroupBox;
     mskValor: TMaskEdit;
     GroupBox4: TGroupBox;
-    Memo1: TMemo;
+    Memo: TMemo;
     RadioGroup1: TRadioGroup;
+    GroupBox2: TGroupBox;
+    MaskEdit1: TMaskEdit;
+    procedure btnSalvarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -35,5 +37,29 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ufrmDIZIMO, udmDIZIMAN;
+
+procedure TfrmCADASTRODIZIMO.btnSalvarClick(Sender: TObject);
+begin
+  dmDIZIMAN.cdsDizimo.Open;
+  dmDIZIMAN.cdsDizimo.Edit;
+  dmDIZIMAN.cdsDizimoNOMEDIZ.Value := edtNome.Text;
+  dmDIZIMAN.cdsDizimoCODPES.Value := 10;
+  dmDIZIMAN.cdsDizimoTIPPES.Value := 'D';
+  dmDIZIMAN.cdsDizimoTIPOFT.Value := 'D';
+  dmDIZIMAN.cdsDizimoDTADIZ.Value := now;
+  dmDIZIMAN.cdsDizimoVLRDIZ.Value := mskValor.Text;
+//  frmDIZIMO.cdsd
+  dmDIZIMAN.cdsDizimo.Post;
+
+end;
+
+procedure TfrmCADASTRODIZIMO.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  dmDIZIMAN.cdsDizimo.Close;
+  frmCADASTRODIZIMO.Free;
+end;
 
 end.

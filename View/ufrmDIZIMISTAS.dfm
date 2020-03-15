@@ -1,11 +1,24 @@
 inherited frmDIZIMISTAS: TfrmDIZIMISTAS
   Caption = 'Cadastro de Dizimista'
-  ExplicitTop = -93
+  ExplicitTop = -72
   PixelsPerInch = 96
   TextHeight = 13
+  object DBGrid1: TDBGrid [6]
+    Left = 0
+    Top = 0
+    Width = 869
+    Height = 439
+    Align = alClient
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
   inherited imagedizimista: TImageList
     Bitmap = {
-      494C010113001800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010113001800340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000005000000001002000000000000050
       0000000000000000000000000000000000000000000000000000000000004E4E
       4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E4E004E4E

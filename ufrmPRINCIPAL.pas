@@ -14,14 +14,9 @@ type
     Timer1: TTimer;
     BalloonHint1: TBalloonHint;
     StatusBar1: TStatusBar;
-    btajudas: TImage;
     btdizimo: TImage;
     btoferta: TImage;
-    btrelarotios: TImage;
-    Button1: TButton;
     btDIZIMISTAS: TImage;
-    Image1: TImage;
-    Image2: TImage;
     MainMenu1: TMainMenu;
     procedure Timer1Timer(Sender: TObject);
     procedure btdizimoClick(Sender: TObject);
@@ -70,6 +65,7 @@ end;
 
 procedure TfrmPrincipal.btdizimoClick(Sender: TObject);
 begin
+//  \\ frmDIZIMO.sdsDizimo.Open;
   frmDIZIMO := TfrmDIZIMO.Create(nil);
   try
    frmDIZIMO.ShowModal;

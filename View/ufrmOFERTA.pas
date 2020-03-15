@@ -12,6 +12,8 @@ uses
 type
   TfrmOFERTA = class(TfrmBASICO)
     DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
+    dsOferta: TDataSource;
     procedure acSALVARExecute(Sender: TObject);
     procedure edNASCIMENTOKeyPress(Sender: TObject; var Key: Char);
     procedure edTELEFONEKeyPress(Sender: TObject; var Key: Char);

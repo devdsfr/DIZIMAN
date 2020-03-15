@@ -14,6 +14,7 @@ type
     sdsDizimista: TSQLDataSet;
     cdsDizimista: TClientDataSet;
     dpDizimista: TDataSetProvider;
+    DBGrid1: TDBGrid;
     procedure acEDITARExecute(Sender: TObject);
     procedure acPESQUISARExecute(Sender: TObject);
     procedure acSALVARExecute(Sender: TObject);

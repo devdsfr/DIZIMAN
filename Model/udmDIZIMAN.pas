@@ -27,18 +27,6 @@ type
     cdsDizimistasENDERECO: TStringField;
     cdsDizimistasNASCIMENTO: TStringField;
     cdsDizimistasTELEFONE: TStringField;
-    sdsDizimoID_DIZIMO: TIntegerField;
-    sdsDizimoDT_PAGAMENTO: TDateField;
-    sdsDizimoVALOR: TStringField;
-    sdsDizimoNOME_DIZIMISTA: TStringField;
-    sdsDizimoNASCIMENTO: TStringField;
-    sdsDizimoTELEFONE: TStringField;
-    cdsDizimoID_DIZIMO: TIntegerField;
-    cdsDizimoDT_PAGAMENTO: TDateField;
-    cdsDizimoVALOR: TStringField;
-    cdsDizimoNOME_DIZIMISTA: TStringField;
-    cdsDizimoNASCIMENTO: TStringField;
-    cdsDizimoTELEFONE: TStringField;
     sdsOfertaID_OFERTA: TIntegerField;
     sdsOfertaVALOR: TStringField;
     sdsOfertaDATA_OFERTA: TDateField;
@@ -51,7 +39,25 @@ type
     cdsOfertaNOME_OFERTISTA: TStringField;
     cdsOfertaNASCIMENTO: TStringField;
     cdsOfertaTELEFONE: TStringField;
-    SQLConnecT: TSQLConnection;
+    SQLConnection: TSQLConnection;
+    cdsDizimoSEQDIZ: TIntegerField;
+    cdsDizimoCODPES: TIntegerField;
+    cdsDizimoTIPPES: TStringField;
+    cdsDizimoDTADIZ: TDateField;
+    cdsDizimoVLRDIZ: TFMTBCDField;
+    cdsDizimoTIPOFT: TStringField;
+    cdsDizimoTELDIZ: TStringField;
+    cdsDizimoOBSDIZ: TStringField;
+    cdsDizimoNOMEDIZ: TStringField;
+    sdsDizimoSEQDIZ: TIntegerField;
+    sdsDizimoCODPES: TIntegerField;
+    sdsDizimoTIPPES: TStringField;
+    sdsDizimoDTADIZ: TDateField;
+    sdsDizimoVLRDIZ: TFMTBCDField;
+    sdsDizimoTIPOFT: TStringField;
+    sdsDizimoTELDIZ: TStringField;
+    sdsDizimoOBSDIZ: TStringField;
+    sdsDizimoNOMEDIZ: TStringField;
   private
     { Private declarations }
   public

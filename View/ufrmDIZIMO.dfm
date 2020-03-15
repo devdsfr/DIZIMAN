@@ -1,6 +1,9 @@
 inherited frmDIZIMO: TfrmDIZIMO
   Caption = 'Cadastro de D'#237'zimo'
   ClientHeight = 476
+  Position = poMainFormCenter
+  OnShow = FormShow
+  ExplicitTop = -102
   ExplicitHeight = 515
   PixelsPerInch = 96
   TextHeight = 13
@@ -9,8 +12,12 @@ inherited frmDIZIMO: TfrmDIZIMO
   end
   inherited Panel1: TPanel
     Top = 419
+    inherited SpeedButton4: TSpeedButton
+      Top = 8
+      ExplicitTop = 8
+    end
   end
-  object DBGrid1: TDBGrid [6]
+  object dbDizimo: TDBGrid [6]
     Left = 0
     Top = 0
     Width = 869
@@ -23,6 +30,38 @@ inherited frmDIZIMO: TfrmDIZIMO
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'NOMEDIZ'
+        Title.Caption = 'Nome do Dizimista'
+        Width = 445
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TIPPES'
+        Title.Caption = 'Status do Membro'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DTADIZ'
+        Title.Caption = 'Data do D'#237'zimo'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'TELDIZ'
+        Title.Caption = 'Telefone do Dizimista'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'OBSDIZ'
+        Title.Caption = 'Observa'#231#245'es'
+        Visible = True
+      end>
   end
   inherited actacoes: TActionList
     Left = 584
@@ -34,88 +73,9 @@ inherited frmDIZIMO: TfrmDIZIMO
     Top = 64
   end
   object dsDizimo: TDataSource
-    DataSet = cdsDizimo
-    Left = 296
-    Top = 224
-  end
-  object cdsDizimo: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspDizimo'
-    Left = 296
-    Top = 272
-    object cdsDizimoSEQDIZ: TIntegerField
-      FieldName = 'SEQDIZ'
-      Required = True
-    end
-    object cdsDizimoCODPES: TIntegerField
-      FieldName = 'CODPES'
-      Required = True
-    end
-    object cdsDizimoTIPPES: TStringField
-      FieldName = 'TIPPES'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object cdsDizimoDTADIZ: TDateField
-      FieldName = 'DTADIZ'
-    end
-    object cdsDizimoVLRDIZ: TFMTBCDField
-      FieldName = 'VLRDIZ'
-      Precision = 18
-      Size = 2
-    end
-    object cdsDizimoTIPOFT: TStringField
-      FieldName = 'TIPOFT'
-      Size = 10
-    end
-    object cdsDizimoTELDIZ: TStringField
-      FieldName = 'TELDIZ'
-      Size = 19
-    end
-  end
-  object dspDizimo: TDataSetProvider
-    DataSet = sdsDizimo
+    AutoEdit = False
+    DataSet = dmDIZIMAN.cdsDizimo
     Left = 352
-    Top = 272
-  end
-  object sdsDizimo: TSQLDataSet
-    CommandText = 'SELECT * FROM TBLDIZIMO'
-    MaxBlobSize = -1
-    Params = <>
-    SQLConnection = dmDIZIMAN.SQLConnecT
-    Left = 248
-    Top = 280
-    object sdsDizimoSEQDIZ: TIntegerField
-      FieldName = 'SEQDIZ'
-      Required = True
-    end
-    object sdsDizimoCODPES: TIntegerField
-      FieldName = 'CODPES'
-      Required = True
-    end
-    object sdsDizimoTIPPES: TStringField
-      FieldName = 'TIPPES'
-      Required = True
-      FixedChar = True
-      Size = 1
-    end
-    object sdsDizimoDTADIZ: TDateField
-      FieldName = 'DTADIZ'
-    end
-    object sdsDizimoVLRDIZ: TFMTBCDField
-      FieldName = 'VLRDIZ'
-      Precision = 18
-      Size = 2
-    end
-    object sdsDizimoTIPOFT: TStringField
-      FieldName = 'TIPOFT'
-      Size = 10
-    end
-    object sdsDizimoTELDIZ: TStringField
-      FieldName = 'TELDIZ'
-      Size = 19
-    end
+    Top = 200
   end
 end

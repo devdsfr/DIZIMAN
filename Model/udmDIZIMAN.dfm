@@ -9,68 +9,103 @@ object dmDIZIMAN: TdmDIZIMAN
   end
   object cdsDizimo: TClientDataSet
     Aggregates = <>
-    Params = <>
+    Params = <
+      item
+        DataType = ftString
+        Name = 'Tipo'
+        ParamType = ptInput
+      end>
     ProviderName = 'dspDizimo'
     Left = 264
     Top = 113
-    object cdsDizimoID_DIZIMO: TIntegerField
-      FieldName = 'ID_DIZIMO'
+    object cdsDizimoSEQDIZ: TIntegerField
+      FieldName = 'SEQDIZ'
       Required = True
     end
-    object cdsDizimoDT_PAGAMENTO: TDateField
-      FieldName = 'DT_PAGAMENTO'
+    object cdsDizimoCODPES: TIntegerField
+      FieldName = 'CODPES'
       Required = True
     end
-    object cdsDizimoVALOR: TStringField
-      FieldName = 'VALOR'
+    object cdsDizimoTIPPES: TStringField
+      FieldName = 'TIPPES'
       Required = True
-      Size = 18
+      FixedChar = True
+      Size = 1
     end
-    object cdsDizimoNOME_DIZIMISTA: TStringField
-      FieldName = 'NOME_DIZIMISTA'
-      Required = True
-      Size = 50
+    object cdsDizimoDTADIZ: TDateField
+      FieldName = 'DTADIZ'
     end
-    object cdsDizimoNASCIMENTO: TStringField
-      FieldName = 'NASCIMENTO'
-      Size = 8
+    object cdsDizimoVLRDIZ: TFMTBCDField
+      FieldName = 'VLRDIZ'
+      Precision = 18
+      Size = 2
     end
-    object cdsDizimoTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      Size = 11
+    object cdsDizimoTIPOFT: TStringField
+      FieldName = 'TIPOFT'
+      Size = 10
+    end
+    object cdsDizimoTELDIZ: TStringField
+      FieldName = 'TELDIZ'
+      Size = 19
+    end
+    object cdsDizimoOBSDIZ: TStringField
+      FieldName = 'OBSDIZ'
+      Size = 255
+    end
+    object cdsDizimoNOMEDIZ: TStringField
+      FieldName = 'NOMEDIZ'
+      Size = 80
     end
   end
   object sdsDizimo: TSQLDataSet
-    CommandText = 'SELECT * FROM DIZIMO'
+    CommandText = 'SELECT * FROM TBLDIZIMO D'#13#10'WHERE D.tippes = :Tipo'
     MaxBlobSize = -1
-    Params = <>
+    Params = <
+      item
+        DataType = ftString
+        Name = 'Tipo'
+        ParamType = ptInput
+      end>
+    SQLConnection = SQLConnection
     Left = 128
     Top = 112
-    object sdsDizimoID_DIZIMO: TIntegerField
-      FieldName = 'ID_DIZIMO'
+    object sdsDizimoSEQDIZ: TIntegerField
+      FieldName = 'SEQDIZ'
       Required = True
     end
-    object sdsDizimoDT_PAGAMENTO: TDateField
-      FieldName = 'DT_PAGAMENTO'
+    object sdsDizimoCODPES: TIntegerField
+      FieldName = 'CODPES'
       Required = True
     end
-    object sdsDizimoVALOR: TStringField
-      FieldName = 'VALOR'
+    object sdsDizimoTIPPES: TStringField
+      FieldName = 'TIPPES'
       Required = True
-      Size = 18
+      FixedChar = True
+      Size = 1
     end
-    object sdsDizimoNOME_DIZIMISTA: TStringField
-      FieldName = 'NOME_DIZIMISTA'
-      Required = True
-      Size = 50
+    object sdsDizimoDTADIZ: TDateField
+      FieldName = 'DTADIZ'
     end
-    object sdsDizimoNASCIMENTO: TStringField
-      FieldName = 'NASCIMENTO'
-      Size = 8
+    object sdsDizimoVLRDIZ: TFMTBCDField
+      FieldName = 'VLRDIZ'
+      Precision = 18
+      Size = 2
     end
-    object sdsDizimoTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      Size = 11
+    object sdsDizimoTIPOFT: TStringField
+      FieldName = 'TIPOFT'
+      Size = 10
+    end
+    object sdsDizimoTELDIZ: TStringField
+      FieldName = 'TELDIZ'
+      Size = 19
+    end
+    object sdsDizimoOBSDIZ: TStringField
+      FieldName = 'OBSDIZ'
+      Size = 255
+    end
+    object sdsDizimoNOMEDIZ: TStringField
+      FieldName = 'NOMEDIZ'
+      Size = 80
     end
   end
   object sdsDizministas: TSQLDataSet
@@ -207,28 +242,28 @@ object dmDIZIMAN: TdmDIZIMAN
     Left = 198
     Top = 249
   end
-  object SQLConnecT: TSQLConnection
+  object SQLConnection: TSQLConnection
     ConnectionName = 'FBConnection'
     DriverName = 'Firebird'
     LoginPrompt = False
     Params.Strings = (
       'DriverUnit=Data.DBXFirebird'
       
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver220.' +
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver250.' +
         'bpl'
       
         'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
-        'nd.Data.DbxCommonDriver,Version=22.0.0.0,Culture=neutral,PublicK' +
+        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
         'eyToken=91d62ebb5b0d1b1b'
       
         'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
-        'birdDriver220.bpl'
+        'birdDriver250.bpl'
       
         'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
-        'actory,Borland.Data.DbxFirebirdDriver,Version=22.0.0.0,Culture=n' +
+        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
         'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
       'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=fbclient.dll'
+      'LibraryName=dbxfb.dll'
       'LibraryNameOsx=libsqlfb.dylib'
       'VendorLib=fbclient.dll'
       'VendorLibWin64=fbclient.dll'
