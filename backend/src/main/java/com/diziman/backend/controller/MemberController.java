@@ -5,7 +5,6 @@ import com.diziman.backend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +15,12 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    // POST endpoint to add a new member
     @PostMapping
     public ResponseEntity<Member> addMember(@RequestBody Member member) {
         Member savedMember = memberService.addMember(member);
         return ResponseEntity.ok(savedMember);
     }
 
-    // GET endpoint with pagination
     @GetMapping
     public ResponseEntity<Page<Member>> getAllMembersPaged(
             @RequestParam(defaultValue = "0") int page,
@@ -32,8 +29,6 @@ public class MemberController {
         return ResponseEntity.ok(members);
     }
 
-
-    // GET endpoint to retrieve a member by ID
     @GetMapping("/{id}")
     public ResponseEntity<Member> getMemberById(@PathVariable Long id) {
         Member member = memberService.getMemberById(id);
@@ -44,7 +39,6 @@ public class MemberController {
         }
     }
 
-    // PUT endpoint to update an existing member
     @PutMapping("/{id}")
     public ResponseEntity<Member> updateMember(@PathVariable Long id, @RequestBody Member memberDetails) {
         Member updatedMember = memberService.updateMember(id, memberDetails);
@@ -55,7 +49,6 @@ public class MemberController {
         }
     }
 
-    // DELETE endpoint to delete a member
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMember(@PathVariable Long id) {
         boolean isDeleted = memberService.deleteMember(id);
@@ -65,6 +58,4 @@ public class MemberController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 }

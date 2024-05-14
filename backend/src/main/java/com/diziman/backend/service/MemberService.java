@@ -22,7 +22,6 @@ public class MemberService {
         return memberRepository.findById(id).orElse(null);
     }
 
-    // In MemberService
     public Page<Member> getAllMembers(Pageable pageable) {
         return memberRepository.findAll(pageable);
     }
@@ -48,5 +47,4 @@ public class MemberService {
             return true;
         }).orElse(false);
     }
-
 }
