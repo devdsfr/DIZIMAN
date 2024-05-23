@@ -6,6 +6,7 @@ import {AddMemberComponent} from "../components/members/add-member/add-member.co
 import {AddOfferingComponent} from "../components/offerings/add-offering/add-offering.component";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'view-member', component: ViewMemberComponent },
   { path: 'view-offering', component: ViewOfferingComponent },
   { path: 'add-member', component:  AddMemberComponent},
