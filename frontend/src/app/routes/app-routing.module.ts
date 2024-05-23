@@ -1,19 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {MenuInicialComponent} from "../pages/menu-inicial/menu-inicial.component";
-import {RegistroDoDizimoComponent} from "../pages/registro-do-dizimo/registro-do-dizimo.component";
-import {CadastroDeMembroComponent} from "../pages/cadastro-de-membro/cadastro-de-membro.component";
-import {RegistroDaOfertaComponent} from "../pages/registro-da-oferta/registro-da-oferta.component";
-import {DashboardDeMembrosComponent} from "../pages/dashboard-de-membros/dashboard-de-membros.component";
-import {DashboardsFinanceirosComponent} from "../pages/dashboards-financeiros/dashboards-financeiros.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ViewMemberComponent} from "../components/members/view-member/view-member.component";
+import {ViewOfferingComponent} from "../components/offerings/view-offering/view-offering.component";
+import {AddMemberComponent} from "../components/members/add-member/add-member.component";
+import {AddOfferingComponent} from "../components/offerings/add-offering/add-offering.component";
 
 const routes: Routes = [
-  { path: '', component: MenuInicialComponent },
-  { path: 'cadastro-de-membro', component: CadastroDeMembroComponent },
-  { path: 'registro-do-dizimo', component: RegistroDoDizimoComponent },
-  { path: 'registro-da-oferta', component: RegistroDaOfertaComponent },
-  { path: 'dashboard-de-membros', component: DashboardDeMembrosComponent },
-  { path: 'dashboards-financeiros', component: DashboardsFinanceirosComponent },
+  { path: 'view-member', component: ViewMemberComponent },
+  { path: 'view-offering', component: ViewOfferingComponent },
+  { path: 'add-member', component:  AddMemberComponent},
+  { path: 'add-offering', component: AddOfferingComponent },
+
 ];
 
 @NgModule({
