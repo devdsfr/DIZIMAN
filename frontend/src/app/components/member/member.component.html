@@ -1,0 +1,40 @@
+<div class="container mt-3">
+  <h2>Gerenciamento de Membros</h2>
+
+  <!-- Formulário para Adicionar/Editar Membros -->
+      <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="mb-3">
+          <label for="address" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="address"  name="address" required>
+      </div>
+      <!-- Adicione mais campos conforme necessário -->
+
+      <button type="submit" class="btn btn-success">{{ selectedMember ? 'Atualizar' : 'Adicionar' }}</button>
+      <button type="button" class="btn btn-secondary" >Cancelar</button>
+
+  <!-- Tabela de Membros -->
+  <table class="table table-striped mt-4">
+      <thead>
+          <tr>
+              <th>Nome</th>
+              <th>Endereço</th>
+              <!-- Outros campos -->
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let member of members">
+              <td>{{ member.name }}</td>
+              <td>{{ member.address }}</td>
+              <!-- Outros campos -->
+              <td>
+                  <button class="btn btn-primary btn-sm" (click)="selectedMember = member">Editar</button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteMember(1)">Deletar</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
