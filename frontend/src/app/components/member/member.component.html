@@ -2,14 +2,51 @@
   <h2>Gerenciamento de Membros</h2>
 
   <!-- Formulário para Adicionar/Editar Membros -->
-      <div class="mb-3">
-          <label for="name" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="mb-3">
-          <label for="address" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="address"  name="address" required>
-      </div>
+  <div class="col-md-6">
+    <label for="name" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="name"  name="name" required>
+  </div>
+  <div class="mb-3">
+    <label for="login" class="form-label">Login</label>
+    <input type="text" class="form-control" id="login"  name="login" required>
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">Endereço</label>
+    <input type="text" class="form-control" id="address"  name="address" required>
+  </div>
+  <div class="mb-3">
+    <label for="birthDate" class="form-label">Data de Nascimento</label>
+    <input type="date" class="form-control" id="birthDate"  name="birthDate" required>
+  </div>
+  <div class="mb-3">
+    <label for="city" class="form-label">Cidade</label>
+    <input type="text" class="form-control" id="city"  name="city" required>
+  </div>
+  <div class="mb-3">
+    <label for="state" class="form-label">Estado</label>
+    <input type="text" class="form-control" id="state"  name="state" required>
+  </div>
+  <div class="mb-3">
+    <label for="zipCode" class="form-label">CEP</label>
+    <input type="text" class="form-control" id="zipCode"  name="zipCode" required>
+  </div>
+  <div class="mb-3">
+    <label for="gender" class="form-label">Gênero</label>
+    <select class="form-control" id="gender"  name="gender" required>
+      <option value="">Selecione</option>
+      <option value="Male">Masculino</option>
+      <option value="Female">Feminino</option>
+      <option value="Other">Outro</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="profile" class="form-label">Perfil</label>
+    <input type="text" class="form-control" id="profile"  name="profile" required>
+  </div>
+  <div class="mb-3">
+    <label for="registrationDate" class="form-label">Data de Cadastro</label>
+    <input type="date" class="form-control" id="registrationDate"  name="registrationDate" required>
+  </div>
       <!-- Adicione mais campos conforme necessário -->
 
       <button type="submit" class="btn btn-success">{{ selectedMember ? 'Atualizar' : 'Adicionar' }}</button>
