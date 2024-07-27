@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Member } from '../../models/member';
-import { MemberService } from '../../components/member/service/member.service';
+import { MemberService } from './service/member.service';
 
 @Component({
   selector: 'app-member',
@@ -9,40 +9,77 @@ import { MemberService } from '../../components/member/service/member.service';
 })
 export class MemberComponent implements OnInit {
   members: Member[] = [];
-  selectedMember: Member | undefined;
+  member: Member = new Member();
+  selectedMember: Member | null = null;
 
-  constructor( private memberService: MemberService) { }
+  constructor(private memberService: MemberService) { }
 
   ngOnInit(): void {
     this.getMembers();
   }
 
   getMembers(): void {
-    // Implementar método para buscar todos os membros, se necessário
+    //  debugger
+    this.memberService.getAllMembers().subscribe({
+      next: (members: Member[]) => {
+        //debugger
+        console.log('Fetched members:', members);
+        this.members = members;
+      },
+      error: (err: any) => console.error('Error fetching members:', err)
+    });
   }
 
-  addMember(member: Member): void {
-    this.memberService.addMember(member).subscribe({
-      next: (newMember: Member) => this.members.push(newMember),
+  onSubmit(): void {
+    if (this.selectedMember) {
+      this.updateMember();
+    } else {
+      this.addMember();
+    }
+  }
+
+  addMember(): void {
+    debugger
+    this.memberService.addMember(this.member).subscribe({
+      next: (newMember: Member) => {
+        this.members.push(newMember);
+        this.resetForm();
+      },
       error: (err: any) => console.error('Error adding member:', err)
     });
   }
 
-  updateMember(member: Member): void {
-    this.memberService.updateMember(1,member).subscribe({
-      next: (updatedMember: any) => {
-        // Lógica para atualizar a lista de membros ou o estado do componente
-      },
-      error: (err: any) => console.error('Error updating member:', err)
-    });
+  updateMember(): void {
+    if (this.selectedMember) {
+      // this.memberService.updateMember(this.selectedMember.id, this.member).subscribe({
+      //   next: (updatedMember: Member) => {
+      //     const index = this.members.findIndex(m => m.id === updatedMember.id);
+      //     if (index !== -1) {
+      //       this.members[index] = updatedMember;
+      //     }
+      //     this.resetForm();
+      //   },
+      //   error: (err: any) => console.error('Error updating member:', err)
+      // });
+    }
   }
 
-  deleteMember(id: number): void {
+  deleteMember(id: number | undefined): void {
     this.memberService.deleteMember(id).subscribe({
       next: () => {
         this.members = this.members.filter(member => member.id !== id);
       },
       error: (err: any) => console.error('Error deleting member:', err)
     });
+  }
+
+  editMember(member: Member): void {
+    this.selectedMember = member;
+    this.member = { ...member };
+  }
+
+  resetForm(): void {
+    this.member = new Member();
+    this.selectedMember = null;
   }
 }

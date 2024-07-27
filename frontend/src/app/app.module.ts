@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module'; // Certifique-se de que o arquivo de roteamento é nomeado corretamente
 import { HomeComponent } from './components/home/home.component';
 import { MemberComponent } from './components/member/member.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -13,12 +14,13 @@ import { MemberComponent } from './components/member/member.component';
     HomeComponent,
     MemberComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FontAwesomeModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

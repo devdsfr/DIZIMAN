@@ -2,76 +2,92 @@
   <h2>Gerenciamento de Membros</h2>
 
   <!-- Formulário para Adicionar/Editar Membros -->
-  <div class="col-md-6">
-    <label for="name" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="name"  name="name" required>
-  </div>
-  <div class="mb-3">
-    <label for="login" class="form-label">Login</label>
-    <input type="text" class="form-control" id="login"  name="login" required>
-  </div>
-  <div class="mb-3">
-    <label for="address" class="form-label">Endereço</label>
-    <input type="text" class="form-control" id="address"  name="address" required>
-  </div>
-  <div class="mb-3">
-    <label for="birthDate" class="form-label">Data de Nascimento</label>
-    <input type="date" class="form-control" id="birthDate"  name="birthDate" required>
-  </div>
-  <div class="mb-3">
-    <label for="city" class="form-label">Cidade</label>
-    <input type="text" class="form-control" id="city"  name="city" required>
-  </div>
-  <div class="mb-3">
-    <label for="state" class="form-label">Estado</label>
-    <input type="text" class="form-control" id="state"  name="state" required>
-  </div>
-  <div class="mb-3">
-    <label for="zipCode" class="form-label">CEP</label>
-    <input type="text" class="form-control" id="zipCode"  name="zipCode" required>
-  </div>
-  <div class="mb-3">
-    <label for="gender" class="form-label">Gênero</label>
-    <select class="form-control" id="gender"  name="gender" required>
-      <option value="">Selecione</option>
-      <option value="Male">Masculino</option>
-      <option value="Female">Feminino</option>
-      <option value="Other">Outro</option>
-    </select>
-  </div>
-  <div class="mb-3">
-    <label for="profile" class="form-label">Perfil</label>
-    <input type="text" class="form-control" id="profile"  name="profile" required>
-  </div>
-  <div class="mb-3">
-    <label for="registrationDate" class="form-label">Data de Cadastro</label>
-    <input type="date" class="form-control" id="registrationDate"  name="registrationDate" required>
-  </div>
-      <!-- Adicione mais campos conforme necessário -->
+  <form (ngSubmit)="onSubmit()" #memberForm="ngForm">
+    <div class="col-md-6">
+      <label for="name" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="member.name" required>
+    </div>
+    <div class="mb-3">
+      <label for="login" class="form-label">Login</label>
+      <input type="text" class="form-control" id="login" name="login" [(ngModel)]="member.login" required>
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Endereço</label>
+      <input type="text" class="form-control" id="address" name="address" [(ngModel)]="member.address" required>
+    </div>
+    <div class="mb-3">
+      <label for="birthDate" class="form-label">Data de Nascimento</label>
+      <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="member.birthDate" required>
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">Cidade</label>
+      <input type="text" class="form-control" id="city" name="city" [(ngModel)]="member.city" required>
+    </div>
+    <div class="mb-3">
+      <label for="state" class="form-label">Estado</label>
+      <input type="text" class="form-control" id="state" name="state" [(ngModel)]="member.state" required>
+    </div>
+    <div class="mb-3">
+      <label for="zipCode" class="form-label">CEP</label>
+      <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="member.zipCode" required>
+    </div>
+    <div class="mb-3">
+      <label for="gender" class="form-label">Gênero</label>
+      <select class="form-control" id="gender" name="gender" [(ngModel)]="member.gender" required>
+        <option value="">Selecione</option>
+        <option value="Male">Masculino</option>
+        <option value="Female">Feminino</option>
+        <option value="Other">Outro</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="profile" class="form-label">Perfil</label>
+      <input type="text" class="form-control" id="profile" name="profile" [(ngModel)]="member.profile" required>
+    </div>
+    <div class="mb-3">
+      <label for="registrationDate" class="form-label">Data de Cadastro</label>
+      <input type="date" class="form-control" id="registrationDate" name="registrationDate" [(ngModel)]="member.registrationDate" required>
+    </div>
+    <!-- Adicione mais campos conforme necessário -->
 
-      <button type="submit" class="btn btn-success">{{ selectedMember ? 'Atualizar' : 'Adicionar' }}</button>
-      <button type="button" class="btn btn-secondary" >Cancelar</button>
+    <button type="submit" class="btn btn-success">{{ selectedMember ? 'Atualizar' : 'Adicionar' }}</button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Cancelar</button>
+  </form>
 
   <!-- Tabela de Membros -->
   <table class="table table-striped mt-4">
-      <thead>
-          <tr>
-              <th>Nome</th>
-              <th>Endereço</th>
-              <!-- Outros campos -->
-              <th>Ações</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let member of members">
-              <td>{{ member.name }}</td>
-              <td>{{ member.address }}</td>
-              <!-- Outros campos -->
-              <td>
-                  <button class="btn btn-primary btn-sm" (click)="selectedMember = member">Editar</button>
-                  <button class="btn btn-danger btn-sm" (click)="deleteMember(1)">Deletar</button>
-              </td>
-          </tr>
-      </tbody>
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Login</th>
+      <th>Endereço</th>
+      <th>Data de Nascimento</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th>CEP</th>
+      <th>Gênero</th>
+      <th>Perfil</th>
+      <th>Data de Cadastro</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let member of members">
+      <td>{{ member.name }}</td>
+      <td>{{ member.login }}</td>
+      <td>{{ member.address }}</td>
+      <td>{{ member.birthDate | date:'dd/MM/yyyy' }}</td>
+      <td>{{ member.city }}</td>
+      <td>{{ member.state }}</td>
+      <td>{{ member.zipCode }}</td>
+      <td>{{ member.gender }}</td>
+      <td>{{ member.profile }}</td>
+      <td>{{ member.registrationDate | date:'dd/MM/yyyy' }}</td>
+      <td>
+        <button class="btn btn-primary btn-sm" (click)="editMember(member)">Editar</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteMember(member.id)">Deletar</button>
+      </td>
+    </tr>
+    </tbody>
   </table>
 </div>

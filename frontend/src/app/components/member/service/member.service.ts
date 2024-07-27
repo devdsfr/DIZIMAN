@@ -9,32 +9,33 @@ import { Member } from '../../../models/member';
 })
 export class MemberService {
 
-  private baseURL = environment.apiUrl; // Usar a URL base do ambiente atual
+  private apiUrl = 'http://localhost:8080/api/members';
 
   constructor(private http: HttpClient) { }
 
   // Adicionar um novo membro
   addMember(member: Member): Observable<Member> {
-    return this.http.post<Member>(`${this.baseURL}/members`, member);
+    return this.http.post<Member>(`${this.apiUrl}/members`, member);
   }
 
   // Buscar um membro por ID
   getMemberById(id: number): Observable<Member> {
-    return this.http.get<Member>(`${this.baseURL}/members/${id}`);
+    return this.http.get<Member>(`${this.apiUrl}/members/${id}`);
   }
 
   // Atualizar um membro existente
   updateMember(id: number, member: Member): Observable<Member> {
-    return this.http.put<Member>(`${this.baseURL}/members/${id}`, member);
+    return this.http.put<Member>(`${this.apiUrl}/members/${id}`, member);
   }
 
   // Deletar um membro
-  deleteMember(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseURL}/members/${id}`);
+  deleteMember(id: number | undefined): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/members/${id}`);
   }
 
   // Listar todos os membros
   getAllMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>(`${this.baseURL}/members`);
+    //debugger
+    return this.http.get<Member[]>(this.apiUrl);
   }
 }
