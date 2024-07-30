@@ -16,6 +16,7 @@ export class MemberComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMembers();
+    this.setTodayDate();
   }
 
   getMembers(): void {
@@ -39,7 +40,6 @@ export class MemberComponent implements OnInit {
   }
 
   addMember(): void {
-    debugger
     this.memberService.addMember(this.member).subscribe({
       next: (newMember: Member) => {
         this.members.push(newMember);
@@ -47,6 +47,10 @@ export class MemberComponent implements OnInit {
       },
       error: (err: any) => console.error('Error adding member:', err)
     });
+  }
+  setTodayDate(): void {
+    //const today = new Date();
+    this.member.registrationDate = new Date().toString(); // Formato Sun Jul 28 2024 09:46:50
   }
 
   updateMember(): void {

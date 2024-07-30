@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
@@ -15,8 +15,15 @@ export class MemberService {
 
   // Adicionar um novo membro
   addMember(member: Member): Observable<Member> {
-    return this.http.post<Member>(`${this.apiUrl}/members`, member);
+    return this.http.post<Member>(this.apiUrl, this.transformDatesToServer(member), {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).pipe(
+      map(member => this.transformDatesFromServer(member))
+    );
   }
+
 
   // Buscar um membro por ID
   getMemberById(id: number): Observable<Member> {
@@ -38,4 +45,25 @@ export class MemberService {
     //debugger
     return this.http.get<Member[]>(this.apiUrl);
   }
+
+  private transformDates(member: Member): Member {
+    return <Member>{
+      ...member,
+      birthDate: member.birthDate ? new Date(member.birthDate).toISOString() : null,
+    };
+  }
+
+  private transformDatesToServer(member: Member): Member {
+    return {
+      ...member,
+      birthDate: this.transformDateToServer(member.birthDate),
+      registrationDate: this.transformDateToServer(member.registrationDate)
+    };
+  }
+
+  private transformDateToServer(date: string): string {
+    const dateObj = new Date(date);
+    return dateObj.toString();  // Formato Sun Jul 28 2024 09:46:50 GMT-0300 (Horário Padrão de Brasília)
+  }
+
 }
