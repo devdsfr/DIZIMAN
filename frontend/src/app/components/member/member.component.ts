@@ -20,12 +20,10 @@ export class MemberComponent implements OnInit {
   }
 
   getMembers(): void {
-    //  debugger
     this.memberService.getAllMembers().subscribe({
-      next: (members: Member[]) => {
-        //debugger
-        console.log('Fetched members:', members);
-        this.members = members;
+      next: (response: any) => {
+        console.log('Fetched members:', response);
+        this.members = response.content; // Ajuste conforme a estrutura da resposta
       },
       error: (err: any) => console.error('Error fetching members:', err)
     });
@@ -48,23 +46,24 @@ export class MemberComponent implements OnInit {
       error: (err: any) => console.error('Error adding member:', err)
     });
   }
+
   setTodayDate(): void {
-    //const today = new Date();
-    this.member.registrationDate = new Date().toString(); // Formato Sun Jul 28 2024 09:46:50
+    const today = new Date().toISOString();
+    this.member.registrationDate = today;
   }
 
   updateMember(): void {
     if (this.selectedMember) {
-      // this.memberService.updateMember(this.selectedMember.id, this.member).subscribe({
-      //   next: (updatedMember: Member) => {
-      //     const index = this.members.findIndex(m => m.id === updatedMember.id);
-      //     if (index !== -1) {
-      //       this.members[index] = updatedMember;
-      //     }
-      //     this.resetForm();
-      //   },
-      //   error: (err: any) => console.error('Error updating member:', err)
-      // });
+      this.memberService.updateMember(this.selectedMember.id, this.member).subscribe({
+        next: (updatedMember: Member) => {
+          const index = this.members.findIndex(m => m.id === updatedMember.id);
+          if (index !== -1) {
+            this.members[index] = updatedMember;
+          }
+          this.resetForm();
+        },
+        error: (err: any) => console.error('Error updating member:', err)
+      });
     }
   }
 

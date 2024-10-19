@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module'; // Certifique-se de que
 import { HomeComponent } from './components/home/home.component';
 import { MemberComponent } from './components/member/member.component';
 import {FormsModule} from "@angular/forms";
+import {AgGridModule} from "ag-grid-angular";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {FormsModule} from "@angular/forms";
         HttpClientModule,
         AppRoutingModule,
         FontAwesomeModule,
-        FormsModule
+        FormsModule,
+      AgGridModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

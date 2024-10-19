@@ -21,6 +21,8 @@
     "@fortawesome/angular-fontawesome": "^0.15.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "ag-grid-angular": "^32.2.2",
+    "ag-grid-community": "^32.2.2",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
