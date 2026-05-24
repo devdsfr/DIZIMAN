@@ -8,98 +8,92 @@ import { MemberService } from './service/member.service';
   styleUrls: ['./member.component.scss']
 })
 export class MemberComponent implements OnInit {
+
+  // Dados
   members: Member[] = [];
+  filteredMembers: Member[] = [];
   member: Member = new Member();
-  selectedMember: Member | null = null;
-  successMessage: string = '';
-  errorMessage: string = '';
+
+  // Estado UI
+  activeTab: 'form' | 'lista' = 'lista';
+  editingMember: Member | null = null;
+  memberToDelete: Member | null = null;
+  isLoading = false;
+  isSaving = false;
+
+  // Toast
+  toast = { show: false, message: '', type: 'success' };
+
+  // Busca e filtro
+  searchTerm = '';
+  filterPerfil = '';
+
+  // Paginação
+  currentPage = 1;
+  pageSize = 8;
+  totalPages = 1;
+
+  // Ordenação
+  sortColumn = 'name';
+  sortDir: 'asc' | 'desc' = 'asc';
+
+  // Dados auxiliares
+  estados = [
+    'AC','AL','AP','AM','BA','CE','DF','ES','GO',
+    'MA','MT','MS','MG','PA','PB','PR','PE','PI',
+    'RJ','RN','RS','RO','RR','SC','SP','SE','TO'
+  ];
+
+  avatarColors = [
+    '#2563eb','#16a34a','#dc2626','#9333ea',
+    '#ea580c','#0891b2','#65a30d','#d97706'
+  ];
 
   constructor(private memberService: MemberService) {}
 
   ngOnInit(): void {
-    this.getMembers();
-    this.member.registrationDate = new Date().toISOString();
+    this.loadMembers();
   }
 
-  getMembers(): void {
+  loadMembers(): void {
+    this.isLoading = true;
     this.memberService.getAllMembers().subscribe({
-      next: (response: any) => {
-        this.members = response.content || [];
+      next: (res: any) => {
+        this.members = res.content || [];
+        this.applyFilter();
+        this.isLoading = false;
       },
-      error: (err: any) => {
-        console.error('Erro ao carregar membros:', err);
-        this.errorMessage = 'Erro ao carregar membros.';
+      error: () => {
+        this.showToast('Erro ao carregar membros.', 'error');
+        this.isLoading = false;
       }
     });
   }
 
-  onSubmit(): void {
-    if (this.selectedMember) {
-      this.updateMember();
-    } else {
-      this.addMember();
+  onSearch(): void {
+    this.currentPage = 1;
+    this.applyFilter();
+  }
+
+  applyFilter(): void {
+    let result = [...this.members];
+    const term = this.searchTerm.toLowerCase().trim();
+    if (term) {
+      result = result.filter(m =>
+        m.name?.toLowerCase().includes(term) ||
+        m.login?.toLowerCase().includes(term) ||
+        m.city?.toLowerCase().includes(term)
+      );
     }
-  }
-
-  addMember(): void {
-    this.member.registrationDate = new Date().toISOString();
-    this.memberService.addMember(this.member).subscribe({
-      next: (newMember: Member) => {
-        this.members.push(newMember);
-        this.successMessage = 'Membro salvo com sucesso!';
-        this.resetForm();
-      },
-      error: (err: any) => {
-        console.error('Erro ao salvar membro:', err);
-        this.errorMessage = 'Erro ao salvar o membro.';
-      }
-    });
-  }
-
-  updateMember(): void {
-    if (!this.selectedMember) return;
-    this.memberService.updateMember(this.selectedMember.id, this.member).subscribe({
-      next: (updatedMember: Member) => {
-        const index = this.members.findIndex(m => m.id === updatedMember.id);
-        if (index !== -1) this.members[index] = updatedMember;
-        this.successMessage = 'Membro atualizado com sucesso!';
-        this.resetForm();
-      },
-      error: (err: any) => {
-        console.error('Erro ao atualizar membro:', err);
-        this.errorMessage = 'Erro ao atualizar o membro.';
-      }
-    });
-  }
-
-  deleteMember(id: number | undefined): void {
-    if (!confirm('Deseja realmente excluir este membro?')) return;
-    this.memberService.deleteMember(id).subscribe({
-      next: () => {
-        this.members = this.members.filter(m => m.id !== id);
-        this.successMessage = 'Membro excluído com sucesso!';
-      },
-      error: (err: any) => {
-        console.error('Erro ao excluir membro:', err);
-        this.errorMessage = 'Erro ao excluir o membro.';
-      }
-    });
-  }
-
-  editMember(member: Member): void {
-    this.selectedMember = member;
-    this.member = { ...member };
-    if (this.member.birthDate) {
-      this.member.birthDate = new Date(this.member.birthDate).toISOString().substring(0, 10);
+    if (this.filterPerfil) {
+      result = result.filter(m => m.profile === this.filterPerfil);
     }
-    this.successMessage = '';
-    this.errorMessage = '';
+    result = this.sortArray(result);
+    this.filteredMembers = result;
+    this.totalPages = Math.ceil(result.length / this.pageSize) || 1;
+    if (this.currentPage > this.totalPages) this.currentPage = 1;
   }
 
-  resetForm(): void {
-    this.member = new Member();
-    this.member.registrationDate = new Date().toISOString();
-    this.selectedMember = null;
-    this.errorMessage = '';
-  }
-}
+  sortArray(arr: Member[]): Member[] {
+    return arr.sort((a, b) => {
+      const va = 

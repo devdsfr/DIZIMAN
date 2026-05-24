@@ -1,128 +1,88 @@
-<div class="container mt-4">
-  <div class="d-flex align-items-center mb-4">
-    <button class="btn btn-outline-secondary me-3" routerLink="/">&#8592; Voltar</button>
-    <h2 class="mb-0">Cadastro de Membros</h2>
-  </div>
-
-  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
-    {{ successMessage }}
-    <button type="button" class="btn-close" (click)="successMessage = ''"></button>
-  </div>
-  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{ errorMessage }}
-    <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
-  </div>
-
-  <!-- Formulário -->
-  <div class="card shadow-sm mb-4">
-    <div class="card-header bg-primary text-white">
-      <h5 class="mb-0">{{ selectedMember ? 'Editar Membro' : 'Novo Membro' }}</h5>
+<!-- Navbar -->
+<nav class="navbar navbar-dark px-4 py-3 mb-4" style="background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%); box-shadow: 0 2px 12px rgba(37,99,235,0.18);">
+  <div class="d-flex align-items-center gap-3">
+    <span style="font-size:1.7rem;">&#9962;</span>
+    <div>
+      <span class="navbar-brand mb-0 fw-bold fs-5">DIZIMAN</span>
+      <span class="text-white-50 ms-2 small">Sistema de Gestão da Igreja</span>
     </div>
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #memberForm="ngForm">
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <label for="name" class="form-label">Nome <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="member.name" required placeholder="Nome completo">
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="login" class="form-label">Login <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="login" name="login" [(ngModel)]="member.login" required placeholder="usuario.login">
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="gender" class="form-label">Gênero <span class="text-danger">*</span></label>
-            <select class="form-select" id="gender" name="gender" [(ngModel)]="member.gender" required>
-              <option value="">Selecione</option>
-              <option value="Male">Masculino</option>
-              <option value="Female">Feminino</option>
-              <option value="Other">Outro</option>
-            </select>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="profile" class="form-label">Perfil <span class="text-danger">*</span></label>
-            <select class="form-select" id="profile" name="profile" [(ngModel)]="member.profile" required>
-              <option value="">Selecione</option>
-              <option value="Pastor">Pastor</option>
-              <option value="Presbitero">Presbítero</option>
-              <option value="Diacono">Diácono</option>
-              <option value="Lider">Líder</option>
-              <option value="Membro">Membro</option>
-            </select>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="birthDate" class="form-label">Data de Nascimento</label>
-            <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="member.birthDate">
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="address" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="address" name="address" [(ngModel)]="member.address" placeholder="Rua, número">
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="city" class="form-label">Cidade</label>
-            <input type="text" class="form-control" id="city" name="city" [(ngModel)]="member.city" placeholder="Cidade">
-          </div>
-          <div class="col-md-2 mb-3">
-            <label for="state" class="form-label">Estado</label>
-            <input type="text" class="form-control" id="state" name="state" [(ngModel)]="member.state" maxlength="2" placeholder="UF">
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="zipCode" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="member.zipCode" placeholder="00000-000">
-          </div>
+  </div>
+  <button class="btn btn-outline-light btn-sm" routerLink="/">
+    <i class="bi bi-house-fill me-1"></i> Início
+  </button>
+</nav>
+
+<div class="container-xl px-4 pb-5" style="max-width: 1100px;">
+
+  <!-- Título da seção -->
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <div>
+      <h4 class="fw-bold mb-0" style="color:#1e3a5f;"><i class="bi bi-people-fill me-2"></i>Cadastro de Membros</h4>
+      <small class="text-muted">Gerencie os membros da sua igreja</small>
+    </div>
+    <button class="btn btn-primary px-4" (click)="abrirFormulario()" *ngIf="activeTab === 'lista'">
+      <i class="bi bi-person-plus-fill me-2"></i>Novo Membro
+    </button>
+  </div>
+
+  <!-- Toast de feedback -->
+  <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+    <div *ngIf="toast.show" class="toast show align-items-center border-0 shadow-lg"
+         [ngClass]="toast.type === 'success' ? 'bg-success text-white' : 'bg-danger text-white'"
+         role="alert">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center gap-2">
+          <i [ngClass]="toast.type === 'success' ? 'bi bi-check-circle-fill' : 'bi bi-x-circle-fill'"></i>
+          {{ toast.message }}
         </div>
-        <div class="d-flex gap-2 mt-2">
-          <button type="submit" class="btn btn-success px-4">
-            {{ selectedMember ? '&#10003; Salvar Alterações' : '&#10003; Salvar Membro' }}
-          </button>
-          <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="selectedMember">
-            Cancelar
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Tabela -->
-  <div class="card shadow-sm">
-    <div class="card-header bg-light d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Membros Cadastrados</h5>
-      <span class="badge bg-primary">{{ members.length }}</span>
-    </div>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-striped table-hover mb-0">
-          <thead class="table-dark">
-            <tr>
-              <th>Nome</th>
-              <th>Login</th>
-              <th>Perfil</th>
-              <th>Gênero</th>
-              <th>Cidade/UF</th>
-              <th>CEP</th>
-              <th>Nascimento</th>
-              <th class="text-center">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngIf="members.length === 0">
-              <td colspan="8" class="text-center py-4 text-muted">Nenhum membro cadastrado.</td>
-            </tr>
-            <tr *ngFor="let m of members">
-              <td class="fw-bold">{{ m.name }}</td>
-              <td class="text-muted small">{{ m.login }}</td>
-              <td><span class="badge bg-secondary">{{ m.profile }}</span></td>
-              <td>{{ m.gender === 'Male' ? 'Masculino' : m.gender === 'Female' ? 'Feminino' : 'Outro' }}</td>
-              <td>{{ m.city }} / {{ m.state }}</td>
-              <td>{{ m.zipCode }}</td>
-              <td>{{ m.birthDate | date:'dd/MM/yyyy' }}</td>
-              <td class="text-center">
-                <button class="btn btn-primary btn-sm me-1" (click)="editMember(m)">Editar</button>
-                <button class="btn btn-danger btn-sm" (click)="deleteMember(m.id)">Excluir</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="toast.show = false"></button>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Tabs -->
+  <ul class="nav nav-tabs mb-4 border-bottom" style="border-color:#dee2e6;">
+    <li class="nav-item">
+      <a class="nav-link fw-semibold" [class.active]="activeTab === 'form'"
+         (click)="activeTab = 'form'" style="cursor:pointer;">
+        <i class="bi bi-person-plus me-1"></i>
+        {{ editingMember ? 'Editar Membro' : 'Novo Membro' }}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fw-semibold" [class.active]="activeTab === 'lista'"
+         (click)="activeTab = 'lista'" style="cursor:pointer;">
+        <i class="bi bi-list-ul me-1"></i>
+        Membros Cadastrados
+        <span class="badge bg-primary ms-1">{{ members.length }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- ===== ABA: FORMULÁRIO ===== -->
+  <div *ngIf="activeTab === 'form'">
+    <div class="card border-0 shadow-sm" style="border-radius:16px; overflow:hidden;">
+      <div class="card-header border-0 py-3 px-4" style="background: linear-gradient(90deg,#1e3a5f,#2563eb);">
+        <h6 class="mb-0 text-white fw-semibold">
+          <i class="bi me-2" [ngClass]="editingMember ? 'bi-pencil-square' : 'bi-person-plus-fill'"></i>
+          {{ editingMember ? 'Editando: ' + member.name : 'Cadastrar Novo Membro' }}
+        </h6>
+      </div>
+      <div class="card-body p-4">
+        <form (ngSubmit)="onSubmit()" #memberForm="ngForm">
+
+          <!-- Linha 1: Nome | Login -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Nome Completo <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-person text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" name="name"
+                       [(ngModel)]="member.name" required placeholder="Ex: João da Silva">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Login <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-at text-muted"></i></span>
+                <input type="text" class="form-control bor
