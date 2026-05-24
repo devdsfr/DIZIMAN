@@ -2,10 +2,9 @@ services:
   # ─── Backend Java Spring Boot ───────────────────────────────
   - type: web
     name: diziman-backend
-    runtime: java
+    runtime: docker
     rootDir: backend
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    dockerfilePath: ./Dockerfile
     plan: free
     envVars:
       - key: DATABASE_URL
