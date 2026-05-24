@@ -43,4 +43,5 @@ public class Member {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date registrationDate
+    private Date registrationDate;
+}

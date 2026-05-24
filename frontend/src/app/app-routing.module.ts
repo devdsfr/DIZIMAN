@@ -7,4 +7,16 @@ import { OfferingComponent } from './components/offering/offering.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
- 
+  { path: '', component: HomeComponent },
+  { path: 'members', component: MemberComponent },
+  { path: 'tithe-registration', component: TitheComponent },
+  { path: 'offering-registration', component: OfferingComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '**', redirectTo: '' }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
