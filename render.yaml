@@ -42,4 +42,7 @@ services:
         source: /*
         destination: /index.html
 
-# ─── Banco d
+# ─── Banco de Dados PostgreSQL ───────────────────────────────
+databases:
+  - name: diziman-db
+    plan: free

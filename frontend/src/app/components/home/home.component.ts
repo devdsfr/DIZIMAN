@@ -13,4 +13,7 @@ export class HomeComponent {
   constructor(private router: Router, private auth: AuthService) {}
 
   logout(): void {
-  
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
+}

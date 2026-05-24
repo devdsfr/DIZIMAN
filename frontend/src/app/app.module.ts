@@ -17,3 +17,25 @@ import { PrivacidadeComponent } from './components/privacidade/privacidade.compo
 
 @NgModule({
   declarations: [
+    AppComponent,
+    HomeComponent,
+    MemberComponent,
+    TitheComponent,
+    OfferingComponent,
+    DashboardComponent,
+    LoginComponent,
+    PrivacidadeComponent
+  ],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

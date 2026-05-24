@@ -32,4 +32,9 @@ export class LoginComponent {
       error: (err) => {
         this.error = err.status === 401
           ? 'Usuário ou senha incorretos.'
-          : 'Não foi possível conectar ao servidor. Tente novame
+          : 'Não foi possível conectar ao servidor. Tente novamente.';
+        this.loading = false;
+      }
+    });
+  }
+}

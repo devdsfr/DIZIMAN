@@ -28,4 +28,7 @@ public class Tithe {
     private Date titheDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
-  
+    @JoinColumn(name = "member_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Member member;
+}
