@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Member } from '../../../models/member';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
 
-  private apiUrl = 'http://localhost:8080/api/members';
+  private apiUrl = `${environment.apiUrl}/members`;
 
   constructor(private http: HttpClient) { }
 
@@ -23,15 +24,15 @@ export class MemberService {
   }
 
   getMemberById(id: number): Observable<Member> {
-    return this.http.get<Member>(`${this.apiUrl}/members/${id}`);
+    return this.http.get<Member>(`${this.apiUrl}/${id}`);
   }
 
   updateMember(id: number | undefined, member: Member): Observable<Member> {
-    return this.http.put<Member>(`${this.apiUrl}/members/${id}`, member);
+    return this.http.put<Member>(`${this.apiUrl}/${id}`, member);
   }
 
   deleteMember(id: number | undefined): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/members/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
   getAllMembers(): Observable<Member[]> {
@@ -42,7 +43,4 @@ export class MemberService {
     return {
       ...member,
       birthDate: member.birthDate ? new Date(member.birthDate).toISOString() : undefined,
-      registrationDate: member.registrationDate ? new Date(member.registrationDate).toISOString() : undefined
-    };
-  }
-}
+      registrationDate: member.registrationDate ? new Date(member.registrationDate).to
