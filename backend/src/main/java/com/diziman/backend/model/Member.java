@@ -2,9 +2,9 @@ package com.diziman.backend.model;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.util.Date;
 
 @Entity

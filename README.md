@@ -51,6 +51,21 @@ O projeto DIZIMAN segue uma arquitetura baseada em microserviços, com cada serv
 - **Frontend**: Interface do usuário implementada com Angular.
 - **Database**: Persistência de dados gerenciada pelo PostgreSQL.
 
+### Diagrama de Arquitetura
+
+![Diagrama de Arquitetura do DIZIMAN](docs/diagrama-arquitetura.png)
+
+> 📌 Versão interativa no Miro: [Abrir diagrama](https://miro.com/app/board/uXjVHPaMUTo=/)
+
+O diagrama ilustra o fluxo completo da aplicação:
+
+**Usuário → Angular Frontend → Spring Boot Backend → PostgreSQL**
+
+- O **Frontend Angular** consome a REST API do Spring Boot via `MemberService` e `HttpClient`.
+- O **Backend Java** expõe endpoints REST através dos Controllers (`/api/members`, `/api/offerings`, `/api/tithes`), delega a lógica aos Services e persiste os dados via **JPA/Hibernate** nos Repositories.
+- O **Banco PostgreSQL** armazena três entidades principais: `members`, `offerings` e `tithes`, com relações 1:N entre membros e suas contribuições.
+- Todo o stack é **conteinerizado com Docker**, garantindo isolamento e replicabilidade entre ambientes.
+
 ## Endpoints
 
 Aqui estão alguns dos endpoints principais do sistema:
