@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface User {
   username: string;
@@ -6,40 +9,38 @@ export interface User {
   role: string;
 }
 
-// Credenciais da aplicação — altere conforme necessário
-const USERS = [
-  { username: 'admin',  password: 'diziman2024', name: 'Administrador', role: 'admin' },
-  { username: 'pastor', password: 'igreja2024',  name: 'Pastor',         role: 'user'  },
-  { username: 'lider',  password: 'lider2024',   name: 'Líder',          role: 'user'  },
-];
+interface AuthResponse {
+  token: string;
+  username: string;
+  name: string;
+  role: string;
+}
 
-const STORAGE_KEY = 'diziman_user';
+const USER_KEY  = 'diziman_user';
+const TOKEN_KEY = 'diziman_token';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  login(username: string, password: string): boolean {
-    const found = USERS.find(
-      u => u.username === username.trim().toLowerCase() && u.password === password
-    );
-    if (found) {
-      const user: User = { username: found.username, name: found.name, role: found.role };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-      return true;
-    }
-    return false;
+  constructor(private http: HttpClient) {}
+
+  login(username: string, password: string): Observable<void> {
+    return this.http
+      .post<AuthResponse>(`${environment.apiUrl}/auth/login`, { username, password })
+      .pipe(
+        tap(res => {
+          localStorage.setItem(TOKEN_KEY, res.token);
+          localStorage.setItem(USER_KEY, JSON.stringify({
+            username: res.username,
+            name: res.name,
+            role: res.role
+          }));
+        }),
+        // Transforma AuthResponse → void para o componente não precisar saber do tipo
+        tap(() => {})
+      ) as unknown as Observable<void>;
   }
 
   logout(): void {
-    localStorage.removeItem(STORAGE_KEY);
-  }
-
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem(STORAGE_KEY);
-  }
-
-  getUser(): User | null {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  }
-}
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);

@@ -27,15 +27,9 @@ export class LoginComponent {
     this.loading = true;
     this.error = '';
 
-    // Simula delay de autenticação
-    setTimeout(() => {
-      const ok = this.auth.login(this.username, this.password);
-      if (ok) {
-        this.router.navigate(['/']);
-      } else {
-        this.error = 'Usuário ou senha incorretos.';
-        this.loading = false;
-      }
-    }, 600);
-  }
-}
+    this.auth.login(this.username.trim().toLowerCase(), this.password).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: (err) => {
+        this.error = err.status === 401
+          ? 'Usuário ou senha incorretos.'
+          : 'Não foi possível conectar ao servidor. Tente novame

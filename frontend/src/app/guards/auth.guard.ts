@@ -8,7 +8,4 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.auth.isLoggedIn()) return true;
-    this.router.navigate(['/login']);
-    return false;
-  }
-}
+    // Token ausente ou expirado → redireciona para login e 

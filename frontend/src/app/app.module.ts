@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,23 +17,3 @@ import { PrivacidadeComponent } from './components/privacidade/privacidade.compo
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    MemberComponent,
-    TitheComponent,
-    OfferingComponent,
-    DashboardComponent,
-    LoginComponent,
-    PrivacidadeComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
