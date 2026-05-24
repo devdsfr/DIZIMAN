@@ -1,0 +1,127 @@
+// Avatar circular com iniciais
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+// Linha da tabela com hover suave
+.member-row {
+  transition: background 0.15s;
+  &:hover { background: #f0f5ff !important; }
+}
+
+// Tabs customizadas
+.nav-tabs .nav-link {
+  color: #6c757d;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 10px 20px;
+  transition: all 0.2s;
+  &:hover { color: #2563eb; border-bottom-color: #c7d8fd; }
+  &.active { color: #2563eb; font-weight: 600; border-bottom: 3px solid #2563eb; background: transparent; }
+}
+
+// Input group
+.input-group-text { border-right: none; }
+.input-group .form-control,
+.input-group .form-select {
+  border-left: none;
+  &:focus { box-shadow: none; border-color: #ced4da; }
+}
+.input-group:focus-within {
+  .input-group-text { border-color: #2563eb; background: #eff6ff; color: #2563eb; }
+  .form-control, .form-select { border-color: #2563eb; }
+}
+
+// Botão ação
+.btn-light {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  transition: all 0.15s;
+  &:hover { background: #e9ecef; transform: scale(1.1); }
+}
+
+// Modal overlay
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+
+.modal-dialog-custom {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: slideUp 0.2s ease;
+}
+
+.danger-icon {
+  width: 64px;
+  height: 64px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+// Toast
+.toast {
+  min-width: 300px;
+  border-radius: 12px;
+  animation: slideInRight 0.3s ease;
+}
+
+// Paginação
+.page-link {
+  border-radius: 8px !important;
+  margin: 0 2px;
+  color: #2563eb;
+  border: 1px solid #e9ecef;
+  &:hover { background: #eff6ff; }
+}
+.page-item.active .page-link { background: #2563eb; border-color: #2563eb; }
+
+// Animações
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideInRight { from { transform: translateX(100px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+// Mobile
+@media (max-width: 768px) {
+  .table-responsive table thead { display: none; }
+  .table-responsive table tr {
+    display: block;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: white;
+  }
+  .table-responsive table td {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    padding: 4px 0;
+    font-size: 0.9rem;
+  }
+}
