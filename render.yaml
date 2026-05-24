@@ -7,15 +7,23 @@ services:
     dockerfilePath: ./Dockerfile
     plan: free
     envVars:
-      - key: DATABASE_URL
+      - key: PGHOST
         fromDatabase:
           name: diziman-db
-          property: connectionString
-      - key: DATABASE_USERNAME
+          property: host
+      - key: PGPORT
+        fromDatabase:
+          name: diziman-db
+          property: port
+      - key: PGDATABASE
+        fromDatabase:
+          name: diziman-db
+          property: database
+      - key: PGUSER
         fromDatabase:
           name: diziman-db
           property: user
-      - key: DATABASE_PASSWORD
+      - key: PGPASSWORD
         fromDatabase:
           name: diziman-db
           property: password
