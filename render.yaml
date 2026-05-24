@@ -29,7 +29,6 @@ services:
     rootDir: frontend
     buildCommand: npm install && npm run build -- --configuration production
     staticPublishPath: dist/frontend/browser
-    plan: free
     routes:
       - type: rewrite
         source: /*
