@@ -43,4 +43,7 @@ export class MemberService {
     return {
       ...member,
       birthDate: member.birthDate ? new Date(member.birthDate).toISOString() : undefined,
-      registrationDate: member.registrationDate ? new Date(member.registrationDate).to
+      registrationDate: member.registrationDate ? new Date(member.registrationDate).toISOString() : undefined
+    };
+  }
+}
