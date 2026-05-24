@@ -1,86 +1,137 @@
 ![image](https://github.com/devdsfr/DIZIMAN/assets/44585550/48d006c3-ec19-475f-95dc-a26154bfe4ba)
 
-# Project DIZIMAN
+# DIZIMAN — Sistema de Gestão da Igreja
 
-## Descrição
+DIZIMAN é uma aplicação web e mobile para gerenciar membros, dízimos, ofertas e finanças de uma igreja. Disponível via navegador e como aplicativo Android.
 
-DIZIMAN é uma aplicação web projetada para gerenciar membros, dízimos, ofertas e doações de uma igreja. Este documento detalha as ferramentas e tecnologias utilizadas no desenvolvimento do projeto, explicando a arquitetura e as vantagens de cada escolha tecnológica.
+---
 
-## Tecnologias Utilizadas
+## 🌐 Acesso Web
 
-### 1. Java com Spring Boot
+| Ambiente | URL |
+|----------|-----|
+| Frontend | https://diziman-frontend.onrender.com |
+| API Backend | https://diziman-backend.onrender.com/api |
 
-**Descrição**: Java é uma linguagem de programação robusta e orientada a objetos. Spring Boot é um framework que permite a criação de aplicações Spring prontas para produção de forma rápida e fácil.
+**Credenciais padrão:**
 
-**Vantagens**:
-- **Produtividade**: A configuração automática e o vasto ecossistema de starters do Spring Boot permitem uma rápida configuração e desenvolvimento.
-- **Gerenciamento de Dependências**: Spring Boot simplifica o gerenciamento de dependências e a configuração do servidor embarcado.
-- **Segurança e Manutenção**: A comunidade extensa e o suporte contínuo melhoram a segurança e a manutenção do projeto.
+| Usuário | Senha | Perfil |
+|---------|-------|--------|
+| `admin` | `diziman2024` | Administrador |
+| `pastor` | `igreja2024` | Pastor |
+| `lider` | `lider2024` | Líder |
 
-### 2. Angular
+---
 
-**Descrição**: Angular é um framework de desenvolvimento para construir aplicações web dinâmicas usando TypeScript.
+## 📱 Instalação do Aplicativo Android (APK)
 
-**Vantagens**:
-- **MVVM (Model-View-ViewModel)**: Facilita a gestão de estados e a vinculação de dados, melhorando a eficiência do desenvolvimento.
-- **Componentização**: Permite reutilizar código, facilitando a manutenção e teste de componentes individuais.
-- **Extensibilidade**: Integrável com uma variedade de outras ferramentas e frameworks.
+### Opção 1 — Instalar direto pelo celular (APK manual)
 
-### 3. PostgreSQL
+> Siga esse passo a passo para instalar o `.apk` sem precisar da Play Store.
 
-**Descrição**: PostgreSQL é um sistema de gerenciamento de banco de dados relacional objeto (SGBDRO) poderoso e de código aberto.
+**Passo 1 — Permitir instalação de fontes desconhecidas**
 
-**Vantagens**:
-- **Conformidade com ACID**: Garante confiabilidade nas transações.
-- **Extensibilidade e SQL Compliance**: Suporta extensões e um grande conjunto de tipos de dados SQL, funções e operadores.
-- **Desempenho**: Oferece performance robusta mesmo com grandes volumes de dados, graças ao seu sistema de otimização de consultas.
+1. No seu celular Android, vá em **Configurações**
+2. Acesse **Segurança** (ou **Privacidade** dependendo do modelo)
+3. Ative a opção **"Instalar aplicativos desconhecidos"** ou **"Fontes desconhecidas"**
+4. Se aparecer a pergunta ao abrir o arquivo `.apk`, toque em **"Permitir"**
 
-### 4. Docker
+**Passo 2 — Transferir o APK para o celular**
 
-**Descrição**: Docker é uma plataforma de contêinerização que permite empacotar uma aplicação com todas as suas dependências em um contêiner virtual.
+Escolha uma das formas:
+- Envie o arquivo `.apk` por **WhatsApp, Google Drive, e-mail ou cabo USB**
+- Ou acesse o link de download direto pelo navegador do celular
 
-**Vantagens**:
-- **Isolamento**: Garante que a aplicação funcione em qualquer ambiente.
-- **Replicabilidade**: Facilita a replicação da aplicação em diferentes ambientes de desenvolvimento, teste ou produção.
-- **Gerenciamento de Infraestrutura**: Simplifica o gerenciamento de infraestrutura e reduz conflitos entre equipes de desenvolvimento.
+**Passo 3 — Instalar o APK**
 
-## Arquitetura do Projeto
+1. Abra o arquivo `.apk` no celular (use o gerenciador de arquivos ou a notificação de download)
+2. Toque em **"Instalar"**
+3. Aguarde a instalação (alguns segundos)
+4. Toque em **"Abrir"**
 
-O projeto DIZIMAN segue uma arquitetura baseada em microserviços, com cada serviço encapsulando uma lógica de negócios específica:
-- **Backend**: Gerenciamento de dados e lógica de negócios implementados com Java e Spring Boot.
-- **Frontend**: Interface do usuário implementada com Angular.
-- **Database**: Persistência de dados gerenciada pelo PostgreSQL.
+**Passo 4 — Usar o aplicativo**
 
-### Diagrama de Arquitetura
+1. O app abre na tela de login
+2. Digite seu usuário e senha
+3. Acesse o sistema normalmente
 
-![Diagrama de Arquitetura do DIZIMAN](docs/diagrama-arquitetura.png)
+> ⚠️ O aplicativo precisa de internet para funcionar — ele carrega o sistema do servidor.
 
-> 📌 Versão interativa no Miro: [Abrir diagrama](https://miro.com/app/board/uXjVHPaMUTo=/)
+---
 
-O diagrama ilustra o fluxo completo da aplicação:
+### Opção 2 — Gerar o APK (para desenvolvedores)
 
-**Usuário → Angular Frontend → Spring Boot Backend → PostgreSQL**
+**Pré-requisitos:**
+- [Node.js 18+](https://nodejs.org)
+- [Android Studio](https://developer.android.com/studio) (gratuito)
+- Java 17+
 
-- O **Frontend Angular** consome a REST API do Spring Boot via `MemberService` e `HttpClient`.
-- O **Backend Java** expõe endpoints REST através dos Controllers (`/api/members`, `/api/offerings`, `/api/tithes`), delega a lógica aos Services e persiste os dados via **JPA/Hibernate** nos Repositories.
-- O **Banco PostgreSQL** armazena três entidades principais: `members`, `offerings` e `tithes`, com relações 1:N entre membros e suas contribuições.
-- Todo o stack é **conteinerizado com Docker**, garantindo isolamento e replicabilidade entre ambientes.
+**Passo 1 — Instalar dependências do Capacitor**
 
-## Endpoints
+```bash
+cd frontend
+npm install @capacitor/core @capacitor/cli @capacitor/android
+```
 
-Aqui estão alguns dos endpoints principais do sistema:
+**Passo 2 — Adicionar plataforma Android**
 
-### Membros
+```bash
+npx cap add android
+```
 
-- **POST `/api/members`**: Adiciona um novo membro.
-- **GET `/api/members/{id}`**: Recupera um membro por ID.
+**Passo 3 — Sincronizar**
 
-### Ofertas
+```bash
+npx cap sync android
+```
 
-- **POST `/api/offerings`**: Adiciona uma nova oferta.
-- **GET `/api/offerings/{id}`**: Recupera uma oferta por ID.
+**Passo 4 — Abrir no Android Studio**
 
-## Conclusão
+```bash
+npx cap open android
+```
 
-O uso dessas tecnologias proporciona uma base sólida para desenvolvimento, manutenção e escalabilidade do projeto DIZIMAN, garantindo que a aplicação seja segura, eficiente e fácil de manter.
+**Passo 5 — Gerar o APK**
 
+Dentro do Android Studio:
+1. Aguarde o Gradle terminar de indexar
+2. Menu **Build → Build Bundle(s) / APK(s) → Build APK(s)**
+3. Clique em **"Build APK(s)"**
+4. O arquivo será gerado em:
+   ```
+   android/app/build/outputs/apk/debug/app-debug.apk
+   ```
+
+> Para APK de produção (assinado), veja a seção Play Store abaixo.
+
+---
+
+## 🏪 Publicar na Google Play Store
+
+### Requisitos antes de começar
+
+- Conta de desenvolvedor Google Play — cadastro em https://play.google.com/console
+- Taxa única de **US$ 25** (pagamento único, não anual)
+- Android Studio instalado
+- APK **assinado** (release, não debug)
+
+---
+
+### Passo 1 — Criar uma conta na Play Console
+
+1. Acesse https://play.google.com/console
+2. Clique em **"Começar"**
+3. Preencha os dados da sua conta (pode ser conta pessoal ou organizacional)
+4. Pague a taxa de US$ 25
+5. Aguarde a aprovação (normalmente algumas horas)
+
+---
+
+### Passo 2 — Gerar o APK assinado (release)
+
+No Android Studio:
+
+1. Menu **Build → Generate Signed Bundle / APK**
+2. Selecione **APK** e clique em **Next**
+3. Clique em **"Create new..."** para criar sua chave de assinatura:
+   - **Key store path**: e
