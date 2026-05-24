@@ -24,4 +24,13 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent
   ],
   imports: [
-    Brows
+    BrowserModule,
+    CommonModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
