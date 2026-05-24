@@ -85,4 +85,265 @@
               <label class="form-label fw-semibold small text-uppercase text-muted">Login <span class="text-danger">*</span></label>
               <div class="input-group">
                 <span class="input-group-text bg-light border-end-0"><i class="bi bi-at text-muted"></i></span>
-                <input type="text" class="form-control bor
+                <input type="text" class="form-control border-start-0 ps-0" name="login"
+                       [(ngModel)]="member.login" required placeholder="joao.silva">
+              </div>
+            </div>
+          </div>
+
+          <!-- Linha 2: Perfil | Gênero -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Perfil <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-award text-muted"></i></span>
+                <select class="form-select border-start-0" name="profile" [(ngModel)]="member.profile" required>
+                  <option value="">Selecione o perfil</option>
+                  <option value="Pastor">Pastor</option>
+                  <option value="Presbitero">Presbítero</option>
+                  <option value="Diacono">Diácono</option>
+                  <option value="Lider">Líder</option>
+                  <option value="Membro">Membro</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Gênero <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-gender-ambiguous text-muted"></i></span>
+                <select class="form-select border-start-0" name="gender" [(ngModel)]="member.gender" required>
+                  <option value="">Selecione</option>
+                  <option value="Male">Masculino</option>
+                  <option value="Female">Feminino</option>
+                  <option value="Other">Outro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linha 3: Data Nascimento | CEP -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Data de Nascimento</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-calendar3 text-muted"></i></span>
+                <input type="date" class="form-control border-start-0 ps-0" name="birthDate" [(ngModel)]="member.birthDate">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small text-uppercase text-muted">CEP</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-mailbox text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" name="zipCode"
+                       [(ngModel)]="member.zipCode" (input)="maskCep($event)"
+                       placeholder="00000-000" maxlength="9">
+              </div>
+            </div>
+          </div>
+
+          <!-- Linha 4: Endereço -->
+          <div class="row g-3 mb-3">
+            <div class="col-12">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Endereço</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-geo-alt text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" name="address"
+                       [(ngModel)]="member.address" placeholder="Rua, número, complemento">
+              </div>
+            </div>
+          </div>
+
+          <!-- Linha 5: Cidade | Estado -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-8">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Cidade</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-building text-muted"></i></span>
+                <input type="text" class="form-control border-start-0 ps-0" name="city"
+                       [(ngModel)]="member.city" placeholder="Cidade">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold small text-uppercase text-muted">Estado</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0"><i class="bi bi-map text-muted"></i></span>
+                <select class="form-select border-start-0" name="state" [(ngModel)]="member.state">
+                  <option value="">UF</option>
+                  <option *ngFor="let uf of estados" [value]="uf">{{ uf }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões -->
+          <div class="d-flex gap-2 justify-content-end pt-2 border-top">
+            <button type="button" class="btn btn-outline-secondary px-4" (click)="resetForm()" *ngIf="editingMember">
+              <i class="bi bi-x-circle me-1"></i> Cancelar
+            </button>
+            <button type="button" class="btn btn-outline-secondary px-4" (click)="activeTab = 'lista'">
+              <i class="bi bi-arrow-left me-1"></i> Voltar
+            </button>
+            <button type="submit" class="btn btn-primary px-5" [disabled]="isSaving">
+              <span *ngIf="isSaving" class="spinner-border spinner-border-sm me-2"></span>
+              <i *ngIf="!isSaving" class="bi me-2" [ngClass]="editingMember ? 'bi-check2-square' : 'bi-person-check-fill'"></i>
+              {{ isSaving ? 'Salvando...' : (editingMember ? 'Salvar Alterações' : 'Salvar Membro') }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABA: LISTA ===== -->
+  <div *ngIf="activeTab === 'lista'">
+    <div class="card border-0 shadow-sm" style="border-radius:16px; overflow:hidden;">
+
+      <!-- Toolbar: busca + filtro -->
+      <div class="card-header bg-white border-0 p-4">
+        <div class="row g-3 align-items-center">
+          <div class="col-md-5">
+            <div class="input-group">
+              <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+              <input type="text" class="form-control border-start-0 ps-0" placeholder="Buscar por nome, login ou cidade..."
+                     [(ngModel)]="searchTerm" (ngModelChange)="onSearch()" name="search">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <select class="form-select" [(ngModel)]="filterPerfil" (ngModelChange)="onSearch()" name="filterPerfil">
+              <option value="">Todos os perfis</option>
+              <option value="Pastor">Pastor</option>
+              <option value="Presbitero">Presbítero</option>
+              <option value="Diacono">Diácono</option>
+              <option value="Lider">Líder</option>
+              <option value="Membro">Membro</option>
+            </select>
+          </div>
+          <div class="col-md-4 text-end">
+            <span class="text-muted small me-3">{{ filteredMembers.length }} membro(s)</span>
+            <button class="btn btn-primary" (click)="abrirFormulario()">
+              <i class="bi bi-person-plus-fill me-1"></i> Novo Membro
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div *ngIf="isLoading" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2 text-muted small">Carregando membros...</p>
+      </div>
+
+      <!-- Tabela -->
+      <div *ngIf="!isLoading" class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead style="background:#f8f9fa; border-top:2px solid #e9ecef;">
+            <tr>
+              <th class="px-4 py-3 text-muted small fw-semibold" style="cursor:pointer;" (click)="sortBy('name')">
+                NOME <i class="bi" [ngClass]="getSortIcon('name')"></i>
+              </th>
+              <th class="py-3 text-muted small fw-semibold" style="cursor:pointer;" (click)="sortBy('profile')">
+                PERFIL <i class="bi" [ngClass]="getSortIcon('profile')"></i>
+              </th>
+              <th class="py-3 text-muted small fw-semibold">GÊNERO</th>
+              <th class="py-3 text-muted small fw-semibold" style="cursor:pointer;" (click)="sortBy('city')">
+                CIDADE / UF <i class="bi" [ngClass]="getSortIcon('city')"></i>
+              </th>
+              <th class="py-3 text-muted small fw-semibold">CEP</th>
+              <th class="py-3 text-muted small fw-semibold">NASCIMENTO</th>
+              <th class="py-3 pe-4 text-muted small fw-semibold text-end">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="paginatedMembers.length === 0">
+              <td colspan="7" class="text-center py-5 text-muted">
+                <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                Nenhum membro encontrado.
+              </td>
+            </tr>
+            <tr *ngFor="let m of paginatedMembers" class="member-row">
+              <td class="px-4 py-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="avatar-circle" [style.background]="getAvatarColor(m.name)">
+                    {{ getInitials(m.name) }}
+                  </div>
+                  <div>
+                    <div class="fw-semibold" style="color:#1e3a5f;">{{ m.name }}</div>
+                    <small class="text-muted">{{ m.login }}</small>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="badge rounded-pill px-3 py-2" [ngClass]="getPerfilBadge(m.profile)">
+                  {{ m.profile }}
+                </span>
+              </td>
+              <td class="text-muted small">
+                <i class="bi me-1" [ngClass]="m.gender === 'Male' ? 'bi-gender-male text-primary' : m.gender === 'Female' ? 'bi-gender-female text-danger' : 'bi-gender-ambiguous'"></i>
+                {{ m.gender === 'Male' ? 'Masc.' : m.gender === 'Female' ? 'Fem.' : 'Outro' }}
+              </td>
+              <td class="text-muted small">{{ m.city }} / {{ m.state }}</td>
+              <td class="text-muted small">{{ m.zipCode }}</td>
+              <td class="text-muted small">{{ m.birthDate | date:'dd/MM/yyyy' }}</td>
+              <td class="pe-4 text-end">
+                <button class="btn btn-sm btn-light me-1" title="Editar" (click)="editMember(m)"
+                        style="width:34px;height:34px;padding:0;border-radius:8px;">
+                  <i class="bi bi-pencil-fill text-primary"></i>
+                </button>
+                <button class="btn btn-sm btn-light" title="Excluir" (click)="confirmDelete(m)"
+                        style="width:34px;height:34px;padding:0;border-radius:8px;">
+                  <i class="bi bi-trash3-fill text-danger"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
+      <div *ngIf="!isLoading && filteredMembers.length > pageSize" class="card-footer bg-white border-top d-flex justify-content-between align-items-center px-4 py-3">
+        <small class="text-muted">
+          Mostrando {{ (currentPage - 1) * pageSize + 1 }}–{{ min(currentPage * pageSize, filteredMembers.length) }} de {{ filteredMembers.length }}
+        </small>
+        <nav>
+          <ul class="pagination pagination-sm mb-0 gap-1">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link rounded" (click)="changePage(currentPage - 1)" style="cursor:pointer;">
+                <i class="bi bi-chevron-left"></i>
+              </a>
+            </li>
+            <li class="page-item" *ngFor="let p of getPages()"
+                [class.active]="p === currentPage">
+              <a class="page-link rounded" (click)="changePage(p)" style="cursor:pointer;">{{ p }}</a>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link rounded" (click)="changePage(currentPage + 1)" style="cursor:pointer;">
+                <i class="bi bi-chevron-right"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de confirmação de exclusão -->
+  <div class="modal-overlay" *ngIf="memberToDelete" (click)="cancelDelete()">
+    <div class="modal-dialog-custom" (click)="$event.stopPropagation()">
+      <div class="text-center mb-3">
+        <div class="danger-icon mb-3">
+          <i class="bi bi-trash3-fill fs-2 text-danger"></i>
+        </div>
+        <h5 class="fw-bold mb-1">Excluir membro?</h5>
+        <p class="text-muted mb-0">Tem certeza que deseja excluir <strong>{{ memberToDelete?.name }}</strong>? Esta ação não pode ser desfeita.</p>
+      </div>
+      <div class="d-flex gap-2 justify-content-center mt-4">
+        <button class="btn btn-outline-secondary px-4" (click)="cancelDelete()">Cancelar</button>
+        <button class="btn btn-danger px-4" (click)="deleteMemberConfirmed()" [disabled]="isSaving">
+          <span *ngIf="isSaving" class="spinner-border spinner-border-sm me-1"></span>
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
