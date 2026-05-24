@@ -1,5 +1,6 @@
 package com.diziman.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,7 +26,5 @@ public class Offering {
     @Column(nullable = false)
     private Double value;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
-}
+    @ManyToOne(fetch = FetchType.EAGER)
+  

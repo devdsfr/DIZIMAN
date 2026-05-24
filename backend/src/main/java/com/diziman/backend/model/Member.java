@@ -1,5 +1,6 @@
 package com.diziman.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import jakarta.persistence.*;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Member {
 
     @Id
@@ -39,9 +41,3 @@ public class Member {
 
     @NotBlank(message = "Address cannot be empty.")
     @Size(max = 200, message = "Address can have a maximum of 200 characters.")
-    private String address;
-
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registrationDate;
-}
