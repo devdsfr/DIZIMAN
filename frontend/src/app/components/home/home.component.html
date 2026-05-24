@@ -1,55 +1,42 @@
 <div class="container mt-5">
-  <h1 class="text-center mb-4">DIZIMAN - Menu Inicial</h1>
-  <div class="row">
-    <!-- Card de Cadastro de Membro -->
-    <div class="col-md-4 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-            Cadastro de Membro
-          </h5>
-          <p class="card-text">Adicione e gerencie os membros da sua igreja.</p>
-          <button class="btn btn-primary" (click)="navigateToMember()">Acessar</button>
+  <h1 class="text-center mb-2">DIZIMAN</h1>
+  <p class="text-center text-muted mb-5">Sistema de Gestão da Igreja</p>
+
+  <div class="row justify-content-center">
+    <!-- Cadastro de Membro -->
+    <div class="col-md-3 mb-4">
+      <div class="card shadow h-100 border-0">
+        <div class="card-body text-center d-flex flex-column">
+          <div style="font-size: 3rem;" class="mb-3">&#128106;</div>
+          <h5 class="card-title fw-bold">Cadastro de Membros</h5>
+          <p class="card-text text-muted flex-grow-1">Adicione e gerencie os membros da sua igreja.</p>
+          <a routerLink="/members" class="btn btn-primary mt-2">Acessar</a>
         </div>
       </div>
     </div>
 
-    <!-- Card de Registro do Dízimo -->
-    <div class="col-md-4 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-             Registro do Dízimo
-          </h5>
-          <p class="card-text">Registre e controle os dízimos recebidos.</p>
-          <button class="btn btn-secondary" disabled title="Em desenvolvimento">Em breve</button>
+    <!-- Registro do Dízimo -->
+    <div class="col-md-3 mb-4">
+      <div class="card shadow h-100 border-0">
+        <div class="card-body text-center d-flex flex-column">
+          <div style="font-size: 3rem;" class="mb-3">&#9781;</div>
+          <h5 class="card-title fw-bold">Registro do Dízimo</h5>
+          <p class="card-text text-muted flex-grow-1">Registre e controle os dízimos recebidos.</p>
+          <a routerLink="/tithe-registration" class="btn btn-primary mt-2">Acessar</a>
         </div>
       </div>
     </div>
 
-    <!-- Card de Registro da Oferta -->
-    <div class="col-md-4 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-             Registro da Oferta
-          </h5>
-          <p class="card-text">Gerencie as ofertas dadas à igreja.</p>
-          <button class="btn btn-secondary" disabled title="Em desenvolvimento">Em breve</button>
+    <!-- Registro da Oferta -->
+    <div class="col-md-3 mb-4">
+      <div class="card shadow h-100 border-0">
+        <div class="card-body text-center d-flex flex-column">
+          <div style="font-size: 3rem;" class="mb-3">&#9830;</div>
+          <h5 class="card-title fw-bold">Registro da Oferta</h5>
+          <p class="card-text text-muted flex-grow-1">Gerencie as ofertas recebidas pela igreja.</p>
+          <a routerLink="/offering-registration" class="btn btn-success mt-2">Acessar</a>
         </div>
       </div>
     </div>
 
-    <div class="col-md-4 mb-4">
-      <div class="card shadow">
-        <div class="card-body">
-          <h5 class="card-title">
-             Dashboard Financeiro
-          </h5>
-          <p class="card-text">Gerencie as finanças dadas à igreja.</p>
-          <button class="btn btn-secondary" disabled title="Em desenvolvimento">Em breve</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- Dashboard Financ

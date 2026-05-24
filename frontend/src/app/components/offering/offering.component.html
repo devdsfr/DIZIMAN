@@ -1,0 +1,121 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center mb-4">
+    <button class="btn btn-outline-secondary me-3" (click)="voltarHome()">&#8592; Voltar</button>
+    <h2 class="mb-0">Registro da Oferta</h2>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ successMessage }}
+    <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ errorMessage }}
+    <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+  </div>
+
+  <!-- Formulário -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-header text-white" style="background-color: #198754;">
+      <h5 class="mb-0">{{ selectedOffering ? 'Editar Oferta' : 'Nova Oferta' }}</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #offeringForm="ngForm">
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="value" class="form-label">Valor (R$) <span class="text-danger">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              id="value"
+              name="value"
+              [(ngModel)]="offering.value"
+              placeholder="0.00"
+              step="0.01"
+              min="0"
+              required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="offeringDate" class="form-label">Data <span class="text-danger">*</span></label>
+            <input
+              type="date"
+              class="form-control"
+              id="offeringDate"
+              name="offeringDate"
+              [(ngModel)]="offering.offeringDate"
+              required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="churchProject" class="form-label">Projeto / Destino <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              id="churchProject"
+              name="churchProject"
+              [(ngModel)]="offering.churchProject"
+              placeholder="Ex: Missões, Construção..."
+              required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="member" class="form-label">Membro</label>
+            <select class="form-select" id="member" name="member" [(ngModel)]="selectedMemberId">
+              <option [ngValue]="null">Selecione um membro</option>
+              <option *ngFor="let m of members" [ngValue]="m.id">{{ m.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-success">
+            {{ selectedOffering ? 'Atualizar' : 'Registrar Oferta' }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="selectedOffering">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabela -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">Ofertas Registradas</h5>
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-striped table-hover mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Membro</th>
+            <th>Projeto / Destino</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="offerings.length === 0">
+            <td colspan="6" class="text-center py-4 text-muted">Nenhuma oferta registrada ainda.</td>
+          </tr>
+          <tr *ngFor="let o of offerings">
+            <td>{{ o.id }}</td>
+            <td>{{ getMemberName(o) }}</td>
+            <td>{{ o.churchProject }}</td>
+            <td>R$ {{ o.value | number:'1.2-2' }}</td>
+            <td>{{ o.offeringDate | date:'dd/MM/yyyy' }}</td>
+            <td class="text-center">
+              <button class="btn btn-primary btn-sm me-1" (click)="editOffering(o)">Editar</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteOffering(o.id)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot *ngIf="offerings.length > 0" class="table-secondary fw-bold">
+          <tr>
+            <td colspan="3">Total</td>
+            <td>R$ {{ totalOfferings | number:'1.2-2' }}</td>
+            <td colspan="2"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

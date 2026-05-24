@@ -1,0 +1,174 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center mb-4">
+    <button class="btn btn-outline-secondary me-3" (click)="voltarHome()">&#8592; Voltar</button>
+    <h2 class="mb-0">Dashboard Financeiro</h2>
+    <button class="btn btn-outline-primary ms-auto" (click)="loadAll()">&#8635; Atualizar</button>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+    <p class="mt-2 text-muted">Carregando dados...</p>
+  </div>
+
+  <div *ngIf="!loading">
+    <!-- Cards de resumo -->
+    <div class="row mb-4">
+      <div class="col-md-3 mb-3">
+        <div class="card shadow-sm border-0 h-100" style="border-left: 4px solid #0d6efd !important;">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="text-muted mb-1 small">Total Dízimos</p>
+                <h4 class="fw-bold text-primary mb-0">R$ {{ totalTithes | number:'1.2-2' }}</h4>
+                <small class="text-muted">{{ tithes.length }} registro(s)</small>
+              </div>
+              <span style="font-size: 2rem;">&#9781;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="text-muted mb-1 small">Total Ofertas</p>
+                <h4 class="fw-bold text-success mb-0">R$ {{ totalOfferings | number:'1.2-2' }}</h4>
+                <small class="text-muted">{{ offerings.length }} registro(s)</small>
+              </div>
+              <span style="font-size: 2rem;">&#9830;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="text-muted mb-1 small">Total Geral</p>
+                <h4 class="fw-bold text-dark mb-0">R$ {{ totalGeral | number:'1.2-2' }}</h4>
+                <small class="text-muted">{{ tithes.length + offerings.length }} registro(s)</small>
+              </div>
+              <span style="font-size: 2rem;">&#128179;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card shadow-sm border-0 h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="text-muted mb-1 small">Membros Ativos</p>
+                <h4 class="fw-bold text-warning mb-0">{{ totalMembers }}</h4>
+                <small class="text-muted">cadastrados</small>
+              </div>
+              <span style="font-size: 2rem;">&#128106;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Transações recentes -->
+      <div class="col-md-8 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Transações Recentes</h5>
+            <span class="badge bg-secondary">{{ recentTransactions.length }}</span>
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+              <thead class="table-dark">
+                <tr>
+                  <th>Tipo</th>
+                  <th>Descrição</th>
+                  <th>Membro</th>
+                  <th>Valor</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="recentTransactions.length === 0">
+                  <td colspan="5" class="text-center py-4 text-muted">Nenhuma transação registrada.</td>
+                </tr>
+                <tr *ngFor="let tx of recentTransactions">
+                  <td>
+                    <span
+                      class="badge"
+                      [ngClass]="tx.tipo === 'Dízimo' ? 'bg-primary' : 'bg-success'">
+                      {{ tx.tipo }}
+                    </span>
+                  </td>
+                  <td>{{ tx.descricao }}</td>
+                  <td>{{ tx.membro }}</td>
+                  <td class="fw-bold">R$ {{ tx.valor | number:'1.2-2' }}</td>
+                  <td>{{ tx.data | date:'dd/MM/yyyy' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ofertas por projeto -->
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Ofertas por Projeto</h5>
+          </div>
+          <div class="card-body">
+            <div *ngIf="projetosTotais.length === 0" class="text-center text-muted py-3">
+              Nenhuma oferta registrada.
+            </div>
+            <div *ngFor="let p of projetosTotais" class="mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="small fw-bold">{{ p.nome }}</span>
+                <span class="small text-muted">R$ {{ p.total | number:'1.2-2' }}</span>
+              </div>
+              <div class="progress" style="height: 8px;">
+                <div
+                  class="progress-bar bg-success"
+                  [style.width.%]="getBarWidth(p.total)">
+                </div>
+              </div>
+            </div>
+
+            <!-- Divisão Dízimo x Oferta -->
+            <hr>
+            <h6 class="text-muted small mb-3">Composição do Total</h6>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="small">Dízimos</span>
+                <span class="small">{{ totalGeral > 0 ? ((totalTithes / totalGeral) * 100 | number:'1.0-0') : 0 }}%</span>
+              </div>
+              <div class="progress" style="height: 8px;">
+                <div
+                  class="progress-bar bg-primary"
+                  [style.width.%]="totalGeral > 0 ? (totalTithes / totalGeral) * 100 : 0">
+                </div>
+              </div>
+            </div>
+            <div class="mb-2">
+              <div class="d-flex justify-content-between mb-1">
+                <span class="small">Ofertas</span>
+                <span class="small">{{ totalGeral > 0 ? ((totalOfferings / totalGeral) * 100 | number:'1.0-0') : 0 }}%</span>
+              </div>
+              <div class="progress" style="height: 8px;">
+                <div
+                  class="progress-bar bg-success"
+                  [style.width.%]="totalGeral > 0 ? (totalOfferings / totalGeral) * 100 : 0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
