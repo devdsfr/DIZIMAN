@@ -74,4 +74,55 @@
           <button type="submit" class="btn btn-success px-4">
             {{ selectedMember ? '&#10003; Salvar Alterações' : '&#10003; Salvar Membro' }}
           </button>
-          <button type="button" class="btn btn-secondary" (click)="re
+          <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="selectedMember">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabela -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Membros Cadastrados</h5>
+      <span class="badge bg-primary">{{ members.length }}</span>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th>Nome</th>
+              <th>Login</th>
+              <th>Perfil</th>
+              <th>Gênero</th>
+              <th>Cidade/UF</th>
+              <th>CEP</th>
+              <th>Nascimento</th>
+              <th class="text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="members.length === 0">
+              <td colspan="8" class="text-center py-4 text-muted">Nenhum membro cadastrado.</td>
+            </tr>
+            <tr *ngFor="let m of members">
+              <td class="fw-bold">{{ m.name }}</td>
+              <td class="text-muted small">{{ m.login }}</td>
+              <td><span class="badge bg-secondary">{{ m.profile }}</span></td>
+              <td>{{ m.gender === 'Male' ? 'Masculino' : m.gender === 'Female' ? 'Feminino' : 'Outro' }}</td>
+              <td>{{ m.city }} / {{ m.state }}</td>
+              <td>{{ m.zipCode }}</td>
+              <td>{{ m.birthDate | date:'dd/MM/yyyy' }}</td>
+              <td class="text-center">
+                <button class="btn btn-primary btn-sm me-1" (click)="editMember(m)">Editar</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteMember(m.id)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

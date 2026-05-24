@@ -77,4 +77,29 @@ export class MemberComponent implements OnInit {
     this.memberService.deleteMember(id).subscribe({
       next: () => {
         this.members = this.members.filter(m => m.id !== id);
-        this.successMessage = 'Membro excluído com suce
+        this.successMessage = 'Membro excluído com sucesso!';
+      },
+      error: (err: any) => {
+        console.error('Erro ao excluir membro:', err);
+        this.errorMessage = 'Erro ao excluir o membro.';
+      }
+    });
+  }
+
+  editMember(member: Member): void {
+    this.selectedMember = member;
+    this.member = { ...member };
+    if (this.member.birthDate) {
+      this.member.birthDate = new Date(this.member.birthDate).toISOString().substring(0, 10);
+    }
+    this.successMessage = '';
+    this.errorMessage = '';
+  }
+
+  resetForm(): void {
+    this.member = new Member();
+    this.member.registrationDate = new Date().toISOString();
+    this.selectedMember = null;
+    this.errorMessage = '';
+  }
+}
