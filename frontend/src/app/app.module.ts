@@ -11,6 +11,7 @@ import { MemberComponent } from './components/member/member.component';
 import { TitheComponent } from './components/tithe/tithe.component';
 import { OfferingComponent } from './components/offering/offering.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +20,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MemberComponent,
     TitheComponent,
     OfferingComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule,
-    CommonModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+    Brows

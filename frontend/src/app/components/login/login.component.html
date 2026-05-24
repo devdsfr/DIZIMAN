@@ -1,0 +1,78 @@
+<div class="login-page">
+  <div class="login-container">
+
+    <!-- Logo / cabeçalho -->
+    <div class="text-center mb-4">
+      <div class="church-icon mb-3">&#9962;</div>
+      <h2 class="fw-bold mb-1" style="color:#1e3a5f;">DIZIMAN</h2>
+      <p class="text-muted small mb-0">Sistema de Gestão da Igreja</p>
+    </div>
+
+    <!-- Card de login -->
+    <div class="login-card">
+      <h5 class="fw-bold mb-1 text-center" style="color:#1e3a5f;">Bem-vindo!</h5>
+      <p class="text-muted text-center small mb-4">Faça login para continuar</p>
+
+      <div *ngIf="error" class="alert alert-danger d-flex align-items-center gap-2 py-2 mb-3" style="border-radius:10px;">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span>{{ error }}</span>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+        <!-- Usuário -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold small text-muted text-uppercase">Usuário</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-end-0">
+              <i class="bi bi-person text-muted"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control border-start-0 ps-0"
+              [(ngModel)]="username"
+              name="username"
+              placeholder="seu.usuario"
+              autocomplete="username"
+              [class.is-invalid]="error && !username"
+              required>
+          </div>
+        </div>
+
+        <!-- Senha -->
+        <div class="mb-4">
+          <label class="form-label fw-semibold small text-muted text-uppercase">Senha</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-end-0">
+              <i class="bi bi-lock text-muted"></i>
+            </span>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control border-start-0 border-end-0 ps-0"
+              [(ngModel)]="password"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required>
+            <button type="button" class="input-group-text bg-light border-start-0"
+                    (click)="showPassword = !showPassword"
+                    style="cursor:pointer;">
+              <i class="bi text-muted" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Botão entrar -->
+        <button type="submit" class="btn w-100 fw-semibold py-2 login-btn" [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+          <i *ngIf="!loading" class="bi bi-box-arrow-in-right me-2"></i>
+          {{ loading ? 'Entrando...' : 'Entrar' }}
+        </button>
+      </form>
+    </div>
+
+    <p class="text-center text-muted mt-4" style="font-size:0.75rem;">
+      DIZIMAN &copy; {{ year }} — Gestão de Igrejas
+    </p>
+  </div>
+</div>
