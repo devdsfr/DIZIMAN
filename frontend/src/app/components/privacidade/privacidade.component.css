@@ -1,0 +1,58 @@
+.doc-header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+}
+
+.nav-tabs .nav-link {
+  color: #6c757d;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #2563eb;
+  border-bottom-color: #c7d8fd;
+}
+
+.nav-tabs .nav-link.active {
+  color: #2563eb;
+  font-weight: 600;
+  border-bottom: 3px solid #2563eb;
+  background: transparent;
+}
+
+.doc-section {
+  border-left: 4px solid #2563eb;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.doc-section h5 {
+  color: #1e3a5f;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.doc-section p, .doc-section li {
+  color: #374151;
+  line-height: 1.7;
+}
+
+.highlight-box {
+  background: #eff6ff;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #2563eb;
+}
+
+.badge-lgpd {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

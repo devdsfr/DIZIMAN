@@ -1,0 +1,303 @@
+<div style="min-height:100vh; background:#f0f2f5;">
+
+  <!-- Cabeçalho -->
+  <div class="doc-header text-white py-4 px-3 text-center">
+    <h3 class="fw-bold mb-1"><i class="bi bi-shield-check me-2"></i>Privacidade & Termos</h3>
+    <p class="mb-0 opacity-75 small">DIZIMAN — Sistema de Gestão da Igreja</p>
+  </div>
+
+  <div class="container py-4" style="max-width:800px;">
+
+    <!-- Abas -->
+    <ul class="nav nav-tabs bg-white rounded-top shadow-sm px-2 pt-2" style="border-bottom:none;">
+      <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'privacidade'" (click)="activeTab='privacidade'">
+          <i class="bi bi-shield-lock me-1"></i> Política de Privacidade
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'termos'" (click)="activeTab='termos'">
+          <i class="bi bi-file-text me-1"></i> Termos de Uso
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [class.active]="activeTab === 'cookies'" (click)="activeTab='cookies'">
+          <i class="bi bi-cookie me-1"></i> Cookies
+        </button>
+      </li>
+    </ul>
+
+    <!-- Conteúdo -->
+    <div class="bg-white shadow-sm rounded-bottom p-4">
+
+      <!-- ========== POLÍTICA DE PRIVACIDADE ========== -->
+      <div *ngIf="activeTab === 'privacidade'">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h4 class="fw-bold mb-0" style="color:#1e3a5f;">Política de Privacidade</h4>
+          <span class="badge-lgpd"><i class="bi bi-check-circle me-1"></i>LGPD</span>
+        </div>
+        <p class="text-muted small mb-4">Última atualização: {{ today | date:'dd/MM/yyyy' }}</p>
+
+        <div class="highlight-box">
+          <p class="mb-0 small">
+            <strong>Resumo:</strong> O DIZIMAN coleta apenas os dados necessários para o funcionamento do sistema de gestão da igreja. Não coletamos CPF, RG ou dados financeiros bancários. Você tem o direito de acessar, corrigir e excluir seus dados a qualquer momento.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h5>1. Quem somos</h5>
+          <p>O <strong>DIZIMAN</strong> é um sistema de gestão eclesiástica desenvolvido para facilitar o controle de membros, dízimos e ofertas de igrejas. Este documento descreve como tratamos os dados pessoais coletados em nossa plataforma, em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018)</strong>.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>2. Quais dados coletamos</h5>
+          <p>Coletamos apenas os dados estritamente necessários para o funcionamento do sistema:</p>
+          <ul>
+            <li><strong>Dados cadastrais dos membros:</strong> nome completo, data de nascimento, telefone, endereço (logradouro, CEP, cidade, estado), e-mail e perfil (membro, líder, pastor).</li>
+            <li><strong>Dados financeiros eclesiásticos:</strong> valor e data dos dízimos e ofertas registrados, e o projeto/destinação da oferta. Esses dados são de natureza eclesiástica e não incluem dados bancários, CPF ou RG.</li>
+            <li><strong>Dados de acesso:</strong> nome de usuário utilizado para login no sistema.</li>
+          </ul>
+          <p><strong>Não coletamos</strong> CPF, RG, dados de cartão de crédito, dados bancários, localização em tempo real ou qualquer dado sensível conforme definido pelo artigo 5º, inciso II da LGPD.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>3. Por que coletamos esses dados (base legal)</h5>
+          <p>O tratamento dos dados pessoais é realizado com base nas seguintes hipóteses legais previstas na LGPD:</p>
+          <ul>
+            <li><strong>Execução de contrato/legítimo interesse:</strong> para permitir o gerenciamento dos membros da igreja e o registro de contribuições eclesiásticas.</li>
+            <li><strong>Obrigação legal:</strong> registros financeiros de organizações religiosas podem ser exigidos para fins contábeis e comprovação junto a órgãos reguladores.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>4. Como utilizamos os dados</h5>
+          <p>Os dados coletados são utilizados exclusivamente para:</p>
+          <ul>
+            <li>Cadastro e gestão dos membros da igreja;</li>
+            <li>Registro e controle de dízimos e ofertas;</li>
+            <li>Geração de relatórios financeiros para uso interno da igreja;</li>
+            <li>Autenticação e controle de acesso ao sistema.</li>
+          </ul>
+          <p>Os dados <strong>não são</strong> compartilhados com terceiros, vendidos, alugados ou utilizados para fins publicitários.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>5. Armazenamento e segurança</h5>
+          <p>Os dados são armazenados em banco de dados PostgreSQL hospedado na plataforma Render.com, localizada em servidores nos Estados Unidos, com acesso restrito por credenciais seguras. A comunicação entre o aplicativo e o servidor utiliza protocolo HTTPS/TLS.</p>
+          <p>Aplicamos medidas técnicas e organizacionais adequadas para proteger os dados contra acesso não autorizado, perda, alteração ou destruição.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>6. Seus direitos (LGPD)</h5>
+          <p>Como titular dos dados, você tem os seguintes direitos garantidos pela LGPD:</p>
+          <ul>
+            <li><strong>Acesso:</strong> solicitar confirmação e acesso aos seus dados;</li>
+            <li><strong>Correção:</strong> solicitar a atualização de dados incompletos ou incorretos;</li>
+            <li><strong>Exclusão:</strong> solicitar a eliminação dos seus dados;</li>
+            <li><strong>Portabilidade:</strong> solicitar a exportação dos seus dados;</li>
+            <li><strong>Revogação do consentimento:</strong> retirar o consentimento a qualquer momento;</li>
+            <li><strong>Oposição:</strong> opor-se ao tratamento em determinadas circunstâncias.</li>
+          </ul>
+          <p>Para exercer seus direitos, entre em contato com o administrador do sistema da sua igreja.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>7. Retenção dos dados</h5>
+          <p>Os dados são mantidos enquanto o membro estiver ativo no sistema ou enquanto necessário para cumprimento de obrigação legal. Após solicitação de exclusão, os dados serão removidos em até 30 dias, salvo obrigação legal de retenção.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>8. Encarregado de Dados (DPO)</h5>
+          <p>O responsável pelo tratamento de dados é o administrador da instalação do DIZIMAN em cada igreja. Dúvidas sobre o tratamento de dados devem ser direcionadas ao administrador local ou ao desenvolvedor pelo e-mail: <strong>devdsfr&#64;gmail.com</strong>.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>9. Alterações nesta política</h5>
+          <p>Esta política pode ser atualizada periodicamente. Alterações significativas serão comunicadas por meio do sistema. O uso continuado do sistema após as alterações implica aceitação da nova versão.</p>
+        </div>
+      </div>
+
+      <!-- ========== TERMOS DE USO ========== -->
+      <div *ngIf="activeTab === 'termos'">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h4 class="fw-bold mb-0" style="color:#1e3a5f;">Termos de Uso</h4>
+          <span class="badge-lgpd"><i class="bi bi-check-circle me-1"></i>LGPD</span>
+        </div>
+        <p class="text-muted small mb-4">Última atualização: {{ today | date:'dd/MM/yyyy' }}</p>
+
+        <div class="highlight-box">
+          <p class="mb-0 small">
+            <strong>Importante:</strong> Ao utilizar o DIZIMAN, você concorda com estes termos. O sistema é destinado exclusivamente ao uso interno de igrejas para gerenciamento de membros e contribuições.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h5>1. Aceitação dos Termos</h5>
+          <p>Ao acessar ou utilizar o sistema DIZIMAN, você declara ter lido, compreendido e concordado com estes Termos de Uso. Caso não concorde, não utilize o sistema.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>2. Descrição do serviço</h5>
+          <p>O DIZIMAN é uma plataforma de gestão eclesiástica que permite o cadastro de membros, registro de dízimos e ofertas, e geração de relatórios financeiros para igrejas. O sistema é disponibilizado como aplicação web e aplicativo Android.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>3. Elegibilidade e acesso</h5>
+          <p>O acesso ao sistema é restrito a usuários autorizados pela liderança da igreja. Cada usuário recebe credenciais de acesso (usuário e senha) que são pessoais e intransferíveis. O compartilhamento de credenciais é proibido.</p>
+          <p>O usuário é responsável por:</p>
+          <ul>
+            <li>Manter a confidencialidade de suas credenciais;</li>
+            <li>Notificar imediatamente o administrador em caso de uso não autorizado de sua conta;</li>
+            <li>Todas as ações realizadas com suas credenciais de acesso.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>4. Uso permitido</h5>
+          <p>O sistema pode ser utilizado para:</p>
+          <ul>
+            <li>Cadastro, consulta, edição e exclusão de membros da igreja;</li>
+            <li>Registro e consulta de dízimos e ofertas;</li>
+            <li>Visualização do dashboard financeiro;</li>
+            <li>Gestão interna da comunidade eclesiástica.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>5. Uso proibido</h5>
+          <p>É expressamente proibido:</p>
+          <ul>
+            <li>Utilizar o sistema para fins comerciais não autorizados pelo desenvolvedor;</li>
+            <li>Tentar acessar, modificar ou interferir no código-fonte do sistema;</li>
+            <li>Utilizar o sistema para armazenar dados de pessoas sem o seu consentimento;</li>
+            <li>Realizar engenharia reversa, descompilar ou desmontar o sistema;</li>
+            <li>Compartilhar credenciais de acesso com pessoas não autorizadas;</li>
+            <li>Registrar dados falsos ou fraudulentos;</li>
+            <li>Utilizar o sistema para qualquer finalidade ilegal.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>6. Responsabilidade pelos dados</h5>
+          <p>A liderança da igreja (operador) é responsável por:</p>
+          <ul>
+            <li>Obter o consentimento dos membros para o cadastro de seus dados;</li>
+            <li>Garantir que os dados inseridos sejam precisos e atualizados;</li>
+            <li>Utilizar os dados conforme a finalidade para a qual foram coletados;</li>
+            <li>Cumprir com as obrigações da LGPD como operador de dados.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>7. Disponibilidade do serviço</h5>
+          <p>O DIZIMAN é disponibilizado no modelo "como está" (as-is). O desenvolvedor não garante disponibilidade ininterrupta do serviço. Em especial, o plano gratuito da Render.com pode resultar em períodos de inatividade por inatividade prolongada. Para uso em produção, recomenda-se a contratação de plano pago.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>8. Limitação de responsabilidade</h5>
+          <p>O desenvolvedor não se responsabiliza por:</p>
+          <ul>
+            <li>Perda de dados decorrente de falha de infraestrutura de terceiros;</li>
+            <li>Uso indevido do sistema pelos usuários ou operadores;</li>
+            <li>Danos indiretos, consequenciais ou punitivos decorrentes do uso do sistema.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>9. Propriedade intelectual</h5>
+          <p>O código-fonte, design, marca e todos os elementos do DIZIMAN são de propriedade do desenvolvedor. Nenhum direito de propriedade intelectual é transferido ao usuário ou operador pelo uso do sistema.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>10. Legislação aplicável</h5>
+          <p>Estes Termos são regidos pela legislação brasileira. Fica eleito o foro da comarca do domicílio do operador para dirimir quaisquer controvérsias decorrentes deste instrumento, com renúncia a qualquer outro.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>11. Alterações dos Termos</h5>
+          <p>Estes Termos podem ser atualizados a qualquer momento. O uso continuado do sistema após a publicação das alterações implica aceitação dos novos termos.</p>
+        </div>
+      </div>
+
+      <!-- ========== COOKIES ========== -->
+      <div *ngIf="activeTab === 'cookies'">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h4 class="fw-bold mb-0" style="color:#1e3a5f;">Aviso de Cookies e Armazenamento Local</h4>
+          <span class="badge-lgpd"><i class="bi bi-check-circle me-1"></i>LGPD</span>
+        </div>
+        <p class="text-muted small mb-4">Última atualização: {{ today | date:'dd/MM/yyyy' }}</p>
+
+        <div class="highlight-box">
+          <p class="mb-0 small">
+            <strong>Resumo:</strong> O DIZIMAN utiliza apenas armazenamento local (localStorage) para manter sua sessão ativa. Não utilizamos cookies de rastreamento, publicidade ou analytics de terceiros.
+          </p>
+        </div>
+
+        <div class="doc-section">
+          <h5>1. O que é o armazenamento local?</h5>
+          <p>O armazenamento local (localStorage) é uma tecnologia do navegador que permite que aplicações web guardem pequenas quantidades de informação no dispositivo do usuário. Diferentemente dos cookies tradicionais, o localStorage não é enviado automaticamente ao servidor a cada requisição.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>2. O que o DIZIMAN armazena no seu dispositivo</h5>
+          <p>O DIZIMAN utiliza o localStorage do navegador exclusivamente para:</p>
+          <ul>
+            <li><strong>Sessão de autenticação (chave: <code>diziman_user</code>):</strong> armazena o nome de usuário e o perfil de acesso (ex: administrador, pastor, líder) para manter você logado enquanto usa o sistema. Nenhuma senha é armazenada em texto claro.</li>
+          </ul>
+          <p>Não utilizamos:</p>
+          <ul>
+            <li>Cookies de rastreamento;</li>
+            <li>Cookies de publicidade ou retargeting;</li>
+            <li>Ferramentas de analytics de terceiros (Google Analytics, Meta Pixel, etc.);</li>
+            <li>Cookies de sessão persistentes além dos necessários para autenticação.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>3. Por que usamos o armazenamento local</h5>
+          <p>O armazenamento da sessão é estritamente necessário para o funcionamento do sistema. Sem ele, você precisaria fazer login a cada página acessada. Esta é a base legal de <strong>interesse legítimo</strong> e <strong>necessidade técnica</strong> previstas na LGPD.</p>
+        </div>
+
+        <div class="doc-section">
+          <h5>4. Como limpar os dados armazenados</h5>
+          <p>Você pode remover os dados armazenados pelo DIZIMAN a qualquer momento:</p>
+          <ul>
+            <li><strong>Pelo sistema:</strong> clique em "Sair" (logout) no menu principal. Isso remove automaticamente os dados da sessão.</li>
+            <li><strong>Pelo navegador:</strong> acesse as configurações do seu navegador → Privacidade → Limpar dados de navegação → Dados de sites. Ou pressione <code>F12</code> → Application → Local Storage → clique com botão direito e limpe os dados do domínio.</li>
+            <li><strong>No Android (app):</strong> acesse Configurações do dispositivo → Apps → DIZIMAN → Armazenamento → Limpar dados.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>5. Dados de terceiros</h5>
+          <p>O DIZIMAN utiliza os seguintes recursos de terceiros que podem ter suas próprias políticas:</p>
+          <ul>
+            <li><strong>Bootstrap (via CDN jsDelivr):</strong> biblioteca de interface visual. O jsDelivr pode registrar acessos em seus logs de servidor, mas não rastreia usuários individualmente.</li>
+            <li><strong>Bootstrap Icons (via CDN jsDelivr):</strong> mesma política acima.</li>
+            <li><strong>Render.com:</strong> plataforma de hospedagem do sistema. Pode registrar logs de acesso padrão (IP, timestamp, endpoint). Consulte a política de privacidade da Render.com para mais detalhes.</li>
+          </ul>
+        </div>
+
+        <div class="doc-section">
+          <h5>6. Suas escolhas</h5>
+          <p>Você pode configurar seu navegador para bloquear o armazenamento local. No entanto, isso impedirá o funcionamento correto do sistema, pois a autenticação não poderá ser mantida entre as páginas.</p>
+          <p>Ao utilizar o DIZIMAN, você consente com o uso do armazenamento local conforme descrito neste aviso.</p>
+        </div>
+      </div>
+
+      <!-- Rodapé do card -->
+      <hr class="mt-4">
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <p class="text-muted small mb-0">
+          <i class="bi bi-calendar3 me-1"></i>
+          Versão vigente desde {{ today | date:'dd/MM/yyyy' }}
+        </p>
+        <button class="btn btn-outline-primary btn-sm" (click)="voltar()">
+          <i class="bi bi-arrow-left me-1"></i> Voltar ao login
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

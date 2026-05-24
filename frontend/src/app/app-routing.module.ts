@@ -7,9 +7,11 @@ import { OfferingComponent } from './components/offering/offering.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { PrivacidadeComponent } from './components/privacidade/privacidade.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'privacidade', component: PrivacidadeComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'members', component: MemberComponent, canActivate: [AuthGuard] },
   { path: 'tithe-registration', component: TitheComponent, canActivate: [AuthGuard] },

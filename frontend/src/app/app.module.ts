@@ -12,6 +12,7 @@ import { TitheComponent } from './components/tithe/tithe.component';
 import { OfferingComponent } from './components/offering/offering.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { PrivacidadeComponent } from './components/privacidade/privacidade.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
     TitheComponent,
     OfferingComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    PrivacidadeComponent
   ],
   imports: [
     BrowserModule,
