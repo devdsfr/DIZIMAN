@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,6 +33,7 @@ class TitheControllerTest {
     private TitheController titheController;
 
     private Tithe tithe;
+    private Authentication auth;
 
     @BeforeEach
     void setUp() {
@@ -38,13 +41,15 @@ class TitheControllerTest {
         tithe.setId(1L);
         tithe.setValue(200.0);
         tithe.setTitheDate(new Date());
-        // You might want to set a member here if your tithe model links to a member
+
+        auth = mock(Authentication.class);
+        when(auth.getName()).thenReturn("admin");
     }
 
     @Test
     void addTitheTest() {
-        when(titheService.addTithe(any(Tithe.class))).thenReturn(tithe);
-        ResponseEntity<Tithe> response = titheController.addTithe(new Tithe());
+        when(titheService.addTithe(any(Tithe.class), anyString())).thenReturn(tithe);
+        ResponseEntity<Tithe> response = titheController.addTithe(new Tithe(), auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -53,8 +58,8 @@ class TitheControllerTest {
 
     @Test
     void getTitheByIdTest() {
-        when(titheService.getTitheById(1L)).thenReturn(tithe);
-        ResponseEntity<Tithe> response = titheController.getTitheById(1L);
+        when(titheService.getTitheById(1L, "admin")).thenReturn(tithe);
+        ResponseEntity<Tithe> response = titheController.getTitheById(1L, auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -63,8 +68,8 @@ class TitheControllerTest {
 
     @Test
     void updateTitheTest() {
-        when(titheService.updateTithe(eq(1L), any(Tithe.class))).thenReturn(tithe);
-        ResponseEntity<Tithe> response = titheController.updateTithe(1L, new Tithe());
+        when(titheService.updateTithe(eq(1L), any(Tithe.class), anyString())).thenReturn(tithe);
+        ResponseEntity<Tithe> response = titheController.updateTithe(1L, new Tithe(), auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -72,8 +77,8 @@ class TitheControllerTest {
 
     @Test
     void deleteTitheTest() {
-        when(titheService.deleteTithe(1L)).thenReturn(true);
-        ResponseEntity<Void> response = titheController.deleteTithe(1L);
+        when(titheService.deleteTithe(1L, "admin")).thenReturn(true);
+        ResponseEntity<Void> response = titheController.deleteTithe(1L, auth);
 
         assertEquals(response.getStatusCodeValue(), 200);
     }
@@ -83,9 +88,9 @@ class TitheControllerTest {
         List<Tithe> allTithes = Arrays.asList(tithe);
         Page<Tithe> pageTithes = new PageImpl<>(allTithes, PageRequest.of(0, 10), allTithes.size());
 
-        when(titheService.getAllTithe(any(PageRequest.class))).thenReturn(pageTithes);
+        when(titheService.getAllTithe(any(PageRequest.class), anyString())).thenReturn(pageTithes);
 
-        ResponseEntity<Page<Tithe>> response = titheController.getAllTithesPaged(0, 10);
+        ResponseEntity<Page<Tithe>> response = titheController.getAllTithesPaged(0, 10, auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
