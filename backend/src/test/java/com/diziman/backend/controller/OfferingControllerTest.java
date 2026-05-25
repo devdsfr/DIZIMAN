@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,6 +33,7 @@ class OfferingControllerTest {
     private OfferingController offeringController;
 
     private Offering offering;
+    private Authentication auth;
 
     @BeforeEach
     void setUp() {
@@ -39,13 +42,15 @@ class OfferingControllerTest {
         offering.setValue(100.0);
         offering.setChurchProject("New Roof");
         offering.setOfferingDate(new Date());
-        // Configure other properties and relations as needed
+
+        auth = mock(Authentication.class);
+        when(auth.getName()).thenReturn("admin");
     }
 
     @Test
     void addOfferingTest() {
-        when(offeringService.addOffering(any(Offering.class))).thenReturn(offering);
-        ResponseEntity<Offering> response = offeringController.addOffering(new Offering());
+        when(offeringService.addOffering(any(Offering.class), anyString())).thenReturn(offering);
+        ResponseEntity<Offering> response = offeringController.addOffering(new Offering(), auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -54,8 +59,8 @@ class OfferingControllerTest {
 
     @Test
     void getOfferingByIdTest() {
-        when(offeringService.getOfferingById(1L)).thenReturn(offering);
-        ResponseEntity<Offering> response = offeringController.getOfferingById(1L);
+        when(offeringService.getOfferingById(1L, "admin")).thenReturn(offering);
+        ResponseEntity<Offering> response = offeringController.getOfferingById(1L, auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -64,8 +69,8 @@ class OfferingControllerTest {
 
     @Test
     void updateOfferingTest() {
-        when(offeringService.updateOffering(eq(1L), any(Offering.class))).thenReturn(offering);
-        ResponseEntity<Offering> response = offeringController.updateOffering(1L, new Offering());
+        when(offeringService.updateOffering(eq(1L), any(Offering.class), anyString())).thenReturn(offering);
+        ResponseEntity<Offering> response = offeringController.updateOffering(1L, new Offering(), auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -73,8 +78,8 @@ class OfferingControllerTest {
 
     @Test
     void deleteOfferingTest() {
-        when(offeringService.deleteOffering(1L)).thenReturn(true);
-        ResponseEntity<Void> response = offeringController.deleteOffering(1L);
+        when(offeringService.deleteOffering(1L, "admin")).thenReturn(true);
+        ResponseEntity<Void> response = offeringController.deleteOffering(1L, auth);
 
         assertEquals(response.getStatusCodeValue(), 200);
     }
@@ -84,9 +89,9 @@ class OfferingControllerTest {
         List<Offering> allOfferings = Arrays.asList(offering);
         Page<Offering> pageOfferings = new PageImpl<>(allOfferings, PageRequest.of(0, 10), allOfferings.size());
 
-        when(offeringService.getAllOfferings(any(PageRequest.class))).thenReturn(pageOfferings);
+        when(offeringService.getAllOfferings(any(PageRequest.class), anyString())).thenReturn(pageOfferings);
 
-        ResponseEntity<Page<Offering>> response = offeringController.getAllOfferingsPaged(0, 10);
+        ResponseEntity<Page<Offering>> response = offeringController.getAllOfferingsPaged(0, 10, auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
@@ -94,6 +99,5 @@ class OfferingControllerTest {
         assertEquals(response.getBody().getContent().size(), 1);
         assertTrue(response.getBody().getContent().contains(offering));
     }
-
 
 }

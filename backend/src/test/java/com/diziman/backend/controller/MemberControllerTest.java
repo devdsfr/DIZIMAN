@@ -12,11 +12,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,45 +32,51 @@ class MemberControllerTest {
     private MemberController memberController;
 
     private Member member;
+    private Authentication auth;
 
     @BeforeEach
     void setUp() {
         member = new Member();
         member.setId(1L);
         member.setName("John Doe");
-        // configure other properties as needed
+
+        auth = mock(Authentication.class);
+        when(auth.getName()).thenReturn("admin");
     }
 
     @Test
     void addMemberTest() {
-        when(memberService.addMember(any(Member.class))).thenReturn(member);
-        ResponseEntity<Member> response = memberController.addMember(new Member());
+        when(memberService.addMember(any(Member.class), anyString())).thenReturn(member);
+        ResponseEntity<Member> response = memberController.addMember(new Member(), auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
         assertEquals(response.getBody().getId(), 1L);
     }
+
     @Test
     void getMemberByIdTest() {
-        when(memberService.getMemberById(1L)).thenReturn(member);
-        ResponseEntity<Member> response = memberController.getMemberById(1L);
+        when(memberService.getMemberById(1L, "admin")).thenReturn(member);
+        ResponseEntity<Member> response = memberController.getMemberById(1L, auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
         assertEquals(response.getBody().getId(), member.getId());
     }
+
     @Test
     void updateMemberTest() {
-        when(memberService.updateMember(eq(1L), any(Member.class))).thenReturn(member);
-        ResponseEntity<Member> response = memberController.updateMember(1L, new Member());
+        when(memberService.updateMember(eq(1L), any(Member.class), anyString())).thenReturn(member);
+        ResponseEntity<Member> response = memberController.updateMember(1L, new Member(), auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
     }
+
     @Test
     void deleteMemberTest() {
-        when(memberService.deleteMember(1L)).thenReturn(true);
-        ResponseEntity<Void> response = memberController.deleteMember(1L);
+        when(memberService.deleteMember(1L, "admin")).thenReturn(true);
+        ResponseEntity<Void> response = memberController.deleteMember(1L, auth);
 
         assertEquals(response.getStatusCodeValue(), 200);
     }
@@ -77,9 +86,9 @@ class MemberControllerTest {
         List<Member> allMembers = Arrays.asList(member);
         Page<Member> pageMembers = new PageImpl<>(allMembers, PageRequest.of(0, 10), allMembers.size());
 
-        when(memberService.getAllMembers(any(PageRequest.class))).thenReturn(pageMembers);
+        when(memberService.getAllMembers(any(PageRequest.class), anyString())).thenReturn(pageMembers);
 
-        ResponseEntity<Page<Member>> response = memberController.getAllMembersPaged(0, 10);
+        ResponseEntity<Page<Member>> response = memberController.getAllMembersPaged(0, 10, auth);
 
         assertNotNull(response.getBody());
         assertEquals(response.getStatusCodeValue(), 200);
