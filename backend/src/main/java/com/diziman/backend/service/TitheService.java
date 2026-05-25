@@ -45,4 +45,10 @@ public class TitheService {
         }).orElse(null);
     }
 
-    public boolean deleteTithe(Long i
+    public boolean deleteTithe(Long id, String owner) {
+        return titheRepository.findByIdAndOwnerOrLegacy(id, owner).map(tithe -> {
+            titheRepository.delete(tithe);
+            return true;
+        }).orElse(false);
+    }
+}

@@ -27,4 +27,10 @@ public class Offering {
     private Double value;
 
     @ManyToOne(fetch = FetchType.EAGER)
-  
+    @JoinColumn(name = "member_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Member member;
+
+    @Column
+    private String owner;
+}

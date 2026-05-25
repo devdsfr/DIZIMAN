@@ -41,3 +41,12 @@ public class Member {
 
     @NotBlank(message = "Address cannot be empty.")
     @Size(max = 200, message = "Address can have a maximum of 200 characters.")
+    private String address;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date registrationDate;
+
+    @Column
+    private String owner;
+}

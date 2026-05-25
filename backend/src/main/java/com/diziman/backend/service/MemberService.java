@@ -44,4 +44,8 @@ public class MemberService {
 
     public boolean deleteMember(Long id, String owner) {
         return memberRepository.findByIdAndOwnerOrLegacy(id, owner).map(member -> {
- 
+            memberRepository.delete(member);
+            return true;
+        }).orElse(false);
+    }
+}

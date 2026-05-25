@@ -46,4 +46,9 @@ public class OfferingService {
     }
 
     public boolean deleteOffering(Long id, String owner) {
-        return offeringRepository.f
+        return offeringRepository.findByIdAndOwnerOrLegacy(id, owner).map(offering -> {
+            offeringRepository.delete(offering);
+            return true;
+        }).orElse(false);
+    }
+}
