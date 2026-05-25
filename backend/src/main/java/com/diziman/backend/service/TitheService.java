@@ -18,8 +18,9 @@ public class TitheService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public Tithe addTithe(Tithe tithe) {
-        if(tithe.getMember() != null && tithe.getMember().getId() != null) {
+    public Tithe addTithe(Tithe tithe, String owner) {
+        tithe.setOwner(owner);
+        if (tithe.getMember() != null && tithe.getMember().getId() != null) {
             Member member = memberRepository.findById(tithe.getMember().getId())
                     .orElseThrow(() -> new RuntimeException("Member not found"));
             tithe.setMember(member);
@@ -27,26 +28,21 @@ public class TitheService {
         return titheRepository.save(tithe);
     }
 
-    public Tithe getTitheById(Long id) {
-        return titheRepository.findById(id).orElse(null);
+    public Tithe getTitheById(Long id, String owner) {
+        return titheRepository.findByIdAndOwnerOrLegacy(id, owner).orElse(null);
     }
 
-    public Page<Tithe> getAllTithe(PageRequest pageRequest) {
-        return titheRepository.findAll(pageRequest);
+    public Page<Tithe> getAllTithe(PageRequest pageRequest, String owner) {
+        return titheRepository.findByOwnerOrLegacy(owner, pageRequest);
     }
 
-    public Tithe updateTithe(Long id, Tithe titheDetails) {
-        return titheRepository.findById(id).map(tithe -> {
+    public Tithe updateTithe(Long id, Tithe titheDetails, String owner) {
+        return titheRepository.findByIdAndOwnerOrLegacy(id, owner).map(tithe -> {
             tithe.setValue(titheDetails.getValue());
             tithe.setTitheDate(titheDetails.getTitheDate());
+            if (tithe.getOwner() == null) tithe.setOwner(owner);
             return titheRepository.save(tithe);
         }).orElse(null);
     }
 
-    public boolean deleteTithe(Long id) {
-        return titheRepository.findById(id).map(tithe -> {
-            titheRepository.delete(tithe);
-            return true;
-        }).orElse(false);
-    }
-}
+    public boolean deleteTithe(Long i

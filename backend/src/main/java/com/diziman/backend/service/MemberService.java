@@ -13,21 +13,21 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public Member addMember(Member member) {
-        // Aqui você pode adicionar qualquer lógica de negócios necessária antes de salvar o membro
+    public Member addMember(Member member, String owner) {
+        member.setOwner(owner);
         return memberRepository.save(member);
     }
 
-    public Member getMemberById(Long id) {
-        return memberRepository.findById(id).orElse(null);
+    public Member getMemberById(Long id, String owner) {
+        return memberRepository.findByIdAndOwnerOrLegacy(id, owner).orElse(null);
     }
 
-    public Page<Member> getAllMembers(Pageable pageable) {
-        return memberRepository.findAll(pageable);
+    public Page<Member> getAllMembers(Pageable pageable, String owner) {
+        return memberRepository.findByOwnerOrLegacy(owner, pageable);
     }
 
-    public Member updateMember(Long id, Member memberDetails) {
-        return memberRepository.findById(id).map(member -> {
+    public Member updateMember(Long id, Member memberDetails, String owner) {
+        return memberRepository.findByIdAndOwnerOrLegacy(id, owner).map(member -> {
             member.setName(memberDetails.getName());
             member.setGender(memberDetails.getGender());
             member.setBirthDate(memberDetails.getBirthDate());
@@ -37,14 +37,11 @@ public class MemberService {
             member.setState(memberDetails.getState());
             member.setZipCode(memberDetails.getZipCode());
             member.setAddress(memberDetails.getAddress());
+            if (member.getOwner() == null) member.setOwner(owner);
             return memberRepository.save(member);
         }).orElse(null);
     }
 
-    public boolean deleteMember(Long id) {
-        return memberRepository.findById(id).map(member -> {
-            memberRepository.delete(member);
-            return true;
-        }).orElse(false);
-    }
-}
+    public boolean deleteMember(Long id, String owner) {
+        return memberRepository.findByIdAndOwnerOrLegacy(id, owner).map(member -> {
+ 

@@ -1,7 +1,6 @@
 package com.diziman.backend.repository;
 
 import com.diziman.backend.model.Tithe;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface TitheRepository extends JpaRepository<Tithe, Long> {
-}
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.J

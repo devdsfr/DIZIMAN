@@ -7,7 +7,6 @@ import com.diziman.backend.repository.OfferingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +18,8 @@ public class OfferingService {
     @Autowired
     private MemberRepository memberRepository;
 
-    public Offering addOffering(Offering offering) {
+    public Offering addOffering(Offering offering, String owner) {
+        offering.setOwner(owner);
         if (offering.getMember() != null && offering.getMember().getId() != null) {
             Member member = memberRepository.findById(offering.getMember().getId())
                     .orElseThrow(() -> new RuntimeException("Member not found"));
@@ -28,26 +28,22 @@ public class OfferingService {
         return offeringRepository.save(offering);
     }
 
-    public Offering getOfferingById(Long id) {
-        return offeringRepository.findById(id).orElse(null);
+    public Offering getOfferingById(Long id, String owner) {
+        return offeringRepository.findByIdAndOwnerOrLegacy(id, owner).orElse(null);
     }
 
-    public Page<Offering> getAllOfferings(PageRequest pageRequest) {
-        return offeringRepository.findAll(pageRequest);
+    public Page<Offering> getAllOfferings(PageRequest pageRequest, String owner) {
+        return offeringRepository.findByOwnerOrLegacy(owner, pageRequest);
     }
 
-    public Offering updateOffering(Long id, Offering offeringDetails) {
-        return offeringRepository.findById(id).map(offering -> {
+    public Offering updateOffering(Long id, Offering offeringDetails, String owner) {
+        return offeringRepository.findByIdAndOwnerOrLegacy(id, owner).map(offering -> {
             offering.setChurchProject(offeringDetails.getChurchProject());
             offering.setValue(offeringDetails.getValue());
+            if (offering.getOwner() == null) offering.setOwner(owner);
             return offeringRepository.save(offering);
         }).orElse(null);
     }
 
-    public boolean deleteOffering(Long id) {
-        return offeringRepository.findById(id).map(offering -> {
-            offeringRepository.delete(offering);
-            return true;
-        }).orElse(false);
-    }
-}
+    public boolean deleteOffering(Long id, String owner) {
+        return offeringRepository.f
